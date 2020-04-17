@@ -1,0 +1,924 @@
+@font-face {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/Roboto-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: Roboto;
+	font-style: italic;
+	font-weight: 400;
+	src: url('../fonts/Roboto-Italic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/Roboto-Bold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: Roboto;
+	font-style: italic;
+	font-weight: 700;
+	src: url('../fonts/Roboto-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/RobotoCondensed-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Roboto Condensed';
+	font-style: italic;
+	font-weight: 400;
+	src: url('../fonts/RobotoCondensed-Italic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/RobotoCondensed-Bold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Roboto Condensed';
+	font-style: italic;
+	font-weight: 700;
+	src: url('../fonts/RobotoCondensed-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: magic;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/SchoolsOfMagic.otf') format('opentype');
+}
+
+input[type=checkbox].css-checkbox {
+	position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:23px;
+	height:18px; 
+	display:inline-block;
+	line-height:18px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:18px;
+	vertical-align:middle;
+	cursor:pointer;
+
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -18px;
+}
+label.css-label {
+  background-image:url(../images/checkbox.png);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input[type=checkbox].css-checkbox-insp {
+	position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+}
+
+input[type=checkbox].css-checkbox-insp + label.css-label-insp {
+	padding-left:36px;
+	height:36px; 
+	display:inline-block;
+	line-height:36px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:36px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox-insp:checked + label.css-label-insp {
+	background-position: 0 -36px;
+}
+label.css-label-insp {
+  background-image:url(../images/inspiration.png);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .attributes .attribute.inspiration .attribute-value {
+  padding-top: 9px;
+}
+
+.dndbcs.sheet {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+}
+
+.dndbcs.sheet.actor.character .sheet-header img.profile {
+  border: 3px solid #c53131;
+  border-radius: 3px;
+  margin: 10px 0 10px 10px;
+}
+
+.dnd5e.sheet.actor.character .sheet-header img.profile {
+  flex: 0 0 205px;
+  max-width: 205px;
+  height: 205px;
+}
+
+.dndbcs.sheet .sheet-header h1 input {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: auto;
+  font-size: inherit;
+  margin-left: 6px;
+  margin-top: 0px;
+}
+
+/* .dndbcs.sheet input[type="text"] {
+  width: inherit;
+  height: inherit;
+} */
+
+.dndbcs.sheet.actor.character .sheet-header .summary {
+  border: 0px;
+  flex: 0 1 auto;
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  font-size: 14px;
+  color: #7a7971;
+  margin-left: 13px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .summary span {
+  padding-top: 10px;s
+}
+
+.dndbcs.sheet.actor.character .sheet-header .flex-row.summary-attributes {
+  margin-left: -2px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .summary input[type="text"] {
+  max-width: 120px;
+  color: #3f414e;
+  font-size: 13px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .summary select.actor-size {
+  margin-top: 8px;
+  border: 0px;
+  max-width: 80px;
+  font-size: 13px;
+  color: #3f414e;
+}
+.dndbcs.sheet.actor.character .sheet-header .summary select.actor-size:hover, 
+.dndbcs.sheet.actor.character .sheet-header .summary select.actor-size:focus {
+  border: 1px solid #7a7971;
+}
+
+.dndbcs.sheet.actor h4.box-title, .dndbcs.sheet.actor h4 {
+  margin: 4px 0 0 0;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .attributes .attribute .attribute-name,
+.dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-name,
+.dndbcs.sheet.actor.character .sheet-header .ability-scores .ability h4 {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #3f414e;
+  border: 0px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .attributes .attribute .attribute-value {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #000;
+  font-weight: bold;
+  border: 3px solid #c53131;
+  border-radius: 3px;
+  height: 40px;
+  text-align: center;
+  margin: 0px;
+  font-size: 20px;
+  height: 60px;
+  width: 60px;
+  padding-top: 11px;
+  margin-left: 10px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-mod {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  margin: 0px;
+  font-size: 20px;
+  height: 28px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-score {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #000;
+  text-align: center;
+  margin: 0px;
+  font-size: 14px;
+  height: 22px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-box {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #000;
+  font-weight: bold;
+  border: 3px solid #c53131;
+  border-radius: 3px;
+  height: 40px;
+  text-align: center;
+  margin: 0px;
+  font-size: 20px;
+  height: 70px;
+  width: 60px;
+  padding-top: 5px;
+  margin: 0 10px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health .ability-box {
+  width: 100px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.defenses .ability-box {
+  width: 160px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .attributes .attribute .counter-value {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #000;
+  font-weight: bold;
+  border: 3px solid #c53131;
+  border-radius: 3px;
+  height: 40px;
+  text-align: center;
+  margin: 0px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .attributes .attribute .attribute-value input {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #000;
+  font-weight: bold;
+  font-size: 20px;
+  max-width: 100%;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .attributes .attribute {
+  border: 0px;
+  height: 100px;
+  width: 80px;
+  margin: 0 5px;
+}
+
+.dndbcs.sheet.actor .ability-scores .ability {
+  border: 0px;
+  height: 100px;
+  width: 80px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health {
+  border: 0px;
+  height: 100px;
+  width: 120px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.defenses {
+  width: 180px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores .ability footer.ability-footer,
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health footer.ability-footer {
+  border-top: 3px solid #c53131;
+  margin-top: 1px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health input[type="text"] {
+  width: 40%;
+} 
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-box footer.ability-footer.exhaustion {
+  font-size: 14px;
+  font-weight: normal;
+  padding: 4px 0 0 5px;
+  color: #191813;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .attributes li.attribute.rest i.fas.fa-fire,
+.dndbcs.sheet.actor.character .sheet-header .attributes li.attribute.rest i.fas.fa-moon {
+  color: #c53131;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .attributes li.attribute.rest a.rest.short-rest,
+.dndbcs.sheet.actor.character .sheet-header .attributes li.attribute.rest a.rest.long-rest {
+  margin: 0 4px 8px 4px;
+  display: inline-block;
+  border: 3px solid #c53131;
+  border-radius: 3px;
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 60px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses i.fas.fa-bolt,
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses i.fas.fa-shield-alt,
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses i.fas.fa-syringe,
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box i.fas.fa-tools,
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box i.fas.fa-shield-alt,
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box i.fas.fa-khanda,
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box i.fas.fa-globe {
+  color: #c53131;
+  font-size: 10px;
+  margin: 0 5px;
+  min-width: 10px;
+  max-width: 10px;
+  float: left;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses .form-group span {
+  float: left;
+  width: 110px;
+  margin-bottom: 5px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box .form-group span {
+  float: left;
+  width: 239px;
+  margin-bottom: 5px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses .form-group,
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box .form-group {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  font-size: 10px;
+  font-weight: normal;
+  color: #191813;
+  text-align: left;
+  display: block;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses .form-group a.trait-selector,
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box .form-group a.trait-selector {
+  float: right;
+  margin: 0 5px;
+  color: #7a7971;
+}
+
+.dndbcs.sheet.actor.character .flex-row {
+  flex-direction: row;
+  display: flex;
+}
+
+.dndbcs.sheet.actor.character .flex-column {
+  flex-direction: column;
+  display: flex;
+}
+
+.dndbcs.sheet.actor.character .flex-body {
+  display: flex;
+  border: 0px;
+  flex-wrap: wrap;
+}
+
+.dndbcs.sheet.actor.character .flex-body .flex-column {
+  margin-top: 1px;
+}
+
+.dndbcs.sheet.actor.character .flex-body .flex-column .flex-row {
+  margin-top: 12px;
+}
+
+.dndbcs.sheet.actor.character .flex-profileimg {
+  flex: 0 0 200px;
+}
+
+.dndbcs.sheet.actor.character .flex-column.col1 {
+  flex: 0 1 220px;
+}
+
+.dndbcs.sheet.actor.character .flex-column.col2 {
+  flex: 0 1 270px;
+  max-height: 160px;
+  margin-right: 14px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 {
+  flex: 0 1 382px;
+  max-height: 160px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 {
+  flex: 0 1 319px;
+  max-height: 160px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col5 {
+  flex: 0 1 322px;
+  margin-left: 220px;
+  margin-top: -495px;
+  height: calc(100% - 180px);
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col5 .ability-box {
+  border: 3px solid #c53131;
+  border-radius: 3px;
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  font-size: 12px;
+  margin-top: 0px;
+  margin-left: 10px;
+  min-height: 32px;
+  min-width: 960px;
+  padding: 10px;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.dndbcs.sheet .window-content .tab {
+  height: calc(100% - 10px);
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col5 .ability-box section.sheet-body {
+  height: 100%;
+  padding-bottom: 30px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .attributes li.attribute.rest {
+  margin-left: 4px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body h4.box-title {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #3f414e;
+  border: 0px;
+  text-align: center;
+}
+
+.dndbcs.sheet.actor ul.skills-list li.skill .skill-ability,
+.dndbcs.sheet.actor ul.skills-list li.skill .skill-mod,
+.dndbcs.sheet.actor ul.skills-list li.skill .skill-passive {
+  line-height: 18px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col1 ul,
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col2 ul {
+  border: 3px solid #c53131;
+  border-radius: 3px;
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  font-size: 12px;
+  margin-top: 0px;
+  margin-left: 10px;
+  min-height: 32px;
+}
+
+
+.dndbcs.sheet.actor.character .sheet-body .savingthrows .proficiency-toggle.ability-proficiency {
+  flex: 0 0 16px;
+  line-height: 18px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .savingthrows .proficiency-toggle.ability-proficiency i.fas.fa-check,
+.dndbcs.sheet.actor.character .sheet-body .savingthrows i.fas.fa-check.proficiency-toggle.ability-proficiency,
+.dndbcs.sheet.actor.character .sheet-body .savingthrows i.fas.fa-times.proficiency-toggle.ability-proficiency {
+  color: #4b4a44;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .savingthrows h4.skill-name.ability-name.rollable {
+  flex: 0 0 80px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .savingthrows span.skill-mod.ability-save {
+  flex: 0 0 15px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .savingthrows li.skill.flexrow.ability,
+.dndbcs.sheet.actor.character .sheet-body .deathsaves li.skill.flexrow.ability,
+.dndbcs.sheet.actor.character .sheet-body .sensestraits li.skill.flexrow.ability {
+  display: inline-flex;
+  width: 120px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health {
+  border: 0px;
+  height: 100px;
+  width: 120px;
+  margin: 0 3px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health .ability-box {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #000;
+  font-weight: bold;
+  border: 3px solid #c53131;
+  border-radius: 3px;
+  height: 40px;
+  text-align: center;
+  margin: 0px;
+  font-size: 20px;
+  height: 74px;
+  width: 100px;
+  padding-top: 5px;
+  margin: 0 10px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health input[type="text"] {
+  width: 40%;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health h4 input[type="text"] {
+  width: 100%;
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #3f414e;
+  border: 0px;
+  text-align: center;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health .ability-box footer.ability-footer {
+  font-size: 14px;
+  font-weight: normal;
+  padding: 4px 0 0 5px;
+  color: #191813;
+  border-top: 3px solid #c53131;
+  margin-top: 1px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health .ability-box .ability-value.multiple {
+  height: 32px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 ul.ability-scores.flexrow {
+  flex: 0;
+  height: 94px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 .sensestraits .skills-list {
+  border: 3px solid #c53131;
+  border-radius: 3px;
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  font-size: 12px;
+  min-height: 32px;
+  margin: 0 13px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 .sensestraits .skills-list i.fas.fa-cog {
+  margin-right: 3px;
+  text-align: right;
+  color: #7a7971;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 .sensestraits .skills-list .form-group {
+  width: 325px;
+  display: inline-flex;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 .sensestraits .skills-list .form-group input[type="text"] {
+  padding: 3px 0 0 3px;
+}
+
+.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #000;
+  font-weight: bold;
+  border: 3px solid #c53131;
+  border-radius: 3px;
+  height: 40px;
+  text-align: center;
+  margin: 0px;
+  font-size: 20px;
+  height: 126px;
+  padding-top: 5px;
+  margin: 0 10px 0 12px;
+}
+
+.dndbcs.sheet .sheet-navigation .item {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #7a7971;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.dndbcs.sheet .sheet-navigation .item.active {
+  border-bottom: 3px solid #c53131;
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #000;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.dndbcs.sheet .sheet-navigation .tabs .item.active {
+  color: #000;
+  text-shadow: none;
+}
+
+.tabs .item.active {
+  text-shadow: none;
+}
+
+.dndbcs.sheet .sheet-navigation .item:hover {
+  color: #000;
+}
+
+
+/* width */
+ol.inventory-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+ol.inventory-list::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+/* Handle */
+ol.inventory-list::-webkit-scrollbar-thumb {
+  background: #b5b3a4;
+  border-color: #b5b3a4;
+}
+
+/* Handle on hover */
+ol.inventory-list::-webkit-scrollbar-thumb:hover {
+  background: #c53131;
+  border-color: #c53131;
+}
+
+.dndbcs.sheet.actor .inventory-filters h3.currency-convert-button {
+  background-color: transparent;
+  border: 1px solid #c53131;
+  border-radius: 3px;
+  flex: 0;
+  padding: 0 5px;
+  height: 26px;
+  margin-left: 5px;
+  margin-top: -3px;
+  padding-top: 5px;
+}
+
+.dndbcs.sheet.actor .inventory-filters h3.currency-convert-button a.currency-convert {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #c53131;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.dndbcs.sheet.actor .inventory-filters h3.currency-convert-button a.currency-convert:hover {
+  color: #000;
+}
+
+.dndbcs.sheet.actor .inventory-filters ol.currency.flexrow {
+  justify-content: flex-end;
+  flex: 1;
+  margin: 18px 0 0 0;
+}
+
+.dndbcs.sheet.actor .inventory-filters .currency label.denomination.pp {
+  background: url(../images/pp.png) no-repeat;
+  background-size: auto 20px;
+  padding-left: 24px;
+}
+
+.dndbcs.sheet.actor .inventory-filters .currency label.denomination.ep {
+  background: url(../images/ep.png) no-repeat;
+  background-size: auto 20px;
+  padding-left: 24px;
+}
+
+.dndbcs.sheet.actor .inventory-filters .currency label.denomination.gp {
+  background: url(../images/gp.png) no-repeat;
+  background-size: auto 20px;
+  padding-left: 24px;
+}
+
+.dndbcs.sheet.actor .inventory-filters .currency label.denomination.sp {
+  background: url(../images/sp.png) no-repeat;
+  background-size: auto 20px;
+  padding-left: 24px;
+}
+
+.dndbcs.sheet.actor .inventory-filters .currency label.denomination.cp {
+  background: url(../images/cp.png) no-repeat;
+  background-size: auto 20px;
+  padding-left: 24px;
+}
+
+.dndbcs.sheet.actor .filter-list {
+  margin: 10px 0;
+  flex: 0 1 270px;
+}
+
+.dndbcs.sheet.actor .filter-list.filter-spellbook {
+  flex: 0 1 470px;
+}
+
+.dndbcs.sheet.actor .form-group.spellcasting-ability {
+  justify-content: flex-end;
+  flex: 1;
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #7a7971;  
+  text-transform: uppercase;
+  font-size: 12px;
+  margin: 18px 0 0 0;
+}
+
+.dndbcs.sheet.actor .form-group.spellcasting-ability label {
+  text-align: right;
+  margin-right: 5px;
+}
+
+.dndbcs.sheet.actor .form-group.spellcasting-ability label h3 {
+  font-weight: normal;
+  color: #3f414e;
+}
+
+.dndbcs.sheet.actor .inventory-filters h3, .dndbcs.sheet.actor .inventory-filters .filter-title {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  color: #7a7971;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.dndbcs.sheet.actor .filter-list .filter-item {
+  flex: 0;
+  border-bottom: 0px;
+  background-color: #c9c7b8;
+  border: 1px solid #c9c7b8;
+  margin: 3px 4px;
+  border-radius: 3px;
+  padding: 5px 7px;
+  white-space: nowrap;
+}
+
+label.hit-dice {
+  font-weight: normal;
+  height: 28px;
+  display: inline-block;
+}
+
+.dndbcs.sheet.actor .filter-list .filter-item:hover {
+  color: #000;
+  border: 1px solid #999;
+}
+
+.dndbcs.sheet.actor .filter-list .filter-item.active {
+  color: #fff;
+  background-color: #c53131;
+  border: 1px solid #c53131;
+}
+
+.dndbcs.sheet.actor .inventory-filters {
+  margin: 0 3px;
+  display: flex;
+}
+
+.dndbcs.sheet.actor .inventory-filters .currency input[type="text"] {
+  height: min-content;
+  margin-left: 4px;
+  max-width: 40px;
+}
+
+.dndbcs.sheet.actor.character .encumbrance {
+  margin: 5px 5px 0 5px;
+}
+
+.dndbcs.sheet.actor.character .encumbrance .encumbrance-bar {
+  background-color: #c53131;
+  border: 1px solid #c53131;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+}
+
+.dndbcs.sheet.actor.character .encumbrance {
+  background: #7a7971;
+  border: 1px solid #7a7971
+}
+
+.dndbcs.sheet.actor.character .encumbrance.encumbered .arrow-down {
+  border-top: 4px solid #EEE;
+}
+
+.dndbcs.sheet.actor.character .encumbrance.encumbered .arrow-up {
+  border-bottom: 4px solid #EEE;
+}
+
+.dndbcs.sheet.actor .inventory-list .inventory-header {
+  background: none;
+  border: 0px;
+  border-bottom: 1px solid #c9c7b8;
+  color: #c53131;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.dndbcs.sheet.actor .inventory-list .item-list {
+  /* border-top: 1px solid #c9c7b8; */
+}
+
+.dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .item-weight,
+.dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .item-detail,
+.dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .spell-school, 
+.dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .spell-action, 
+.dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .spell-target,
+.dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .spell-slots, 
+.dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .spell-comps {
+  border-left: 0px;
+  border-right: 0px;
+  color: #7a7971;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.dndbcs.sheet.actor.character .spellbook .item-controls .toggle-prepared.prepared,
+.dndbcs.sheet.actor .inventory-list .item .item-name i.attuned {
+  color: #c53131;
+}
+
+.dndbcs.sheet.actor .inventory-filters i.fas.fa-fist-raised,
+.dndbcs.sheet.actor .inventory-filters i.fas.fa-magic,
+.dndbcs.sheet.actor .inventory-filters i.fas.fa-th-large {
+  margin: 20px 10px 0 10px;
+  color: #c53131;
+}
+
+.dndbcs.sheet.actor .inventory-list .item:last-child {
+  border-bottom: 1px solid #c9c7b8;
+}
+
+.dndbcs.sheet .fake-filter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 16px;
+}
+
+.dndbcs.sheet.actor .fake-filter-list .fake-filter-item {
+  flex: 0;
+  border-bottom: 0px;
+  background-color: #c9c7b8;
+  border: 1px solid #c9c7b8;
+  margin: 3px 4px;
+  border-radius: 3px;
+  padding: 5px 7px;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 12px;
+}
+
+.dndbcs.sheet.actor .action-filters {
+  margin: 0 3px;
+  display: flex;
+  flex: 0 0 20px;
+}
+
+.dndbcs.sheet.actor.character {
+  max-width: 1280px;  
+  min-width: 1220px;
+  min-height: 930px;
+}
+
+.dndbcs .ability.health .form-group label {
+  display: none;
+}
+
+.dndbcs.sheet.actor.character .flex-tokenimg {
+  flex: 0 0 200px;
+}
+
+.dndbcs.sheet.actor.character img.token {
+  flex: 0 0 205px;
+  max-width: 205px;
+  height: 205px;
+  border: 3px solid #c53131;
+  border-radius: 3px;
+  margin: 10px 0 10px 10px;
+}
