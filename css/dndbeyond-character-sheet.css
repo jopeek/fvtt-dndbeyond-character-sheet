@@ -134,7 +134,7 @@ label.css-label-insp {
   margin: 10px 0 10px 10px;
 }
 
-.dnd5e.sheet.actor.character .sheet-header img.profile {
+.dndbcs.sheet.actor.character .sheet-header img.profile {
   flex: 0 0 205px;
   max-width: 205px;
   height: 205px;
@@ -697,7 +697,7 @@ ol.inventory-list::-webkit-scrollbar-thumb:hover {
 .dndbcs.sheet.actor .inventory-filters ol.currency.flexrow {
   justify-content: flex-end;
   flex: 1;
-  margin: 18px 0 0 0;
+  margin: 10px 0;
 }
 
 .dndbcs.sheet.actor .inventory-filters .currency label.denomination.pp {
@@ -921,4 +921,12 @@ label.hit-dice {
   border: 3px solid #c53131;
   border-radius: 3px;
   margin: 10px 0 10px 10px;
+}
+
+.dndbcs.sheet.actor.character .inventory .item-controls .item-toggle, .dndbcs.sheet.actor.character .spellbook .item-controls .item-toggle {
+  color: #7a7971;
+}
+
+.dndbcs.sheet.actor.character .inventory .item-controls .item-toggle.active, .dndbcs.sheet.actor.character .spellbook .item-controls .item-toggle.active {
+  color: #4b4a44;
 }
