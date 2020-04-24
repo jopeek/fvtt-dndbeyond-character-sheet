@@ -82,7 +82,7 @@
                     <ul class="ability-scores flexrow">
                     {{#each data.abilities as |ability id|}}
                         <li class="ability" data-ability="{{id}}">
-                            <h4 class="ability-name box-title rollable">{{ability.label}}</h4>
+                            <h4 class="ability-name ability-mod box-title rollable">{{ability.label}}</h4>
                             <div class="ability-box">
                                 <div class="ability-mod" title="Modifier">{{numberFormat ability.mod decimals=0 sign=true}}</div>
                                 <footer class="ability-footer">
@@ -208,8 +208,7 @@
                     <li class="skill flexrow ability" data-ability="{{id}}">
                         <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}" data-dtype="Number"/>
                         <a class="proficiency-toggle ability-proficiency" title="Proficiency">{{{ability.icon}}}</a>
-                        <h4 class="skill-name ability-name rollable">{{ability.label}}</h4>
-                        
+                        <h4 class="skill-name ability-name rollable"><span class="ability-save" title="Saving Throw">{{ability.label}}</span></h4>
                         <span class="skill-mod ability-save" title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
                     </li>
                 {{/each}}

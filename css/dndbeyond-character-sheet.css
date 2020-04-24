@@ -195,16 +195,6 @@ label.css-label-insp {
   margin: 4px 0 0 0;
 }
 
-.dndbcs.sheet.actor.character .sheet-header .attributes .attribute .attribute-name,
-.dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-name,
-.dndbcs.sheet.actor.character .sheet-header .ability-scores .ability h4 {
-  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
-  text-transform: uppercase;
-  font-size: 12px;
-  color: #3f414e;
-  border: 0px;
-}
-
 .dndbcs.sheet.actor.character .sheet-header .attributes .attribute .attribute-value {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   color: #000;
@@ -238,6 +228,19 @@ label.css-label-insp {
   margin: 0px;
   font-size: 14px;
   height: 22px;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .attributes .attribute .attribute-name,
+.dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-name,
+.dndbcs.sheet.actor.character .sheet-header .ability-scores .ability h4 {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: normal;
+  color: #3f414e;
+  border: 0px;
+  margin: 4px 0 0 0;
+  height: initial;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-box {
