@@ -537,7 +537,7 @@
                         {{#each features as |section sid|}}
                             {{#ifeq section.label "Active"}}
                                 <li class="inventory-header flexrow">
-                                    <h3 class="item-name flexrow">{{section.label}} Features</h3>
+                                    <h3 class="item-name flexrow">{{localize section.label}} Features</h3>
                             
                                     {{#if section.hasActions}}
                                     <div class="item-detail item-uses">{{localize "DND5E.Uses"}}</div>
@@ -603,19 +603,13 @@
                             {{#ifeq section.label "Cantrip"}}
                                 <li class="item flexrow inventory-header spellbook-header">
                                     <div class="item-name flexrow">
-                                        <h3>{{section.label}}</h3>
+                                        <h3>{{localize section.label}}</h3>
                                     </div>
                             
                                     <div class="spell-slots">
-                                        {{#if section.usesSlots}}
-                                        <input type="text" name="data.spells.spell{{section.level}}.value" value="{{section.uses}}" placeholder="0"/>
-                                        <span class="sep"> / </span>
-                                        <input type="text" name="data.spells.spell{{section.level}}.max" value="{{section.slots}}" placeholder="0"/>
-                                        {{ else }}
                                         <span class="spell-slots">{{{section.uses}}}</span>
                                         <span class="sep"> / </span>
                                         <span class="spell-max">{{{section.slots}}}</span>
-                                        {{/if}}
                                     </div>
                             
                                     <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
@@ -686,21 +680,13 @@
                             {{#ifnoteq section.label "Cantrip"}}
                                 <li class="item flexrow inventory-header spellbook-header">
                                     <div class="item-name flexrow">
-                                        <h3>{{section.label}}</h3>
+                                        <h3>{{localize section.label}}</h3>
                                     </div>
                             
                                     <div class="spell-slots">
-                                        {{#if section.usesSlots}}
-                                        <!-- <input type="text" name="data.spells.spell{{section.level}}.value" value="{{section.uses}}" placeholder="0"/> -->
-                                        {{section.uses}}
-                                        <span class="sep"> / </span>
-                                        {{section.slots}}
-                                        <!-- <input type="text" name="data.spells.spell{{section.level}}.max" value="{{section.slots}}" placeholder="0"/> -->
-                                        {{ else }}
                                         <span class="spell-slots">{{{section.uses}}}</span>
                                         <span class="sep"> / </span>
                                         <span class="spell-max">{{{section.slots}}}</span>
-                                        {{/if}}
                                     </div>
                             
                                     <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
@@ -797,7 +783,7 @@
                         <ol class="inventory-list">
                         {{#each inventory as |section sid|}}
                             <li class="inventory-header flexrow">
-                                <h3 class="item-name flexrow">{{section.label}}</h3>
+                                <h3 class="item-name flexrow">{{localize section.label}}</h3>
                         
                                 {{#if ../isCharacter}}
                                 <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
@@ -893,7 +879,7 @@
                         <ol class="inventory-list">
                         {{#each features as |section sid|}}
                             <li class="inventory-header flexrow">
-                                <h3 class="item-name flexrow">{{section.label}}</h3>
+                                <h3 class="item-name flexrow">{{localize section.label}}</h3>
                         
                                 {{#if section.hasActions}}
                                 <div class="item-detail item-uses">{{localize "DND5E.Uses"}}</div>
@@ -993,14 +979,21 @@
                         {{#each spellbook as |section|}}
                             <li class="item flexrow inventory-header spellbook-header">
                                 <div class="item-name flexrow">
-                                    <h3>{{section.label}}</h3>
+                                    <h3>{{localize section.label}}</h3>
                                 </div>
                         
                                 <div class="spell-slots">
                                     {{#if section.usesSlots}}
-                                    <input type="text" name="data.spells.spell{{section.level}}.value" value="{{section.uses}}" placeholder="0"/>
+                                    <input type="text" name="data.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
+                                           data-dtype="Number"/>
                                     <span class="sep"> / </span>
-                                    <input type="text" name="data.spells.spell{{section.level}}.max" value="{{section.slots}}" placeholder="0"/>
+                                    <span class="spell-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
+                                        {{{section.slots}}}
+                                        {{#if ../editable}}
+                                        <a class="slot-max-override" title="{{localize 'DND5E.SpellProgOverride'}}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        {{/if}}
                                     {{ else }}
                                     <span class="spell-slots">{{{section.uses}}}</span>
                                     <span class="sep"> / </span>
