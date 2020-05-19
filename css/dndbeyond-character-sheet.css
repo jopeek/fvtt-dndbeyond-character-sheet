@@ -364,9 +364,9 @@ label.css-label-insp {
   margin-bottom: 5px;
 }
 
-.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .ability-box .form-group span {
+.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box .form-group span {
   float: left;
-  width: 239px;
+  width: 219px;
   margin-bottom: 5px;
 }
 
@@ -467,7 +467,7 @@ label.css-label-insp {
   min-height: 32px;
   /* min-width: 960px; */
   padding: 10px;
-  height: 100%;
+  max-height: calc(100% - 60px);  
   overflow-y: hidden;
 }
 
