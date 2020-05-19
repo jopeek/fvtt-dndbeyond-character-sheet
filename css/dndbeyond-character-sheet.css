@@ -166,7 +166,7 @@ label.css-label-insp {
 }
 
 .dndbcs.sheet.actor.character .sheet-header .summary span {
-  padding-top: 10px;s
+  padding-top: 10px;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .flex-row.summary-attributes {
@@ -346,10 +346,10 @@ label.css-label-insp {
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses i.fas.fa-bolt,
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses i.fas.fa-shield-alt,
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses i.fas.fa-syringe,
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box i.fas.fa-tools,
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box i.fas.fa-shield-alt,
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box i.fas.fa-khanda,
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box i.fas.fa-globe {
+.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-tools,
+.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-shield-alt,
+.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-khanda,
+.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-globe {
   color: #c53131;
   font-size: 10px;
   margin: 0 5px;
@@ -364,7 +364,7 @@ label.css-label-insp {
   margin-bottom: 5px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box .form-group span {
+.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .ability-box .form-group span {
   float: left;
   width: 239px;
   margin-bottom: 5px;
@@ -376,7 +376,7 @@ label.css-label-insp {
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses .form-group,
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box .form-group {
+.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .ability-box .form-group {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   font-size: 10px;
   font-weight: normal;
@@ -386,7 +386,7 @@ label.css-label-insp {
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses .form-group a.trait-selector,
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box .form-group a.trait-selector {
+.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .ability-box .form-group a.trait-selector {
   float: right;
   margin: 0 5px;
   color: #7a7971;
@@ -406,13 +406,16 @@ label.css-label-insp {
   display: flex;
   border: 0px;
   flex-wrap: wrap;
+  overflow: initial;
 }
 
-.dndbcs.sheet.actor.character .flex-body .flex-column {
+.dndbcs.sheet.actor.character .flex-body .flex-column,
+.dndbcs.sheet.actor.character .secondheaderrow .flex-column {
   margin-top: 1px;
 }
 
-.dndbcs.sheet.actor.character .flex-body .flex-column .flex-row {
+.dndbcs.sheet.actor.character .flex-body .flex-column .flex-row,
+.dndbcs.sheet.actor.character .secondheaderrow .flex-column .flex-row {
   margin-top: 12px;
 }
 
@@ -422,29 +425,37 @@ label.css-label-insp {
 
 .dndbcs.sheet.actor.character .flex-column.col1 {
   flex: 0 1 220px;
+  margin-top: -152px;
 }
 
 .dndbcs.sheet.actor.character .flex-column.col2 {
   flex: 0 1 270px;
   max-height: 160px;
   margin-right: 14px;
+  min-width: 270px;
+  overflow: hidden !important;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 {
-  flex: 0 1 382px;
+.dndbcs.sheet.actor.character .flex-column.col3 {
+  flex: 0 1 380px;
   max-height: 160px;
+  overflow: hidden !important;
+  min-width: 380px !important;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 {
+.dndbcs.sheet.actor.character .flex-column.col4 {
   flex: 0 1 319px;
   max-height: 160px;
+  min-width: 319px;
+  overflow: hidden !important;
 }
 
 .dndbcs.sheet.actor.character .sheet-body .flex-column.col5 {
-  flex: 0 1 322px;
-  margin-left: 220px;
-  margin-top: -495px;
-  height: calc(100% - 180px);
+  flex: 1;
+  /* margin-left: 216px;
+  margin-top: -487px; */
+  margin-top: 10px;
+  height: calc(100% - 27px);
 }
 
 .dndbcs.sheet.actor.character .sheet-body .flex-column.col5 .ability-box {
@@ -452,10 +463,9 @@ label.css-label-insp {
   border-radius: 3px;
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   font-size: 12px;
-  margin-top: 0px;
-  margin-left: 10px;
+  margin: 0 15px 0 5px;
   min-height: 32px;
-  min-width: 960px;
+  /* min-width: 960px; */
   padding: 10px;
   height: 100%;
   overflow-y: hidden;
@@ -471,10 +481,10 @@ label.css-label-insp {
 }
 
 .dndbcs.sheet.actor.character .sheet-header .attributes li.attribute.rest {
-  margin-left: 4px;
+  margin-right: 10px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body h4.box-title {
+.dndbcs.sheet.actor.character h4.box-title {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   text-transform: uppercase;
   font-size: 12px;
@@ -489,8 +499,8 @@ label.css-label-insp {
   line-height: 18px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col1 ul,
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col2 ul {
+.dndbcs.sheet.actor.character .flex-column.col1 ul,
+.dndbcs.sheet.actor.character .flex-column.col2 ul {
   border: 3px solid #c53131;
   border-radius: 3px;
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
@@ -501,40 +511,40 @@ label.css-label-insp {
 }
 
 
-.dndbcs.sheet.actor.character .sheet-body .savingthrows .proficiency-toggle.ability-proficiency {
+.dndbcs.sheet.actor.character .savingthrows .proficiency-toggle.ability-proficiency {
   flex: 0 0 16px;
   line-height: 18px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .savingthrows .proficiency-toggle.ability-proficiency i.fas.fa-check,
-.dndbcs.sheet.actor.character .sheet-body .savingthrows i.fas.fa-check.proficiency-toggle.ability-proficiency,
-.dndbcs.sheet.actor.character .sheet-body .savingthrows i.fas.fa-times.proficiency-toggle.ability-proficiency {
+.dndbcs.sheet.actor.character .savingthrows .proficiency-toggle.ability-proficiency i.fas.fa-check,
+.dndbcs.sheet.actor.character .savingthrows i.fas.fa-check.proficiency-toggle.ability-proficiency,
+.dndbcs.sheet.actor.character .savingthrows i.fas.fa-times.proficiency-toggle.ability-proficiency {
   color: #4b4a44;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .savingthrows h4.skill-name.ability-name.rollable {
+.dndbcs.sheet.actor.character .savingthrows h4.skill-name.ability-name.rollable {
   flex: 0 0 80px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .savingthrows span.skill-mod.ability-save {
+.dndbcs.sheet.actor.character .savingthrows span.skill-mod.ability-save {
   flex: 0 0 15px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .savingthrows li.skill.flexrow.ability,
-.dndbcs.sheet.actor.character .sheet-body .deathsaves li.skill.flexrow.ability,
-.dndbcs.sheet.actor.character .sheet-body .sensestraits li.skill.flexrow.ability {
+.dndbcs.sheet.actor.character .savingthrows li.skill.flexrow.ability,
+.dndbcs.sheet.actor.character .deathsaves li.skill.flexrow.ability,
+.dndbcs.sheet.actor.character .sensestraits li.skill.flexrow.ability {
   display: inline-flex;
   width: 120px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health {
+.dndbcs.sheet.actor.character .flex-column.col3 li.ability.health {
   border: 0px;
   height: 100px;
   width: 120px;
   margin: 0 3px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health .ability-box {
+.dndbcs.sheet.actor.character .flex-column.col3 li.ability.health .ability-box {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   color: #000;
   font-weight: bold;
@@ -550,11 +560,11 @@ label.css-label-insp {
   margin: 0 10px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health input[type="text"] {
+.dndbcs.sheet.actor.character .flex-column.col3 li.ability.health input[type="text"] {
   width: 40%;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health h4 input[type="text"] {
+.dndbcs.sheet.actor.character .flex-column.col3 li.ability.health h4 input[type="text"] {
   width: 100%;
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   text-transform: uppercase;
@@ -564,7 +574,7 @@ label.css-label-insp {
   text-align: center;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health .ability-box footer.ability-footer {
+.dndbcs.sheet.actor.character .flex-column.col3 li.ability.health .ability-box footer.ability-footer {
   font-size: 14px;
   font-weight: normal;
   padding: 4px 0 0 5px;
@@ -573,40 +583,41 @@ label.css-label-insp {
   margin-top: 1px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 li.ability.health .ability-box .ability-value.multiple {
+.dndbcs.sheet.actor.character.flex-column.col3 li.ability.health .ability-box .ability-value.multiple {
   height: 32px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 ul.ability-scores.flexrow {
+.dndbcs.sheet.actor.character .flex-column.col3 ul.ability-scores.flexrow {
   flex: 0;
   height: 94px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 .sensestraits .skills-list {
+.dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list {
   border: 3px solid #c53131;
   border-radius: 3px;
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   font-size: 12px;
   min-height: 32px;
   margin: 0 13px;
+  width: 350px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 .sensestraits .skills-list i.fas.fa-cog {
+.dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list i.fas.fa-cog {
   margin-right: 3px;
   text-align: right;
   color: #7a7971;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 .sensestraits .skills-list .form-group {
-  width: 325px;
+.dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list .form-group {
+  width: 315px;
   display: inline-flex;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col3 .sensestraits .skills-list .form-group input[type="text"] {
+.dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list .form-group input[type="text"] {
   padding: 3px 0 0 3px;
 }
 
-.dndbcs.sheet.actor.character .sheet-body .flex-column.col4 li.ability.health .ability-box {
+.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   color: #000;
   font-weight: bold;
@@ -779,6 +790,7 @@ ol.inventory-list::-webkit-scrollbar-thumb:hover {
   border-radius: 3px;
   padding: 5px 7px;
   white-space: nowrap;
+  max-height: 28px;
 }
 
 label.hit-dice {
@@ -828,10 +840,12 @@ label.hit-dice {
 
 .dndbcs.sheet.actor.character .encumbrance.encumbered .arrow-down {
   border-top: 4px solid #EEE;
+  display: none;
 }
 
 .dndbcs.sheet.actor.character .encumbrance.encumbered .arrow-up {
   border-bottom: 4px solid #EEE;
+  display: none;
 }
 
 .dndbcs.sheet.actor .inventory-list .inventory-header {
@@ -904,9 +918,7 @@ label.hit-dice {
 }
 
 .dndbcs.sheet.actor.character {
-  max-width: 1280px;  
-  min-width: 1220px;
-  min-height: 930px;
+  max-width: 1220px;  
 }
 
 .dndbcs .ability.health .form-group label {
@@ -932,4 +944,53 @@ label.hit-dice {
 
 .dndbcs.sheet.actor.character .inventory .item-controls .item-toggle.active, .dndbcs.sheet.actor.character .spellbook .item-controls .item-toggle.active {
   color: #4b4a44;
+}
+
+
+/* Smaller resolutions */
+.dndbcs.sheet.actor.character .sheet-header .attributes,
+.dndbcs.sheet.actor.character .flex-body.sheet-header,
+.dndbcs ul.ability-scores.flexrow {
+  flex-wrap: nowrap;
+}
+
+.dndbcs.sheet.actor.character .flex-body.sheet-header .flex-column {
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 300px;
+  scrollbar-width: thin;
+}
+
+.dndbcs.sheet.actor.character .flex-body.sheet-header .flex-column::-webkit-scrollbar,
+.dndbcs.sheet .window-content form::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.dndbcs.sheet.actor.character .flex-body.sheet-header .flex-column::-webkit-scrollbar-track,
+.dndbcs.sheet .window-content form::-webkit-scrollbar-track {
+  background: transparent;
+  box-shadow: none;
+}
+
+.dndbcs.sheet.actor.character .flex-body.sheet-header .flex-column::-webkit-scrollbar-thumb,
+.dndbcs.sheet .window-content form::-webkit-scrollbar-thumb {
+  background: #b5b3a4;
+  border-color: #b5b3a4;
+}
+
+.dndbcs.sheet.actor.character .flex-body.sheet-body .bodyrow {
+  /* margin-top: -662px;
+  margin-left: 220px; */
+  width: 990px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* .dndbcs.sheet .window-content form {
+  overflow-x: auto;
+} */
+
+.dndbcs.sheet .sheet-body {
+  
 }

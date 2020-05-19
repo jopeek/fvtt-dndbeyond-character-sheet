@@ -9,7 +9,7 @@
         <div class="flex-column">
 
             <div class="flex-row">
-                <div class="flex-column">
+                <div class="flex-column" style="overflow: hidden;">
                     <div class="flexrow">
                         <h1 class="charname">
                             <input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/>
@@ -75,7 +75,7 @@
                 </div>
             </div>
 
-            <div class="flex-row">
+            <div class="flex-row" style="margin-top: 0px;">
                 <div class="abilities flexrow">
 
                     {{!-- Ability Scores --}}
@@ -161,6 +161,146 @@
                 </div>
             </div>
 
+            <div class="flex-row secondheaderrow">
+                <div class="flex-column col2">
+
+                    <div class=" savingthrows">
+                        <h4 class="box-title">Saving Throws</h4>
+                        {{!-- Ability Scores --}}
+                        <ul class="skills-list">
+                        {{#each data.abilities as |ability id|}}
+                            <li class="skill flexrow ability" data-ability="{{id}}">
+                                <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}" data-dtype="Number"/>
+                                <a class="proficiency-toggle ability-proficiency" title="Proficiency">{{{ability.icon}}}</a>
+                                <h4 class="skill-name ability-name rollable"><span class="ability-save" title="Saving Throw">{{ability.label}}</span></h4>
+                                <span class="skill-mod ability-save" title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
+                            </li>
+                        {{/each}}
+                        </ul>
+                    </div>
+        
+                    <div class=" savingthrows">
+                        <h4 class="box-title death-save rollable">{{ localize "DND5E.DeathSave" }}</h4>
+                        <ul class="skills-list">
+                            <li class="skill flexrow ability">
+                                <i class="fas fa-check proficiency-toggle ability-proficiency"></i> 
+                                <h4 class="skill-name ability-name">Successes</h4>
+                                <span class="skill-mod ability-save">
+                                    <input type="text" class="skill-mod ability-save" name="data.attributes.death.success" data-dtype="Number" placeholder="0"
+                                           value="{{data.attributes.death.success}}"/>
+                                </span>
+                            </li>
+                            <li class="skill flexrow ability">
+                                <i class="fas fa-times proficiency-toggle ability-proficiency"></i> 
+                                <h4 class="skill-name ability-name">Failures</h4>
+                                <span class="skill-mod ability-save">
+                                    <input type="text" name="data.attributes.death.failure" data-dtype="Number" placeholder="0"
+                                           value="{{data.attributes.death.failure}}"/>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+        
+                </div>
+        
+                <div class="flex-column col3">
+                    <ul class="ability-scores flexrow">
+        
+                        {{#each resources as |res|}}
+                            <li class="ability health resource">
+                                <h4 class="box-title"><input name="data.resources.{{res.name}}.label" type="text" value="{{res.label}}"
+                                    placeholder="{{res.placeholder}}" /></h4>
+                                <div class="ability-box">
+                                    <div class="ability-value multiple">
+                                        <input name="data.resources.{{res.name}}.value" type="text" value="{{res.value}}"
+                                           data-dtype="Number" placeholder="0"/>
+                                        <span class="sep"> / </span>
+                                        <input name="data.resources.{{res.name}}.max" type="text" value="{{res.max}}"
+                                                data-dtype="Number" placeholder="0"/>
+                                    </div>
+                                    <footer class="ability-footer">
+                                        <label class="checkbox">SR </label>
+                                        <input type="checkbox" name="data.resources.{{res.name}}.sr" id="data.resources.{{res.name}}.sr" class="css-checkbox" data-dtype="Boolean"
+                                        {{checked res.sr}} />
+                                        <label for="data.resources.{{res.name}}.sr" class="css-label"></label>
+                                        <label class="checkbox">LR </label>
+                                        <input type="checkbox" name="data.resources.{{res.name}}.lr" id="data.resources.{{res.name}}.lr" class="css-checkbox" data-dtype="Boolean"
+                                            {{checked res.lr}} />
+                                        <label for="data.resources.{{res.name}}.lr" class="css-label"></label>
+                                    </footer>
+                                </div>
+                            </li>
+                        {{/each}}
+        
+                    </ul>
+        
+                    <div class=" sensestraits">
+                        <h4 class="box-title">Senses & Traits</h4>
+                        <div class="skills-list">
+                            <div class="form-group {{#unless data.traits.senses}}inactive{{/unless}}">
+                                <input type="text" name="data.traits.senses" value="{{data.traits.senses}}" placeholder="None"/>
+                            </div>
+                            <a class="configure-flags"><i class="fas fa-cog"></i></a>
+                        </div>
+                    </div>
+        
+                </div>
+        
+                <div class="flex-column col4">
+                    <ul class="ability-scores flexrow">
+        
+                        <li class="ability health defenses">
+                            <h4 class="box-title">Proficiencies</h4>
+                            <div class="proficiencies-box">
+                                <div class="form-group {{data.traits.languages.cssClass}}">
+                                    <i class="fas fa-globe" title="{{localize "DND5E.Languages"}}"></i>
+                                    <label for="data.traits.languages">{{localize "DND5E.Languages"}}</label>
+                                    <span>
+                                        {{#each data.traits.languages.selected as |v k|}}
+                                            {{v}} 
+                                        {{/each}}
+                                    </span>
+                                    <a class="trait-selector" data-options="languages"><i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="form-group {{data.traits.weaponProf.cssClass}}">
+                                    <i class="fas fa-khanda" title="{{localize "DND5E.TraitWeaponProf"}}"></i>
+                                    <label for="data.traits.weaponProf">{{localize "DND5E.TraitWeaponProf"}}</label>
+                                    <span>
+                                        {{#each data.traits.weaponProf.selected as |v k|}}
+                                            {{v}} 
+                                        {{/each}}
+                                    </span>
+                                    <a class="trait-selector" data-options="weaponProficiencies"><i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="form-group {{data.traits.armorProf.cssClass}}">
+                                    <i class="fas fa-shield-alt" title="{{localize "DND5E.TraitArmorProf"}}"></i>
+                                    <label for="data.traits.armorProf">{{localize "DND5E.TraitArmorProf"}}</label>
+                                    <span>
+                                        {{#each data.traits.armorProf.selected as |v k|}}
+                                            {{v}} 
+                                        {{/each}}
+                                    </span>
+                                    <a class="trait-selector" data-options="armorProficiencies"><i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="form-group {{data.traits.toolProf.cssClass}}">
+                                    <i class="fas fa-tools" title="{{localize "DND5E.TraitToolProf"}}"></i>
+                                    <label for="data.traits.toolProf">{{localize "DND5E.TraitToolProf"}}</label>
+                                    <span>
+                                        {{#each data.traits.toolProf.selected as |v k|}}
+                                            {{v}} 
+                                        {{/each}}
+                                    </span>
+                                    <a class="trait-selector" data-options="toolProficiencies"><i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+                        </li>
+        
+                    </ul>
+        
+                </div>
+
+            </div>
+
         </div>
 
         
@@ -198,142 +338,7 @@
 
         </div>
 
-        <div class="flex-column col2">
-
-            <div class=" savingthrows">
-                <h4 class="box-title">Saving Throws</h4>
-                {{!-- Ability Scores --}}
-                <ul class="skills-list">
-                {{#each data.abilities as |ability id|}}
-                    <li class="skill flexrow ability" data-ability="{{id}}">
-                        <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}" data-dtype="Number"/>
-                        <a class="proficiency-toggle ability-proficiency" title="Proficiency">{{{ability.icon}}}</a>
-                        <h4 class="skill-name ability-name rollable"><span class="ability-save" title="Saving Throw">{{ability.label}}</span></h4>
-                        <span class="skill-mod ability-save" title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
-                    </li>
-                {{/each}}
-                </ul>
-            </div>
-
-            <div class=" savingthrows">
-                <h4 class="box-title death-save rollable">{{ localize "DND5E.DeathSave" }}</h4>
-                <ul class="skills-list">
-                    <li class="skill flexrow ability">
-                        <i class="fas fa-check proficiency-toggle ability-proficiency"></i> 
-                        <h4 class="skill-name ability-name">Successes</h4>
-                        <span class="skill-mod ability-save">
-                            <input type="text" class="skill-mod ability-save" name="data.attributes.death.success" data-dtype="Number" placeholder="0"
-                                   value="{{data.attributes.death.success}}"/>
-                        </span>
-                    </li>
-                    <li class="skill flexrow ability">
-                        <i class="fas fa-times proficiency-toggle ability-proficiency"></i> 
-                        <h4 class="skill-name ability-name">Failures</h4>
-                        <span class="skill-mod ability-save">
-                            <input type="text" name="data.attributes.death.failure" data-dtype="Number" placeholder="0"
-                                   value="{{data.attributes.death.failure}}"/>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
-        <div class="flex-column col3">
-            <ul class="ability-scores flexrow">
-
-                {{#each resources as |res|}}
-                    <li class="ability health resource">
-                        <h4 class="box-title"><input name="data.resources.{{res.name}}.label" type="text" value="{{res.label}}"
-                            placeholder="{{res.placeholder}}" /></h4>
-                        <div class="ability-box">
-                            <div class="ability-value multiple">
-                                <input name="data.resources.{{res.name}}.value" type="text" value="{{res.value}}"
-                                   data-dtype="Number" placeholder="0"/>
-                                <span class="sep"> / </span>
-                                <input name="data.resources.{{res.name}}.max" type="text" value="{{res.max}}"
-                                        data-dtype="Number" placeholder="0"/>
-                            </div>
-                            <footer class="ability-footer">
-                                <label class="checkbox">SR </label>
-                                <input type="checkbox" name="data.resources.{{res.name}}.sr" id="data.resources.{{res.name}}.sr" class="css-checkbox" data-dtype="Boolean"
-                                {{checked res.sr}} />
-                                <label for="data.resources.{{res.name}}.sr" class="css-label"></label>
-                                <label class="checkbox">LR </label>
-                                <input type="checkbox" name="data.resources.{{res.name}}.lr" id="data.resources.{{res.name}}.lr" class="css-checkbox" data-dtype="Boolean"
-                                    {{checked res.lr}} />
-                                <label for="data.resources.{{res.name}}.lr" class="css-label"></label>
-                            </footer>
-                        </div>
-                    </li>
-                {{/each}}
-
-            </ul>
-
-            <div class=" sensestraits">
-                <h4 class="box-title">Senses & Traits</h4>
-                <div class="skills-list">
-                    <div class="form-group {{#unless data.traits.senses}}inactive{{/unless}}">
-                        <input type="text" name="data.traits.senses" value="{{data.traits.senses}}" placeholder="None"/>
-                    </div>
-                    <a class="configure-flags"><i class="fas fa-cog"></i></a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="flex-column col4">
-            <ul class="ability-scores flexrow">
-
-                <li class="ability health defenses">
-                    <h4 class="box-title">Proficiencies</h4>
-                    <div class="ability-box">
-                        <div class="form-group {{data.traits.languages.cssClass}}">
-                            <i class="fas fa-globe" title="{{localize "DND5E.Languages"}}"></i>
-                            <label for="data.traits.languages">{{localize "DND5E.Languages"}}</label>
-                            <span>
-                                {{#each data.traits.languages.selected as |v k|}}
-                                    {{v}} 
-                                {{/each}}
-                            </span>
-                            <a class="trait-selector" data-options="languages"><i class="fas fa-edit"></i></a>
-                        </div>
-                        <div class="form-group {{data.traits.weaponProf.cssClass}}">
-                            <i class="fas fa-khanda" title="{{localize "DND5E.TraitWeaponProf"}}"></i>
-                            <label for="data.traits.weaponProf">{{localize "DND5E.TraitWeaponProf"}}</label>
-                            <span>
-                                {{#each data.traits.weaponProf.selected as |v k|}}
-                                    {{v}} 
-                                {{/each}}
-                            </span>
-                            <a class="trait-selector" data-options="weaponProficiencies"><i class="fas fa-edit"></i></a>
-                        </div>
-                        <div class="form-group {{data.traits.armorProf.cssClass}}">
-                            <i class="fas fa-shield-alt" title="{{localize "DND5E.TraitArmorProf"}}"></i>
-                            <label for="data.traits.armorProf">{{localize "DND5E.TraitArmorProf"}}</label>
-                            <span>
-                                {{#each data.traits.armorProf.selected as |v k|}}
-                                    {{v}} 
-                                {{/each}}
-                            </span>
-                            <a class="trait-selector" data-options="armorProficiencies"><i class="fas fa-edit"></i></a>
-                        </div>
-                        <div class="form-group {{data.traits.toolProf.cssClass}}">
-                            <i class="fas fa-tools" title="{{localize "DND5E.TraitToolProf"}}"></i>
-                            <label for="data.traits.toolProf">{{localize "DND5E.TraitToolProf"}}</label>
-                            <span>
-                                {{#each data.traits.toolProf.selected as |v k|}}
-                                    {{v}} 
-                                {{/each}}
-                            </span>
-                            <a class="trait-selector" data-options="toolProficiencies"><i class="fas fa-edit"></i></a>
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
-
-        </div>
+        
 
         <div class="flex-column col5">
             <div class="ability-box">
@@ -346,12 +351,12 @@
                     <a class="item" data-tab="spellbook">{{ localize "DND5E.Spellbook" }}</a>
                     <a class="item" data-tab="biography">{{ localize "DND5E.Biography" }}</a>
                 </nav>
-
+              
                 {{!-- NPC Sheet Body --}}
                 <section class="sheet-body">
-
+              
                     
-
+              
                     {{!-- Actions Tab --}}
                     <div class="tab inventory flexcol" data-group="primary" data-tab="actions">
                         
@@ -362,7 +367,7 @@
                                 <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
                             </ul>
                         </div>
-
+              
                         
                         <ol class="inventory-list">
                             <li class="inventory-header flexrow">
@@ -530,14 +535,14 @@
                                 {{/ifeq}}
                             {{/each}}
                             </ol>
-
+              
                         {{/each}}
-
+              
                         <!-- Features -->
                         {{#each features as |section sid|}}
                             {{#ifeq section.label "Active"}}
                                 <li class="inventory-header flexrow">
-                                    <h3 class="item-name flexrow">{{section.label}} Features</h3>
+                                    <h3 class="item-name flexrow">{{localize section.label}} Features</h3>
                             
                                     {{#if section.hasActions}}
                                     <div class="item-detail item-uses">{{localize "DND5E.Uses"}}</div>
@@ -597,25 +602,19 @@
                             {{/ifeq}}
                         {{/each}}
                         
-
+              
                         <!-- Cantrips -->
                         {{#each spellbook as |section|}}
                             {{#ifeq section.label "Cantrip"}}
                                 <li class="item flexrow inventory-header spellbook-header">
                                     <div class="item-name flexrow">
-                                        <h3>{{section.label}}</h3>
+                                        <h3>{{localize section.label}}</h3>
                                     </div>
                             
                                     <div class="spell-slots">
-                                        {{#if section.usesSlots}}
-                                        <input type="text" name="data.spells.spell{{section.level}}.value" value="{{section.uses}}" placeholder="0"/>
-                                        <span class="sep"> / </span>
-                                        <input type="text" name="data.spells.spell{{section.level}}.max" value="{{section.slots}}" placeholder="0"/>
-                                        {{ else }}
                                         <span class="spell-slots">{{{section.uses}}}</span>
                                         <span class="sep"> / </span>
                                         <span class="spell-max">{{{section.slots}}}</span>
-                                        {{/if}}
                                     </div>
                             
                                     <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
@@ -680,27 +679,19 @@
                             {{/ifeq}}
                         {{/each}}
                         
-
+              
                         <!-- Prepared Spells -->
                         {{#each spellbook as |section|}}
                             {{#ifnoteq section.label "Cantrip"}}
                                 <li class="item flexrow inventory-header spellbook-header">
                                     <div class="item-name flexrow">
-                                        <h3>{{section.label}}</h3>
+                                        <h3>{{localize section.label}}</h3>
                                     </div>
                             
                                     <div class="spell-slots">
-                                        {{#if section.usesSlots}}
-                                        <!-- <input type="text" name="data.spells.spell{{section.level}}.value" value="{{section.uses}}" placeholder="0"/> -->
-                                        {{section.uses}}
-                                        <span class="sep"> / </span>
-                                        {{section.slots}}
-                                        <!-- <input type="text" name="data.spells.spell{{section.level}}.max" value="{{section.slots}}" placeholder="0"/> -->
-                                        {{ else }}
                                         <span class="spell-slots">{{{section.uses}}}</span>
                                         <span class="sep"> / </span>
                                         <span class="spell-max">{{{section.slots}}}</span>
-                                        {{/if}}
                                     </div>
                             
                                     <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
@@ -766,12 +757,12 @@
                                 </li>
                             {{/ifnoteq}}
                         {{/each}}
-
-
+              
+              
                         </ol>
                         
                     </div>
-
+              
                     {{!-- Inventory Tab --}}
                     <div class="tab inventory flexcol" data-group="primary" data-tab="inventory">
                         <div class="inventory-filters">
@@ -779,7 +770,7 @@
                             <!-- <ul class="filter-list flexrow" data-filter="inventory">
                                 <li class="filter-item" data-filter="equipped">{{localize "DND5E.Equipped"}}</li>
                             </ul> -->
-
+              
                             {{#if isCharacter}}
                             <ol class="currency flexrow">
                                 
@@ -797,7 +788,7 @@
                         <ol class="inventory-list">
                         {{#each inventory as |section sid|}}
                             <li class="inventory-header flexrow">
-                                <h3 class="item-name flexrow">{{section.label}}</h3>
+                                <h3 class="item-name flexrow">{{localize section.label}}</h3>
                         
                                 {{#if ../isCharacter}}
                                 <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
@@ -886,14 +877,14 @@
                         {{/if}}
                         
                     </div>
-
+              
                     {{!-- Features Tab --}}
                     <div class="tab features flexcol" data-group="primary" data-tab="features">
                         
                         <ol class="inventory-list">
                         {{#each features as |section sid|}}
                             <li class="inventory-header flexrow">
-                                <h3 class="item-name flexrow">{{section.label}}</h3>
+                                <h3 class="item-name flexrow">{{localize section.label}}</h3>
                         
                                 {{#if section.hasActions}}
                                 <div class="item-detail item-uses">{{localize "DND5E.Uses"}}</div>
@@ -957,7 +948,7 @@
                         </ol>
                         
                     </div>
-
+              
                     {{!-- Spellbook Tab --}}
                     <div class="tab spellbook flexcol" data-group="primary" data-tab="spellbook">
                         <div class="inventory-filters spellbook-filters">
@@ -967,7 +958,7 @@
                                 <li class="filter-item" data-filter="ritual"><img src="/modules/dndbeyond-character-sheet/images/ritual.png" style="border: 0px; vertical-align: text-top; max-width: initial;"> {{localize "DND5E.Ritual"}}</li>
                                 <li class="filter-item" data-filter="prepared">{{localize "DND5E.Prepared"}}{{#if preparedSpells}} ({{preparedSpells}}){{/if}}</li>
                             </ul>
-
+              
                             <div class="form-group spellcasting-ability">
                                 {{#if isNPC}}
                                 <div class="spellcasting-level flexrow">
@@ -993,14 +984,21 @@
                         {{#each spellbook as |section|}}
                             <li class="item flexrow inventory-header spellbook-header">
                                 <div class="item-name flexrow">
-                                    <h3>{{section.label}}</h3>
+                                    <h3>{{localize section.label}}</h3>
                                 </div>
                         
                                 <div class="spell-slots">
                                     {{#if section.usesSlots}}
-                                    <input type="text" name="data.spells.spell{{section.level}}.value" value="{{section.uses}}" placeholder="0"/>
+                                    <input type="text" name="data.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
+                                           data-dtype="Number"/>
                                     <span class="sep"> / </span>
-                                    <input type="text" name="data.spells.spell{{section.level}}.max" value="{{section.slots}}" placeholder="0"/>
+                                    <span class="spell-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
+                                        {{{section.slots}}}
+                                        {{#if ../editable}}
+                                        <a class="slot-max-override" title="{{localize 'DND5E.SpellProgOverride'}}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        {{/if}}
                                     {{ else }}
                                     <span class="spell-slots">{{{section.uses}}}</span>
                                     <span class="sep"> / </span>
@@ -1079,14 +1077,14 @@
                         {{/each}}
                         </ol>
                     </div>
-
+              
                     {{!-- Biography Tab --}}
                     <div class="tab biography flexcol" data-group="primary" data-tab="biography">
                         {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
                     </div>
                 </section>
                 
-            </div>
+              </div>
 
         </div>
 

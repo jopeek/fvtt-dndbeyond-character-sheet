@@ -1,6 +1,4 @@
-import {
-  ActorSheet5eCharacter
-} from "../../systems/dnd5e/module/actor/sheets/character.js";
+import ActorSheet5eCharacter from "../../systems/dnd5e/module/actor/sheets/character.js";
 
 class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
   constructor(...args) {
@@ -30,7 +28,7 @@ class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
       mergeObject(options, {
           classes: ["dnd5e", "sheet", "actor", "character", "dndbcs"],
           width: 1220,
-          height: 930
+          height: 940
       });
       return options;
   }
@@ -76,7 +74,7 @@ _prepareItems(data) {
       equipment: { label: "Equipment", items: [], dataset: {type: "equipment"} },
       consumable: { label: "Consumables", items: [], dataset: {type: "consumable"} },
       tool: { label: "Tools", items: [], dataset: {type: "tool"} },
-      backpack: { label: game.i18n.localize("DND5E.ItemContainerHeader"), items: [], dataset: {type: "backpack"} },
+      backpack: { label: "Containers", items: [], dataset: {type: "backpack"} },
       loot: { label: "Loot", items: [], dataset: {type: "loot"} }
     };
 
@@ -177,7 +175,7 @@ _prepareItems(data) {
       // Experience Tracking
       sheetData["disableExperience"] = game.settings.get("dnd5e", "disableExperienceTracking");
   
-      console.log("DNDBeyond-Character-Sheet | sheetData", sheetData);
+      //console.log("DNDBeyond-Character-Sheet | sheetData", sheetData);
 
       // let actor = game.actors.get(sheetData.actor._id);
 
