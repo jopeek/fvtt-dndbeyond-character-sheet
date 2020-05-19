@@ -455,7 +455,7 @@ label.css-label-insp {
   /* margin-left: 216px;
   margin-top: -487px; */
   margin-top: 10px;
-  height: calc(100% - 27px);
+  height: 489px;
 }
 
 .dndbcs.sheet.actor.character .sheet-body .flex-column.col5 .ability-box {
@@ -467,7 +467,7 @@ label.css-label-insp {
   min-height: 32px;
   /* min-width: 960px; */
   padding: 10px;
-  max-height: calc(100% - 60px);  
+  height: 100%; 
   overflow-y: hidden;
 }
 
