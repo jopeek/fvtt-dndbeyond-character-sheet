@@ -103,8 +103,11 @@
                                            data-dtype="Number" placeholder="10"/>
                                 </div>
                                 <footer class="ability-footer">
-                                    <input style="width: 90%; font-size: 14px;" name="data.attributes.hp.temp" type="text" class="temphp" placeholder="TMP"
+                                    <input style="font-size: 13px;" name="data.attributes.hp.temp" type="text" class="temphp" placeholder="+TMP"
                                            value="{{data.attributes.hp.temp}}" data-dtype="{{data.attributes.hp.type}}"/>
+                                    <span class="sep"> / </span>
+                                    <input style="font-size: 13px;" name="data.attributes.hp.tempmax" type="text" class="tempmaxhp" placeholder="+MAX"
+                                           value="{{data.attributes.hp.tempmax}}" data-dtype="{{data.attributes.hp.type}}"/>
                                 </footer>
                             </div>
                         </li>
