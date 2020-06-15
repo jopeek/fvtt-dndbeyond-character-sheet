@@ -120,10 +120,6 @@ label.css-label-insp {
   user-select: none;
 }
 
-.dndbcs.sheet.actor.character .sheet-header .attributes .attribute.inspiration .attribute-value {
-  padding-top: 9px;
-}
-
 .dndbcs.sheet {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
 }
@@ -157,16 +153,13 @@ label.css-label-insp {
 } */
 
 .dndbcs.sheet.actor.character .sheet-header .summary {
+  padding-top: 10px;
   border: 0px;
   flex: 0 1 auto;
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   font-size: 14px;
   color: #7a7971;
   margin-left: 13px;
-}
-
-.dndbcs.sheet.actor.character .sheet-header .summary span {
-  padding-top: 10px;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .flex-row.summary-attributes {
@@ -180,7 +173,6 @@ label.css-label-insp {
 }
 
 .dndbcs.sheet.actor.character .sheet-header .summary select.actor-size {
-  margin-top: 8px;
   border: 0px;
   max-width: 80px;
   font-size: 13px;
@@ -207,12 +199,12 @@ label.css-label-insp {
   font-size: 20px;
   height: 60px;
   width: 60px;
-  padding-top: 11px;
   margin-left: 10px;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores {
   height: initial;	
+  border: none;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-mod {
@@ -429,12 +421,15 @@ label.css-label-insp {
 
 .dndbcs.sheet.actor.character .flex-column.col1 {
   flex: 0 1 220px;
-  margin-top: -152px;
+  margin-top: -154px;
+}
+
+.dndbcs .flex-row.secondheaderrow {
+  margin-top: 0px;
 }
 
 .dndbcs.sheet.actor.character .flex-column.col2 {
   flex: 0 1 270px;
-  max-height: 160px;
   margin-right: 14px;
   min-width: 270px;
   overflow: hidden !important;
@@ -539,6 +534,11 @@ label.css-label-insp {
 .dndbcs.sheet.actor.character .sensestraits li.skill.flexrow.ability {
   display: inline-flex;
   width: 120px;
+  background: none;
+}
+
+.dndbcs.sheet.actor ul.skills-list li.skill:nth-child(even) {
+  background: none;
 }
 
 .dndbcs.sheet.actor.character .flex-column.col3 li.ability.health {
@@ -608,6 +608,12 @@ label.css-label-insp {
 
 .dndbcs.dnd5e.sheet.actor ul.skills-list {
   height: initial;
+  border: none;
+  padding: 2px 2px 0;
+}
+
+.dndbcs.sheet.actor ul.skills-list li.skill {
+  height: 22px;
 }
 
 .dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list i.fas.fa-cog {
