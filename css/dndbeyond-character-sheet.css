@@ -606,6 +606,10 @@ label.css-label-insp {
   width: 350px;
 }
 
+.dndbcs.dnd5e.sheet.actor ul.skills-list {
+  height: initial;
+}
+
 .dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list i.fas.fa-cog {
   margin-right: 3px;
   text-align: right;
