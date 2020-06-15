@@ -211,6 +211,10 @@ label.css-label-insp {
   margin-left: 10px;
 }
 
+.dndbcs.sheet.actor.character .sheet-header .ability-scores {
+  height: initial;	
+}
+
 .dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-mod {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   color: #000;
