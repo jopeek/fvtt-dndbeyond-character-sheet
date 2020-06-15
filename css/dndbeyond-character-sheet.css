@@ -211,6 +211,10 @@ label.css-label-insp {
   margin-left: 10px;
 }
 
+.dndbcs.sheet.actor.character .sheet-header .ability-scores {
+  height: initial;	
+}
+
 .dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-mod {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   color: #000;
@@ -600,6 +604,10 @@ label.css-label-insp {
   min-height: 32px;
   margin: 0 13px;
   width: 350px;
+}
+
+.dndbcs.dnd5e.sheet.actor ul.skills-list {
+  height: initial;
 }
 
 .dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list i.fas.fa-cog {
