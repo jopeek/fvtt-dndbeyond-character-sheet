@@ -124,37 +124,43 @@
                         </li>
 
                         <li class="ability health defenses">
-                            <h4 class="box-title">Damage Types</h4>
+                            <h4 class="box-title">Vulnerabilities, Resistances, Immunities</h4>
                             <div class="ability-box">
                                 <div class="form-group {{data.traits.dv.cssClass}}">
-                                    <i class="fas fa-bolt" title="{{localize "DND5E.DamVuln"}}"></i>
+                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.dv"><i class="fas fa-bolt" title="{{localize "DND5E.DamVuln"}}"></i></a>
                                     <label for="data.traits.dv">{{localize "DND5E.DamVuln"}}</label>
-                                    <span>
-                                        {{#each data.traits.dv.selected as |v k|}}
-                                            {{v}} 
-                                        {{/each}}
-                                    </span>
-                                    <a class="trait-selector" data-options="damageTypes"><i class="fas fa-edit"></i></a>
+                                    <ul class="traits-list">
+                                    {{#each data.traits.dv.selected as |v k|}}
+                                        <li class="tag {{k}}">{{v}}</li>
+                                    {{/each}}
+                                    </ul>
                                 </div>
                                 <div class="form-group {{data.traits.dr.cssClass}}">
-                                    <i class="fas fa-shield-alt" title="{{localize "DND5E.DamRes"}}"></i>
+                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.dr"><i class="fas fa-shield-alt" title="{{localize "DND5E.DamRes"}}"></i></a>
                                     <label for="data.traits.dr">{{localize "DND5E.DamRes"}}</label>
-                                    <span>
-                                        {{#each data.traits.dr.selected as |v k|}}
-                                            {{v}} 
-                                        {{/each}}
-                                    </span>
-                                    <a class="trait-selector" data-options="damageTypes"><i class="fas fa-edit"></i></a>
+                                    <ul class="traits-list">
+                                    {{#each data.traits.dr.selected as |v k|}}
+                                        <li class="tag {{k}}">{{v}}</li>
+                                    {{/each}}
+                                    </ul>
                                 </div>
                                 <div class="form-group {{data.traits.di.cssClass}}">
-                                    <i class="fas fa-syringe" title="{{localize "DND5E.DamImm"}}"></i>
+                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.di"><i class="fas fa-syringe" title="{{localize "DND5E.DamImm"}}"></i></a>
                                     <label for="data.traits.di">{{localize "DND5E.DamImm"}}</label>
-                                    <span>
-                                        {{#each data.traits.di.selected as |v k|}}
-                                            {{v}} 
-                                        {{/each}}
-                                    </span>
-                                    <a class="trait-selector" data-options="damageTypes"><i class="fas fa-edit"></i></a>
+                                    <ul class="traits-list">
+                                    {{#each data.traits.di.selected as |v k|}}
+                                        <li class="tag {{k}}">{{v}}</li>
+                                    {{/each}}
+                                    </ul>
+                                </div>
+                                <div class="form-group {{data.traits.ci.cssClass}}">
+                                    <a class="trait-selector" data-options="conditionTypes" data-target="data.traits.ci"><i class="fas fa-prescription" title="{{localize "DND5E.ConImm"}}"></i></a>
+                                    <label for="data.traits.ci">{{localize "DND5E.ConImm"}}</label>
+                                    <ul class="traits-list">
+                                    {{#each data.traits.ci.selected as |v k|}}
+                                        <li class="tag {{k}}">{{v}}</li>
+                                    {{/each}}
+                                    </ul>
                                 </div>
                             </div>
                         </li>
@@ -256,44 +262,40 @@
                             <h4 class="box-title">Proficiencies</h4>
                             <div class="proficiencies-box">
                                 <div class="form-group {{data.traits.languages.cssClass}}">
-                                    <i class="fas fa-globe" title="{{localize "DND5E.Languages"}}"></i>
+                                    <a class="trait-selector" data-options="languages" data-target="data.traits.languages"><i class="fas fa-globe" title="{{localize "DND5E.Languages"}}"></i></a>
                                     <label for="data.traits.languages">{{localize "DND5E.Languages"}}</label>
-                                    <span>
-                                        {{#each data.traits.languages.selected as |v k|}}
-                                            {{v}} 
-                                        {{/each}}
-                                    </span>
-                                    <a class="trait-selector" data-options="languages"><i class="fas fa-edit"></i></a>
+                                    <ul class="traits-list">
+                                    {{#each data.traits.languages.selected as |v k|}}
+                                        <li class="tag {{k}}">{{v}}</li>
+                                    {{/each}}
+                                    </ul>
                                 </div>
                                 <div class="form-group {{data.traits.weaponProf.cssClass}}">
-                                    <i class="fas fa-khanda" title="{{localize "DND5E.TraitWeaponProf"}}"></i>
+                                    <a class="trait-selector" data-options="weaponProficiencies" data-target="data.traits.weaponProf"><i class="fas fa-khanda" title="{{localize "DND5E.TraitWeaponProf"}}"></i></a>
                                     <label for="data.traits.weaponProf">{{localize "DND5E.TraitWeaponProf"}}</label>
-                                    <span>
-                                        {{#each data.traits.weaponProf.selected as |v k|}}
-                                            {{v}} 
-                                        {{/each}}
-                                    </span>
-                                    <a class="trait-selector" data-options="weaponProficiencies"><i class="fas fa-edit"></i></a>
+                                    <ul class="traits-list">
+                                    {{#each data.traits.weaponProf.selected as |v k|}}
+                                        <li class="tag {{k}}">{{v}}</li>
+                                    {{/each}}
+                                    </ul>
                                 </div>
                                 <div class="form-group {{data.traits.armorProf.cssClass}}">
-                                    <i class="fas fa-shield-alt" title="{{localize "DND5E.TraitArmorProf"}}"></i>
+                                    <a class="trait-selector" data-options="armorProficiencies" data-target="data.traits.armorProf"><i class="fas fa-shield-alt" title="{{localize "DND5E.TraitArmorProf"}}"></i></a>
                                     <label for="data.traits.armorProf">{{localize "DND5E.TraitArmorProf"}}</label>
-                                    <span>
-                                        {{#each data.traits.armorProf.selected as |v k|}}
-                                            {{v}} 
-                                        {{/each}}
-                                    </span>
-                                    <a class="trait-selector" data-options="armorProficiencies"><i class="fas fa-edit"></i></a>
+                                    <ul class="traits-list">
+                                    {{#each data.traits.armorProf.selected as |v k|}}
+                                        <li class="tag {{k}}">{{v}}</li>
+                                    {{/each}}
+                                    </ul>
                                 </div>
                                 <div class="form-group {{data.traits.toolProf.cssClass}}">
-                                    <i class="fas fa-tools" title="{{localize "DND5E.TraitToolProf"}}"></i>
+                                    <a class="trait-selector" data-options="toolProficiencies" data-target="data.traits.toolProf"><i class="fas fa-tools" title="{{localize "DND5E.TraitToolProf"}}"></i></a>
                                     <label for="data.traits.toolProf">{{localize "DND5E.TraitToolProf"}}</label>
-                                    <span>
-                                        {{#each data.traits.toolProf.selected as |v k|}}
-                                            {{v}} 
-                                        {{/each}}
-                                    </span>
-                                    <a class="trait-selector" data-options="toolProficiencies"><i class="fas fa-edit"></i></a>
+                                    <ul class="traits-list">
+                                    {{#each data.traits.toolProf.selected as |v k|}}
+                                        <li class="tag {{k}}">{{v}}</li>
+                                    {{/each}}
+                                    </ul>
                                 </div>
                             </div>
                         </li>

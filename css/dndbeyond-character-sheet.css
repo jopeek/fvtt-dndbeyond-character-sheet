@@ -260,7 +260,9 @@ label.css-label-insp {
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.defenses .ability-box {
-  width: 160px;
+  width: 255px;
+  padding-top: 0px;
+  overflow: hidden;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .attributes .attribute .counter-value {
@@ -302,7 +304,7 @@ label.css-label-insp {
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.defenses {
-  width: 180px;
+  width: 265px;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores .ability footer.ability-footer,
@@ -342,6 +344,7 @@ label.css-label-insp {
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses i.fas.fa-bolt,
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses i.fas.fa-shield-alt,
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses i.fas.fa-syringe,
+.dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses i.fas.fa-prescription,
 .dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-tools,
 .dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-shield-alt,
 .dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-khanda,
@@ -352,17 +355,17 @@ label.css-label-insp {
   min-width: 10px;
   max-width: 10px;
   float: left;
+  padding-top: 3px;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses .form-group span {
   float: left;
-  width: 110px;
-  margin-bottom: 5px;
+  width: 200px;
 }
 
 .dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box .form-group span {
   float: left;
-  width: 219px;
+  width: 220px;
   margin-bottom: 5px;
 }
 
@@ -379,13 +382,18 @@ label.css-label-insp {
   color: #191813;
   text-align: left;
   display: block;
+  margin: 0px;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses .form-group a.trait-selector,
 .dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .ability-box .form-group a.trait-selector {
-  float: right;
-  margin: 0 5px;
+  float: left;
   color: #7a7971;
+}
+
+.dndbcs.sheet.actor.character .sheet-header ul.traits-list {
+  margin-left: 20px !important;
+  line-height: 20px;
 }
 
 .dndbcs.sheet.actor.character .flex-row {
@@ -642,8 +650,8 @@ label.css-label-insp {
   margin: 0px;
   font-size: 20px;
   height: 126px;
-  padding-top: 5px;
   margin: 0 10px 0 12px;
+  overflow: hidden;
 }
 
 .dndbcs.sheet .sheet-navigation .item {
