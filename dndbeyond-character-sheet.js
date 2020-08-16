@@ -63,29 +63,38 @@ class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
   
 
   /**
- * Organize and classify Owned Items for Character sheets
- * @private
- */
-_prepareItems(data) {
+   * Organize and classify Owned Items for Character sheets
+   * @private
+   */
+  _prepareItems(data) {
 
-  // Categorize items as inventory, spellbook, features, and classes
-  const inventory = {
-      weapon: { label: "Weapons", items: [], dataset: {type: "weapon"} },
-      equipment: { label: "Equipment", items: [], dataset: {type: "equipment"} },
-      consumable: { label: "Consumables", items: [], dataset: {type: "consumable"} },
-      tool: { label: "Tools", items: [], dataset: {type: "tool"} },
-      backpack: { label: "Containers", items: [], dataset: {type: "backpack"} },
-      loot: { label: "Loot", items: [], dataset: {type: "loot"} }
+    // Categorize items as inventory, spellbook, features, and classes
+    const inventory = {
+      weapon: { label: "DND5E.ItemTypeWeaponPl", items: [], dataset: {type: "weapon"} },
+      equipment: { label: "DND5E.ItemTypeEquipmentPl", items: [], dataset: {type: "equipment"} },
+      consumable: { label: "DND5E.ItemTypeConsumablePl", items: [], dataset: {type: "consumable"} },
+      tool: { label: "DND5E.ItemTypeToolPl", items: [], dataset: {type: "tool"} },
+      backpack: { label: "DND5E.ItemTypeContainerPl", items: [], dataset: {type: "backpack"} },
+      loot: { label: "DND5E.ItemTypeLootPl", items: [], dataset: {type: "loot"} }
     };
 
     // Partition items by category
     let [items, spells, feats, classes] = data.items.reduce((arr, item) => {
+
+      // Item details
       item.img = item.img || DEFAULT_TOKEN;
-      item.isStack = item.data.quantity ? item.data.quantity > 1 : false;
+      item.isStack = Number.isNumeric(item.data.quantity) && (item.data.quantity !== 1);
+
+      // Item usage
       item.hasUses = item.data.uses && (item.data.uses.max > 0);
       item.isOnCooldown = item.data.recharge && !!item.data.recharge.value && (item.data.recharge.charged === false);
       item.isDepleted = item.isOnCooldown && (item.data.uses.per && (item.data.uses.value > 0));
       item.hasTarget = !!item.data.target && !(["none",""].includes(item.data.target.type));
+
+      // Item toggle state
+      this._prepareItemToggleState(item);
+
+      // Classify items into types
       if ( item.type === "spell" ) arr[1].push(item);
       else if ( item.type === "feat" ) arr[2].push(item);
       else if ( item.type === "class" ) arr[3].push(item);
@@ -94,51 +103,42 @@ _prepareItems(data) {
     }, [[], [], [], []]);
 
     // Apply active item filters
-    if (this._filters.actions.size > 0) {
-      items = this._filterItems(items, this._filters.actions);
-      spells = this._filterItems(spells, this._filters.actions);
-      feats = this._filterItems(feats, this._filters.actions);
-    } else {
-      items = this._filterItems(items, this._filters.inventory);
-      spells = this._filterItems(spells, this._filters.spellbook);
-      feats = this._filterItems(feats, this._filters.features);
-    }
-    
+    items = this._filterItems(items, this._filters.inventory);
+    spells = this._filterItems(spells, this._filters.spellbook);
+    feats = this._filterItems(feats, this._filters.features);
 
     //********************************************************************************** THIS IS THE SORTING CODE *****************************************************/*
     items = items.sort(function (a, b) {
-      return a.name.localeCompare( b.name );
-    });
-    spells = spells.sort(function (a, b) {
-      return a.name.localeCompare( b.name );
-    });
-    feats = feats.sort(function (a, b) {
-      return a.name.localeCompare( b.name );
-    });
-    //********************************************************************************** END SORTING CODE **************************************************************/
+        return a.name.localeCompare( b.name );
+      });
+      spells = spells.sort(function (a, b) {
+        return a.name.localeCompare( b.name );
+      });
+      feats = feats.sort(function (a, b) {
+        return a.name.localeCompare( b.name );
+      });
+      //********************************************************************************** END SORTING CODE **************************************************************/
+  
 
-    // Organize Spellbook
-    const spellbook = this._prepareSpellbook(data, spells);
-    const nPrepared = spells.filter(s => {
-      return (s.data.level > 0) && (s.data.preparation.mode === "prepared") && s.data.preparation.prepared;
-    }).length;
-
-    // Organize Inventory
-    let totalWeight = 0;
+    // Organize items
     for ( let i of items ) {
       i.data.quantity = i.data.quantity || 0;
       i.data.weight = i.data.weight || 0;
       i.totalWeight = Math.round(i.data.quantity * i.data.weight * 10) / 10;
       inventory[i.type].items.push(i);
-      totalWeight += i.totalWeight;
     }
-    data.data.attributes.encumbrance = this._computeEncumbrance(totalWeight, data);
+
+    // Organize Spellbook and count the number of prepared spells (excluding always, at will, etc...)
+    const spellbook = this._prepareSpellbook(data, spells);
+    const nPrepared = spells.filter(s => {
+      return (s.data.level > 0) && (s.data.preparation.mode === "prepared") && s.data.preparation.prepared;
+    }).length;
 
     // Organize Features
     const features = {
-      classes: { label: "Class Levels", items: [], hasActions: false, dataset: {type: "class"}, isClass: true },
-      active: { label: "Active", items: [], hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
-      passive: { label: "Passive", items: [], hasActions: false, dataset: {type: "feat"} }
+      classes: { label: "DND5E.ItemTypeClassPl", items: [], hasActions: false, dataset: {type: "class"}, isClass: true },
+      active: { label: "DND5E.FeatureActive", items: [], hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
+      passive: { label: "DND5E.FeaturePassive", items: [], hasActions: false, dataset: {type: "feat"} }
     };
     for ( let f of feats ) {
       if ( f.data.activation.type ) features.active.items.push(f);
@@ -152,7 +152,9 @@ _prepareItems(data) {
     data.spellbook = spellbook;
     data.preparedSpells = nPrepared;
     data.features = Object.values(features);
-}
+  }
+
+  /* -------------------------------------------- */
 
   getData() {
       const sheetData = super.getData();
