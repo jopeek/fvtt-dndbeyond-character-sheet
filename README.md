@@ -6,7 +6,7 @@ Allows the replacement of a character sheet with a version more similar in style
 - New Actions tab that culminates actions from across the inventory, features, and spellbook tabs for quick access to actions, bonus actions, and reactions
 
 ### Compatibility:
-- Tested with FVTT v0.4.5 - 0.5.5.
+- Tested with FVTT v0.6.5 and dnd5e 0.95.
 - Incompatible with my own Auto Sheet Sort module.
 
 ### Known Issues:

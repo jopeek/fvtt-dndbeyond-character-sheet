@@ -366,7 +366,7 @@
                     <div class="tab inventory flexcol" data-group="primary" data-tab="actions">
                         
                         <div class="action-filters">
-                            <ul class="filter-list flexrow" data-filter="actions">
+                            <ul class="filter-list flexrow" data-filter="inventory" data-filter="spellbook">
                                 <li id="ActionFilterAction" class="filter-item" data-filter="action">{{localize "DND5E.Action"}}</li>
                                 <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
                                 <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
@@ -545,7 +545,7 @@
               
                         <!-- Features -->
                         {{#each features as |section sid|}}
-                            {{#ifeq section.label "Active"}}
+                            {{#ifeq section.label "DND5E.FeatureActive"}}
                                 <li class="inventory-header flexrow">
                                     <h3 class="item-name flexrow">{{localize section.label}} Features</h3>
                             
@@ -770,11 +770,16 @@
               
                     {{!-- Inventory Tab --}}
                     <div class="tab inventory flexcol" data-group="primary" data-tab="inventory">
+                        
                         <div class="inventory-filters">
                         
-                            <!-- <ul class="filter-list flexrow" data-filter="inventory">
-                                <li class="filter-item" data-filter="equipped">{{localize "DND5E.Equipped"}}</li>
-                            </ul> -->
+                            
+                            <ul class="filter-list flexrow" data-filter="inventory">
+                                <li id="ActionFilterAction" class="filter-item" data-filter="action">{{localize "DND5E.Action"}}</li>
+                                <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
+                                <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
+                            </ul>
+                            
               
                             {{#if isCharacter}}
                             <ol class="currency flexrow">
@@ -885,7 +890,15 @@
               
                     {{!-- Features Tab --}}
                     <div class="tab features flexcol" data-group="primary" data-tab="features">
-                        
+
+                        <div class="action-filters">
+                            <ul class="filter-list flexrow" data-filter="inventory">
+                                <li id="ActionFilterAction" class="filter-item" data-filter="action">{{localize "DND5E.Action"}}</li>
+                                <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
+                                <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
+                            </ul>
+                        </div>
+
                         <ol class="inventory-list">
                         {{#each features as |section sid|}}
                             <li class="inventory-header flexrow">
@@ -957,7 +970,13 @@
                     {{!-- Spellbook Tab --}}
                     <div class="tab spellbook flexcol" data-group="primary" data-tab="spellbook">
                         <div class="inventory-filters spellbook-filters">
-                                                    
+                            
+                                <ul class="filter-list flexrow" data-filter="inventory">
+                                    <li id="ActionFilterAction" class="filter-item" data-filter="action">{{localize "DND5E.Action"}}</li>
+                                    <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
+                                    <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
+                                </ul>
+                            
                             <ul class="filter-list flexrow filter-spellbook" data-filter="spellbook">
                                 <li class="filter-item" data-filter="concentration"><img src="/modules/dndbeyond-character-sheet/images/concentration.png" style="border: 0px; vertical-align: text-top; max-width: initial;"> Concentration</li>
                                 <li class="filter-item" data-filter="ritual"><img src="/modules/dndbeyond-character-sheet/images/ritual.png" style="border: 0px; vertical-align: text-top; max-width: initial;"> {{localize "DND5E.Ritual"}}</li>

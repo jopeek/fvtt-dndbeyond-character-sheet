@@ -34,30 +34,15 @@ class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
   }
 
   /**
- * Iinitialize Item list filters by activating the set of filters which are currently applied
- * @private
- */
+   * Iinitialize Item list filters by activating the set of filters which are currently applied
+   * @private
+   */
   _initializeFilterItemList(i, ul) {
-      
-      const set = this._filters[ul.dataset.filter];
-      const filters = ul.querySelectorAll(".filter-item");
-      for ( let li of filters ) {
-          if ( set.has(li.dataset.filter) ) 
-          {
-              li.classList.add("active");
-              //also do this for all other filters if it was an actions one
-              if (ul.dataset.filter == "actions") {
-                  const otherUls = document.querySelectorAll('ul[data-filter]');
-                  for ( let otherUl of otherUls ) {
-                      const otherFilters = otherUl.querySelectorAll(".filter-item");
-                      for ( let otherLi of otherFilters ) {
-                          if ( set.has(otherLi.dataset.filter) ) otherLi.classList.add("active");
-                      }
-                  }
-                  
-              }
-          }
-      }
+    const set = this._filters[ul.dataset.filter];
+    const filters = ul.querySelectorAll(".filter-item");
+    for ( let li of filters ) {
+      if ( set.has(li.dataset.filter) ) li.classList.add("active");
+    }
   }
 
   
@@ -104,8 +89,9 @@ class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
 
     // Apply active item filters
     items = this._filterItems(items, this._filters.inventory);
+    spells = this._filterItems(spells, this._filters.inventory);
     spells = this._filterItems(spells, this._filters.spellbook);
-    feats = this._filterItems(feats, this._filters.features);
+    feats = this._filterItems(feats, this._filters.inventory);
 
     //********************************************************************************** THIS IS THE SORTING CODE *****************************************************/*
     items = items.sort(function (a, b) {

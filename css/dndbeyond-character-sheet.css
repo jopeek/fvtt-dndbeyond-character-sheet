@@ -670,6 +670,12 @@ label.css-label-insp {
   font-size: 14px;
 }
 
+.dndbcs.sheet.actor .inventory-list .inventory-header h3 {
+  font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
 .dndbcs.sheet .sheet-navigation .tabs .item.active {
   color: #000;
   text-shadow: none;
@@ -768,11 +774,6 @@ ol.inventory-list::-webkit-scrollbar-thumb:hover {
 
 .dndbcs.sheet.actor .filter-list {
   margin: 10px 0;
-  flex: 0 1 270px;
-}
-
-.dndbcs.sheet.actor .filter-list.filter-spellbook {
-  flex: 0 1 470px;
 }
 
 .dndbcs.sheet.actor .form-group.spellcasting-ability {
