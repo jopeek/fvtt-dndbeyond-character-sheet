@@ -541,7 +541,7 @@ label.css-label-insp {
 .dndbcs.sheet.actor.character .deathsaves li.skill.flexrow.ability,
 .dndbcs.sheet.actor.character .sensestraits li.skill.flexrow.ability {
   display: inline-flex;
-  width: 120px;
+  width: 135px;
   background: none;
 }
 
