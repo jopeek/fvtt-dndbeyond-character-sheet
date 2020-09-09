@@ -61,11 +61,11 @@
 	src: url('../fonts/SchoolsOfMagic.otf') format('opentype');
 }
 
-input[type=checkbox].css-checkbox {
+.dndbcs.sheet.actor.character input[type=checkbox].css-checkbox {
 	position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
 }
 
-input[type=checkbox].css-checkbox + label.css-label {
+.dndbcs.sheet.actor.character input[type=checkbox].css-checkbox + label.css-label {
 	padding-left:23px;
 	height:18px; 
 	display:inline-block;
@@ -78,10 +78,10 @@ input[type=checkbox].css-checkbox + label.css-label {
 
 }
 
-input[type=checkbox].css-checkbox:checked + label.css-label {
+.dndbcs.sheet.actor.character input[type=checkbox].css-checkbox:checked + label.css-label {
 	background-position: 0 -18px;
 }
-label.css-label {
+.dndbcs.sheet.actor.character label.css-label {
   background-image:url(../images/checkbox.png);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -91,11 +91,11 @@ label.css-label {
   user-select: none;
 }
 
-input[type=checkbox].css-checkbox-insp {
+.dndbcs.sheet.actor.character input[type=checkbox].css-checkbox-insp {
 	position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
 }
 
-input[type=checkbox].css-checkbox-insp + label.css-label-insp {
+.dndbcs.sheet.actor.character input[type=checkbox].css-checkbox-insp + label.css-label-insp {
 	padding-left:36px;
 	height:36px; 
 	display:inline-block;
@@ -107,10 +107,10 @@ input[type=checkbox].css-checkbox-insp + label.css-label-insp {
 	cursor:pointer;
 }
 
-input[type=checkbox].css-checkbox-insp:checked + label.css-label-insp {
+.dndbcs.sheet.actor.character input[type=checkbox].css-checkbox-insp:checked + label.css-label-insp {
 	background-position: 0 -36px;
 }
-label.css-label-insp {
+.dndbcs.sheet.actor.character label.css-label-insp {
   background-image:url(../images/inspiration.png);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -691,23 +691,23 @@ label.css-label-insp {
 
 
 /* width */
-ol.inventory-list::-webkit-scrollbar {
+.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar {
   width: 4px;
 }
 
 /* Track */
-ol.inventory-list::-webkit-scrollbar-track {
+.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar-track {
   background: transparent; 
 }
  
 /* Handle */
-ol.inventory-list::-webkit-scrollbar-thumb {
+.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar-thumb {
   background: #b5b3a4;
   border-color: #b5b3a4;
 }
 
 /* Handle on hover */
-ol.inventory-list::-webkit-scrollbar-thumb:hover {
+.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar-thumb:hover {
   background: #c53131;
   border-color: #c53131;
 }
@@ -816,7 +816,7 @@ ol.inventory-list::-webkit-scrollbar-thumb:hover {
   max-height: 28px;
 }
 
-label.hit-dice {
+.dndbcs.sheet.actor.character label.hit-dice {
   font-weight: normal;
   height: 28px;
   display: inline-block;
