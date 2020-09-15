@@ -436,6 +436,10 @@
   margin-top: 0px;
 }
 
+.dndbcs.sheet.actor .sheet-header h1.charname input {
+  margin: 10px;
+}
+
 .dndbcs.sheet.actor.character .flex-column.col2 {
   flex: 0 1 270px;
   margin-right: 14px;
@@ -1014,6 +1018,28 @@
   overflow-x: auto;
 } */
 
-.dndbcs.sheet .sheet-body {
-  
+.dndbcs.sheet.actor.character .sheet-header .experience {
+  font-size: 14px;
+  flex: auto;
+  width: 150px;
+  margin: 0 auto;
+}
+
+.dndbcs .experience input[type="text"] {
+  width: fit-content;
+  /* max-width: 60px; */
+  text-align: right;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .xpbar {
+  border: #7a7971;
+  border-radius: 3px;
+  margin: 0 10px;
+  width: auto;
+  flex: auto;
+}
+
+.dndbcs.sheet.actor.character .sheet-header .xpbar .bar {
+  background-color: #c53131;
+  border: 1px solid #c53131;
 }

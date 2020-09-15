@@ -15,6 +15,17 @@
                             <input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/>
                         </h1>
                     </div>
+                    {{#unless disableExperience}}
+                    <div class="xpbar">
+                        <span class="bar" style="width: {{data.details.xp.pct}}%"></span>
+                    </div>
+                    <div class="experience flexrow">
+                        <input name="data.details.xp.value" type="text" value="{{data.details.xp.value}}"
+                            data-dtype="Number" placeholder="0"/>
+                        <span class="sep">/</span>
+                        <span class="max">{{data.details.xp.max}} XP</span>
+                    </div>
+                    {{/unless}}
                     <div class="summary flexrow">
                         <span>Level {{data.details.level}}</span>
                         <input type="text" name="data.details.race" value="{{data.details.race}}" placeholder="Race"/>
