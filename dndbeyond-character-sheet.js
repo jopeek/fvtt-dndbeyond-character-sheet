@@ -179,8 +179,6 @@ class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
   
 }
 
-
-
 Hooks.once('init', async function () {
 
   Handlebars.registerHelper('ifeq', function (a, b, options) {
