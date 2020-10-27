@@ -502,6 +502,7 @@
   color: #3f414e;
   border: 0px;
   text-align: center;
+  font-weight: normal;
 }
 
 .dndbcs.sheet.actor ul.skills-list li.skill .skill-ability,
