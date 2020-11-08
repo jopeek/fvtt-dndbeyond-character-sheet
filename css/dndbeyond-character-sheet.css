@@ -438,6 +438,7 @@
 
 .dndbcs.sheet.actor .sheet-header h1.charname input {
   margin: 10px;
+  width: 430px;
 }
 
 .dndbcs.sheet.actor.character .flex-column.col2 {
@@ -556,7 +557,7 @@
 
 .dndbcs.sheet.actor.character .flex-column.col3 li.ability.health {
   border: 0px;
-  height: 100px;
+  height: 96px;
   width: 120px;
   margin: 0 3px;
 }
@@ -650,11 +651,10 @@
   font-weight: bold;
   border: 3px solid #c53131;
   border-radius: 3px;
-  height: 40px;
   text-align: center;
   margin: 0px;
   font-size: 20px;
-  height: 126px;
+  height: 130px;
   margin: 0 10px 0 12px;
   overflow: hidden;
 }
@@ -675,10 +675,12 @@
   font-size: 14px;
 }
 
-.dndbcs.sheet.actor .inventory-list .inventory-header h3 {
+.dndbcs.sheet.actor .inventory-list .inventory-header h3, .dndbcs.sheet .items-list .items-header h3, .dndbcs.sheet.actor .effects-list .items-header h3 {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   font-weight: bold;
   font-size: 14px;
+  margin: 0px;
+  color: #c53131;
 }
 
 .dndbcs.sheet .sheet-navigation .tabs .item.active {
@@ -696,23 +698,23 @@
 
 
 /* width */
-.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar {
+.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar, .dndbcs.sheet.actor.character ol.effects-list::-webkit-scrollbar {
   width: 4px;
 }
 
 /* Track */
-.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar-track {
+.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar-track, .dndbcs.sheet.actor.character ol.effects-list::-webkit-scrollbar-track {
   background: transparent; 
 }
  
 /* Handle */
-.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar-thumb {
+.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar-thumb, .dndbcs.sheet.actor.character ol.effects-list::-webkit-scrollbar-thumb {
   background: #b5b3a4;
   border-color: #b5b3a4;
 }
 
 /* Handle on hover */
-.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar-thumb:hover {
+.dndbcs.sheet.actor.character ol.inventory-list::-webkit-scrollbar-thumb:hover, .dndbcs.sheet.actor.character ol.effects-list::-webkit-scrollbar-thumb:hover {
   background: #c53131;
   border-color: #c53131;
 }
@@ -876,13 +878,14 @@
   display: none;
 }
 
-.dndbcs.sheet.actor .inventory-list .inventory-header {
+.dndbcs.sheet.actor .inventory-list .inventory-header, .dndbcs.sheet .items-list .items-header {
   background: none;
   border: 0px;
   border-bottom: 1px solid #c9c7b8;
   color: #c53131;
   text-transform: uppercase;
   font-size: 13px;
+  padding: 6px 0 4px 0;
 }
 
 .dndbcs.sheet.actor .inventory-list .item-list {
@@ -895,12 +898,14 @@
 .dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .spell-action, 
 .dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .spell-target,
 .dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .spell-slots, 
-.dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .spell-comps {
+.dndbcs.sheet.actor .inventory-list li.inventory-header.flexrow .spell-comps,
+.dndbcs.sheet .items-list .items-header {
   border-left: 0px;
   border-right: 0px;
   color: #7a7971;
   text-transform: uppercase;
   font-size: 12px;
+  font-weight: normal;
 }
 
 .dndbcs.sheet.actor.character .spellbook .item-controls .toggle-prepared.prepared,
@@ -1043,4 +1048,15 @@
 .dndbcs.sheet.actor.character .sheet-header .xpbar .bar {
   background-color: #c53131;
   border: 1px solid #c53131;
+}
+
+.dndbcs.sheet.actor .tab.features, .dndbcs.sheet.actor .tab.inventory, .dndbcs.sheet.actor .tab.spellbook, .dndbcs.sheet.actor .tab.effects {
+  overflow-y: auto;
+}
+
+.dndbcs.sheet.actor.character .inventory .item-controls, .dndbcs.sheet.actor.character .spellbook .item-controls, .dndbcs.sheet.actor.character .features .item-controls, .dndbcs.sheet.actor.character .effects .item-controls {
+  color: #7a7971;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: normal;
 }

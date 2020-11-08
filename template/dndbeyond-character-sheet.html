@@ -365,10 +365,11 @@
                     <a class="item" data-tab="inventory">{{ localize "DND5E.Inventory" }}</a>
                     <a class="item" data-tab="features">{{ localize "DND5E.Features" }}</a>
                     <a class="item" data-tab="spellbook">{{ localize "DND5E.Spellbook" }}</a>
+                    <a class="item" data-tab="effects">{{ localize "DND5E.Effects" }}</a>
                     <a class="item" data-tab="biography">{{ localize "DND5E.Biography" }}</a>
                 </nav>
               
-                {{!-- NPC Sheet Body --}}
+                {{!-- Sheet Body --}}
                 <section class="sheet-body">
               
                     
@@ -401,7 +402,7 @@
                             {{#each inventory as |section sid|}}                          
                             
                         
-                            <ol class="item-list">
+                            <ol class="items-list">
                             {{#each section.items as |item iid|}}
                                 {{#ifeq  item.data.activation.type "action"}}
                                     <li class="item flexrow" data-item-id="{{item._id}}">
@@ -571,7 +572,7 @@
                                     {{/if}}
                                 </li>
                             
-                                <ol class="item-list">
+                                <ol class="items-list">
                                 {{#each section.items as |item iid|}}
                                     <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
                                         <div class="item-name flexrow rollable">
@@ -640,7 +641,7 @@
                                     <div class="item-controls"></div>
                                 </li>
                             
-                                <ol class="item-list">
+                                <ol class="items-list">
                                 {{#each section.spells as |item i|}}
                                     <li class="item flexrow" data-item-id="{{item._id}}">
                                         <div class="item-name flexrow rollable">
@@ -717,7 +718,7 @@
                                     <div class="item-controls"></div>
                                 </li>
                             
-                                <ol class="item-list">
+                                <ol class="items-list">
                                 {{#each section.spells as |item i|}}
                                     {{#if item.data.preparation.prepared}}
                                         <li class="item flexrow" data-item-id="{{item._id}}">
@@ -828,7 +829,7 @@
                                 {{/if}}
                             </li>
                         
-                            <ol class="item-list">
+                            <ol class="items-list">
                             {{#each section.items as |item iid|}}
                                 <li class="item flexrow" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
@@ -929,7 +930,7 @@
                                 {{/if}}
                             </li>
                         
-                            <ol class="item-list">
+                            <ol class="items-list">
                             {{#each section.items as |item iid|}}
                                 <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
@@ -1054,7 +1055,7 @@
                                 </div>
                             </li>
                         
-                            <ol class="item-list">
+                            <ol class="items-list">
                             {{#each section.spells as |item i|}}
                                 <li class="item flexrow" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
@@ -1111,6 +1112,11 @@
                             </li>
                         {{/each}}
                         </ol>
+                    </div>
+              
+                    {{!-- Effects Tab --}}
+                    <div class="tab effects flexcol" data-group="primary" data-tab="effects">
+                        {{> "systems/dnd5e/templates/actors/parts/active-effects.html"}}
                     </div>
               
                     {{!-- Biography Tab --}}
