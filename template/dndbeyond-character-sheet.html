@@ -58,10 +58,11 @@
                             </div>
                         </li>
                         <li class="attribute speed">
-                            <h4 class="attribute-name box-title">{{ localize "DND5E.Speed" }}</h4>
+                            <h4 class="form-group attribute-name box-title">
+                                <a class="configure-movement" title="{{localize 'DND5E.MovementConfig'}}">{{ localize "DND5E.Speed" }}</a>
+                            </h4>
                             <div class="attribute-value">
-                                <input name="data.attributes.speed.value" type="text"
-                                        value="{{data.attributes.speed.value}}" placeholder="0"/>
+                                {{movement.primary}}
                             </div>
                         </li>
                         <li class="attribute initiative">
