@@ -2,23 +2,15 @@
 
 Allows the replacement of a character sheet with a version more similar in style to that of D&D Beyond's. 
 
-### Features
-- New Actions tab that culminates actions from across the inventory, features, and spellbook tabs for quick access to actions, bonus actions, and reactions
+### Screenshots
 
-### Compatibility:
-- Tested with FVTT v0.6.5 and dnd5e 0.95.
-- Incompatible with my own Auto Sheet Sort module.
+![screen1](https://raw.githubusercontent.com/jopeek/fvtt-dndbeyond-character-sheet/master/images/Screenshot_1.png)
 
-### Known Issues:
-- If you have a filter set on the Actions tab, that filter also applies to the Inventory, Features, and Spellbook tabs and may lead to confusion and perceived "missing items".
+![screen2](https://raw.githubusercontent.com/jopeek/fvtt-dndbeyond-character-sheet/master/images/Screenshot_2.png)
 
-### Installation Instructions
+![screen3](https://raw.githubusercontent.com/jopeek/fvtt-dndbeyond-character-sheet/master/images/Screenshot_3.png)
 
-To install a module, follow these instructions:
-
-1. Start FVTT and browse to the Game Modules tab in the Configuration and Setup menu
-2. Select the Install Module button and enter the following URL: https://raw.githubusercontent.com/jopeek/fvtt-dndbeyond-character-sheet/master/module.json
-3. Click Install and wait for installation to complete 
+![screen4](https://raw.githubusercontent.com/jopeek/fvtt-dndbeyond-character-sheet/master/images/Screenshot_4.png)
 
 ### Licences & Credits
 
