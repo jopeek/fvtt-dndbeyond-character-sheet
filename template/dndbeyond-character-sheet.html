@@ -59,7 +59,7 @@
                         </li>
                         <li class="attribute speed">
                             <h4 class="form-group attribute-name box-title">
-                                <a class="configure-movement" title="{{localize 'DND5E.MovementConfig'}}">{{ localize "DND5E.Speed" }}</a>
+                                <a class="config-button" data-action="movement" title="{{localize 'DND5E.MovementConfig'}}">{{ localize "DND5E.Speed" }}</a>
                             </h4>
                             <div class="attribute-value">
                                 {{movement.primary}}
@@ -256,12 +256,18 @@
                     </ul>
         
                     <div class=" sensestraits">
-                        <h4 class="box-title">Senses & Traits</h4>
+                        <h4 class="box-title">Senses & Special Traits</h4>
                         <div class="skills-list">
-                            <div class="form-group {{#unless data.traits.senses}}inactive{{/unless}}">
-                                <input type="text" name="data.traits.senses" value="{{data.traits.senses}}" placeholder="None"/>
+                            <div class="form-group">
+                                <a class="config-button" data-action="senses" title="Configure Senses"><i class="fas fa-eye" style="color: #c53131; float: left;"></i></a>
+                                <a class="config-button" data-action="flags" title="Configure Special Traits"><i class="far fa-check-circle" style="color: #c53131; float: left;"></i></a>
+                                <ul class="traits-list">
+                                    {{#each senses as |v k|}}
+                                        <li class="tag {{k}}">{{v}}</li>
+                                    {{/each}}
+                                    </ul>
                             </div>
-                            <a class="configure-flags"><i class="fas fa-cog"></i></a>
+                            
                         </div>
                     </div>
         

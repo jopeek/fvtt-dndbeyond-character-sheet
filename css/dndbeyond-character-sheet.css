@@ -348,7 +348,9 @@
 .dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-tools,
 .dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-shield-alt,
 .dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-khanda,
-.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-globe {
+.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .proficiencies-box i.fas.fa-globe,
+.dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list i.fas.fa-eye,
+.dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list i.far.fa-check-circle {
   color: #c53131;
   font-size: 10px;
   margin: 0 5px;
@@ -375,7 +377,8 @@
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.health.defenses .form-group,
-.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .ability-box .form-group {
+.dndbcs.sheet.actor.character .flex-column.col4 li.ability.health .ability-box .form-group,
+.dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list .form-group {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   font-size: 10px;
   font-weight: normal;
@@ -636,10 +639,6 @@
   color: #7a7971;
 }
 
-.dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list .form-group {
-  width: 315px;
-  display: inline-flex;
-}
 
 .dndbcs.sheet.actor.character .flex-column.col3 .sensestraits .skills-list .form-group input[type="text"] {
   padding: 3px 0 0 3px;
