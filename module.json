@@ -2,7 +2,7 @@
 	"name": "dndbeyond-character-sheet",
 	"title": "DNDBeyond Character Sheet for 5E",
 	"description": "This module adds an additional character sheet inspired by DNDBeyond and the Obsidian character sheet.",
-	"version": "1.6.2",
+	"version": "1.6.3",
 	"minimumCoreVersion": "0.7.7",
 	"compatibleCoreVersion": "0.7.9",
 	"author": "Jan Ole Peek (ChalkOne)",

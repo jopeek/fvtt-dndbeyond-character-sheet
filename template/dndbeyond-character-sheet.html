@@ -818,7 +818,7 @@
                         {{#each inventory as |section sid|}}
                             <li class="inventory-header flexrow">
                                 <h3 class="item-name flexrow">{{localize section.label}}</h3>
-                        
+                                
                                 {{#if ../isCharacter}}
                                 <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
                                 <div class="item-detail item-equipped">{{localize "DND5E.Equipped"}}</div>
@@ -844,7 +844,7 @@
                                         <h4>
                                             {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
                                             {{item.name~}}
-                                            {{~#if item.data.attuned}} <i class="fas fa-sun attuned" title={{localize "DND5E.Attuned"}}></i>{{/if}}
+                                            {{~#if item.data.attunement}} <i class="fas fa-sun attuned" title={{localize "DND5E.Attuned"}}></i>{{/if}}
                                         </h4>
                                     </div>
                         
