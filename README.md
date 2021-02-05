@@ -1,3 +1,4 @@
+[![Github All Releases](https://img.shields.io/github/downloads/jopeek/fvtt-dndbeyond-character-sheet/total.svg)]() [![Donate](https://img.shields.io/badge/Donate-BuyMeACoffee-green.svg)](https://www.buymeacoffee.com/ChalkOne)
 # DNDBeyond Character Sheet for 5E
 
 Allows the replacement of a character sheet with a version more similar in style to that of D&D Beyond's. 
