@@ -1049,10 +1049,6 @@
   border: 1px solid #c53131;
 }
 
-.dndbcs.sheet.actor .tab.features, .dndbcs.sheet.actor .tab.inventory, .dndbcs.sheet.actor .tab.spellbook, .dndbcs.sheet.actor .tab.effects {
-  overflow-y: auto;
-}
-
 .dndbcs.sheet.actor.character .inventory .item-controls, .dndbcs.sheet.actor.character .spellbook .item-controls, .dndbcs.sheet.actor.character .features .item-controls, .dndbcs.sheet.actor.character .effects .item-controls {
   color: #7a7971;
   text-transform: uppercase;
