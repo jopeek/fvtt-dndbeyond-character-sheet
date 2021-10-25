@@ -804,7 +804,7 @@
                             <ol class="currency flexrow">
                                 
                                 {{#each data.currency as |v k|}}
-                                    <label class="denomination {{k}}">{{ lookup ../config.currencies k }}</label>
+                                    <label class="denomination {{k}}">{{ lookup ../labels.currencies k }}</label>
                                     <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number"/>
                                 {{/each}}
                                 <h3 class="currency-convert-button">
