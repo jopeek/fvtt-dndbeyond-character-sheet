@@ -808,7 +808,7 @@
                                     <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number"/>
                                 {{/each}}
                                 <h3 class="currency-convert-button">
-                                    <a class="currency-convert" title="Convert Currency">Convert</a>
+                                    <a class="currency-convert rollable" data-action="convertCurrency" title="{{localize 'DND5E.CurrencyConvert'}}">Convert</a>
                                 </h3>
                             </ol>
                             {{/if}}
