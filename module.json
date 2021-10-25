@@ -7,7 +7,7 @@
   "url": "https://github.com/jopeek/fvtt-dndbeyond-character-sheet",
   "flags": {},
   "version": "1.7.1",
-  "minimumCoreVersion": "0.7.7",
+  "minimumCoreVersion": "0.8.9",
   "compatibleCoreVersion": "0.8.9",
   "scripts": [],
   "esmodules": [
