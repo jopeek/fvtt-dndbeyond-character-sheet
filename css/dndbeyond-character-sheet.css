@@ -262,7 +262,7 @@
 .dndbcs.sheet.actor.character .sheet-header .ability-scores li.ability.defenses .ability-box {
   width: 255px;
   padding-top: 0px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .attributes .attribute .counter-value {
@@ -1054,4 +1054,14 @@
   text-transform: uppercase;
   font-size: 12px;
   font-weight: normal;
+}
+.dndbcs.sheet.actor .sheet-header .attributes .attribute .config-button {
+  display: block;
+  position: static;
+}
+.dndbcs.sheet.actor .config-button {
+  font-size: inherit;
+}
+.dndbcs.sheet.actor .sheet-header .summary select {
+  top: 0;
 }
