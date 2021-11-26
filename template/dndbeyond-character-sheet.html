@@ -66,16 +66,19 @@
                             </div>
                         </li>
                         <li class="attribute initiative">
-                            <h4 class="attribute-name box-title">Initiative</h4>
+                            <h4 class="attribute-name box-title rollable" data-action="rollInitiative">Initiative</h4>
                             <div class="attribute-value">
                                 {{numberFormat data.attributes.init.total decimals=0 sign=true}}
                             </div>
                         </li>
                         <li class="attribute armorclass">
-                            <h4 class="attribute-name box-title">AC</h4>
-                            <div class="attribute-value">
-                                <input name="data.attributes.ac.value" type="text" value="{{data.attributes.ac.value}}"
-                                        data-dtype="Number" placeholder="10"/>
+                            <h4 class="attribute-name box-title">
+                                <a class="config-button" data-action="armor" title="{{localize 'DND5E.ArmorConfig'}}">
+                                    AC
+                                </a>
+                            </h4>
+                            <div class="attribute-value attributable" data-property="attributes.ac">
+                                <span>{{data.attributes.ac.value}}</span>
                             </div>
                         </li>
                         <li class="attribute rest">
@@ -93,10 +96,12 @@
                     {{!-- Ability Scores --}}
                     <ul class="ability-scores flexrow">
                     {{#each data.abilities as |ability id|}}
-                        <li class="ability" data-ability="{{id}}">
-                            <h4 class="ability-name ability-mod box-title rollable">{{ability.label}}</h4>
+                        <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
+                            <h4><a class="config-button" data-action="ability" title="{{localize 'DND5E.AbilityConfigure'}}">{{ability.label}}</a></h4>
                             <div class="ability-box">
-                                <div class="ability-mod" title="Modifier">{{numberFormat ability.mod decimals=0 sign=true}}</div>
+                                <div class="ability-mod" title="Modifier" data-ability="{{id}}">
+                                    <h4 class="ability-name ability-mod box-title rollable" data-ability="{{id}}" data-action="ability">{{numberFormat ability.mod decimals=0 sign=true}}</h4>
+                                </div>
                                 <footer class="ability-footer">
                                     <input class="ability-score" name="data.abilities.{{id}}.value" type="text" value="{{ability.value}}" data-dtype="Number" placeholder="10"/>
                                 </footer>
@@ -125,7 +130,11 @@
                         </li>
 
                         <li class="ability health">
-                            <h4 class="box-title">{{ localize "DND5E.HitDice" }}</h4>
+                            <h4 class="box-title">
+                                <a class="config-button" data-action="hit-dice" title="{{localize 'DND5E.HitDiceConfig'}}">
+                                    {{ localize "DND5E.HitDice" }}
+                                </a>
+                            </h4>
                             <div class="ability-box">
                                 <label class="hit-dice">{{data.attributes.hd}} / {{data.details.level}}</label>
                                 <footer class="ability-footer exhaustion">
@@ -193,7 +202,7 @@
                             <li class="skill flexrow ability" data-ability="{{id}}">
                                 <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}" data-dtype="Number"/>
                                 <a class="proficiency-toggle ability-proficiency" title="Proficiency">{{{ability.icon}}}</a>
-                                <h4 class=""><span class="ability-save" title="Saving Throw">{{ability.label}}</span></h4>
+                                <h4 class="ability-name ability-mod box-title rollable"><span class="ability-save" title="Saving Throw">{{ability.label}}</span></h4>
                                 <span class="skill-mod ability-save" title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
                             </li>
                         {{/each}}
@@ -347,7 +356,7 @@
                         <input type="hidden" name="data.skills.{{s}}.value" value="{{skill.value}}" data-dtype="Number"/>
                         <a class="proficiency-toggle skill-proficiency" title="{{skill.hover}}">{{{skill.icon}}}</a>
                         <h4 class="skill-name rollable">{{skill.label}}</h4>
-                        <span class="skill-ability">{{skill.ability}}</span>
+                        <a class="config-button" data-action="skill" title="{{localize 'DND5E.SkillConfigure'}}"><span class="skill-ability">{{skill.ability}}</span></a>
                         <span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>
                         <span class="skill-passive">({{skill.passive}})</span>
                     </li>

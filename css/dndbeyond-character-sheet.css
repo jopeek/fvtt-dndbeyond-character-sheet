@@ -153,7 +153,7 @@
 } */
 
 .dndbcs.sheet.actor.character .sheet-header .summary {
-  padding-top: 10px;
+  padding-top: 0;
   border: 0px;
   flex: 0 1 auto;
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
@@ -209,12 +209,13 @@
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-mod {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
-  color: #000;
-  font-weight: bold;
+  color: #000 !important;
+  font-weight: bold !important;
   text-align: center;
-  margin: 0px;
-  font-size: 20px;
-  height: 28px;
+  margin: 0px !important;
+  font-size: 20px !important;
+  height: 28px !important;
+  padding-top: 2px !important;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .ability-scores .ability .ability-score {
@@ -440,7 +441,7 @@
 }
 
 .dndbcs.sheet.actor .sheet-header h1.charname input {
-  margin: 10px;
+  margin: 10px 10px 0 10px;
   width: 430px;
 }
 
@@ -1039,7 +1040,7 @@
 .dndbcs.sheet.actor.character .sheet-header .xpbar {
   border: #7a7971;
   border-radius: 3px;
-  margin: 0 10px;
+  margin: 2px 10px;
   width: auto;
   flex: auto;
 }
@@ -1064,4 +1065,28 @@
 }
 .dndbcs.sheet.actor .sheet-header .summary select {
   top: 0;
+}
+
+.dndbcs.sheet.actor .ability-scores .ability .config-button {
+  display: block;
+  position: inherit;
+  height: 16px;
+}
+
+.dndbcs.sheet.actor.character .skills-list h4.ability-name.ability-mod.box-title.rollable {
+  text-transform: none;
+  text-align: left;
+}
+
+.dndbcs.sheet.actor .config-button {
+  color: inherit;
+}
+
+.dndbcs.sheet.actor ul.attributes li.attribute .attribute-value > * {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.dndbcs.sheet.actor .skills-list .config-button {
+  flex: 0 0 2em;
 }
