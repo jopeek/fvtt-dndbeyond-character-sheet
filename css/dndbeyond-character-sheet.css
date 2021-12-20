@@ -913,6 +913,10 @@
   color: #c53131;
 }
 
+.dndbcs.sheet.actor .inventory-list .item .item-name i.attunement-required {
+  color: #7a7971;
+}
+
 .dndbcs.sheet.actor .inventory-filters i.fas.fa-fist-raised,
 .dndbcs.sheet.actor .inventory-filters i.fas.fa-magic,
 .dndbcs.sheet.actor .inventory-filters i.fas.fa-th-large {

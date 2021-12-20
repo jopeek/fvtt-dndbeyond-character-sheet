@@ -3,7 +3,7 @@
     <div class="flex-body sheet-header">
 
         <div class="flex-row flex-profileimg">
-            <img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/>
+            <img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img" />
         </div>
 
         <div class="flex-column">
@@ -12,7 +12,7 @@
                 <div class="flex-column" style="overflow: hidden;">
                     <div class="flexrow">
                         <h1 class="charname">
-                            <input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/>
+                            <input name="name" type="text" value="{{actor.name}}" placeholder="Character Name" />
                         </h1>
                     </div>
                     {{#unless disableExperience}}
@@ -21,26 +21,28 @@
                     </div>
                     <div class="experience flexrow">
                         <input name="data.details.xp.value" type="text" value="{{data.details.xp.value}}"
-                            data-dtype="Number" placeholder="0"/>
+                            data-dtype="Number" placeholder="0" />
                         <span class="sep">/</span>
                         <span class="max">{{data.details.xp.max}} XP</span>
                     </div>
                     {{/unless}}
                     <div class="summary flexrow">
                         <span>Level {{data.details.level}}</span>
-                        <input type="text" name="data.details.race" value="{{data.details.race}}" placeholder="Race"/>
-                        <input type="text" name="data.details.background" value="{{data.details.background}}" placeholder="Background"/>
-                        <input type="text" name="data.details.alignment" value="{{data.details.alignment}}" placeholder="Alignment"/>
+                        <input type="text" name="data.details.race" value="{{data.details.race}}" placeholder="Race" />
+                        <input type="text" name="data.details.background" value="{{data.details.background}}"
+                            placeholder="Background" />
+                        <input type="text" name="data.details.alignment" value="{{data.details.alignment}}"
+                            placeholder="Alignment" />
                         <select class="actor-size" name="data.traits.size">
                             {{#select data.traits.size}}
                             {{#each config.actorSizes as |label size|}}
-                                <option value="{{size}}">{{label}}</option>
+                            <option value="{{size}}">{{label}}</option>
                             {{/each}}
                             {{/select}}
                         </select>
                     </div>
                 </div>
-        
+
                 <div class="flex-row summary-attributes">
                     <ul class="attributes flexrow">
                         <li class="attribute proficiency">
@@ -52,14 +54,16 @@
                         <li class="attribute inspiration">
                             <h4 class="attribute-name box-title">{{ localize "DND5E.Inspiration" }}</h4>
                             <div class="attribute-value">
-                                <input type="checkbox" name="data.attributes.inspiration" id="data.attributes.inspiration" class="css-checkbox-insp" data-dtype="Boolean"
-                                        {{checked data.attributes.inspiration}} />
+                                <input type="checkbox" name="data.attributes.inspiration"
+                                    id="data.attributes.inspiration" class="css-checkbox-insp" data-dtype="Boolean"
+                                    {{checked data.attributes.inspiration}} />
                                 <label for="data.attributes.inspiration" class="css-label-insp"></label>
                             </div>
                         </li>
                         <li class="attribute speed">
                             <h4 class="form-group attribute-name box-title">
-                                <a class="config-button" data-action="movement" title="{{localize 'DND5E.MovementConfig'}}">{{ localize "DND5E.Speed" }}</a>
+                                <a class="config-button" data-action="movement"
+                                    title="{{localize 'DND5E.MovementConfig'}}">{{ localize "DND5E.Speed" }}</a>
                             </h4>
                             <div class="attribute-value">
                                 {{movement.primary}}
@@ -83,8 +87,8 @@
                         </li>
                         <li class="attribute rest">
                             <h4 class="attribute-name box-title">Rest</h4>
-                                <a class="rest short-rest"><i class="fas fa-fire"></i> Short</a>
-                                <a class="rest long-rest"><i class="fas fa-moon"></i> Long</a>
+                            <a class="rest short-rest"><i class="fas fa-fire"></i> Short</a>
+                            <a class="rest long-rest"><i class="fas fa-moon"></i> Long</a>
                         </li>
                     </ul>
                 </div>
@@ -95,51 +99,58 @@
 
                     {{!-- Ability Scores --}}
                     <ul class="ability-scores flexrow">
-                    {{#each data.abilities as |ability id|}}
+                        {{#each data.abilities as |ability id|}}
                         <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
-                            <h4><a class="config-button" data-action="ability" title="{{localize 'DND5E.AbilityConfigure'}}">{{ability.label}}</a></h4>
+                            <h4><a class="config-button" data-action="ability"
+                                    title="{{localize 'DND5E.AbilityConfigure'}}">{{ability.label}}</a></h4>
                             <div class="ability-box">
                                 <div class="ability-mod" title="Modifier" data-ability="{{id}}">
-                                    <h4 class="ability-name ability-mod box-title rollable" data-ability="{{id}}" data-action="ability">{{numberFormat ability.mod decimals=0 sign=true}}</h4>
+                                    <h4 class="ability-name ability-mod box-title rollable" data-ability="{{id}}"
+                                        data-action="ability">{{numberFormat ability.mod decimals=0 sign=true}}</h4>
                                 </div>
                                 <footer class="ability-footer">
-                                    <input class="ability-score" name="data.abilities.{{id}}.value" type="text" value="{{ability.value}}" data-dtype="Number" placeholder="10"/>
+                                    <input class="ability-score" name="data.abilities.{{id}}.value" type="text"
+                                        value="{{ability.value}}" data-dtype="Number" placeholder="10" />
                                 </footer>
                             </div>
                         </li>
-                    {{/each}}
-                    
+                        {{/each}}
+
                         <li class="ability health">
                             <h4 class="box-title">{{ localize "DND5E.HitPoints" }}</h4>
                             <div class="ability-box">
                                 <div class="ability-value multiple">
-                                    <input name="data.attributes.hp.value" type="text" value="{{data.attributes.hp.value}}"
-                                           data-dtype="Number" placeholder="10"/>
+                                    <input name="data.attributes.hp.value" type="text"
+                                        value="{{data.attributes.hp.value}}" data-dtype="Number" placeholder="10" />
                                     <span class="sep"> / </span>
-                                    <input style="font-weight: bold;" name="data.attributes.hp.max" type="text" value="{{data.attributes.hp.max}}"
-                                           data-dtype="Number" placeholder="10"/>
+                                    <input style="font-weight: bold;" name="data.attributes.hp.max" type="text"
+                                        value="{{data.attributes.hp.max}}" data-dtype="Number" placeholder="10" />
                                 </div>
                                 <footer class="ability-footer">
-                                    <input style="font-size: 13px;" name="data.attributes.hp.temp" type="text" class="temphp" placeholder="+TMP"
-                                           value="{{data.attributes.hp.temp}}" data-dtype="{{data.attributes.hp.type}}"/>
+                                    <input style="font-size: 13px;" name="data.attributes.hp.temp" type="text"
+                                        class="temphp" placeholder="+TMP" value="{{data.attributes.hp.temp}}"
+                                        data-dtype="{{data.attributes.hp.type}}" />
                                     <span class="sep"> / </span>
-                                    <input style="font-size: 13px;" name="data.attributes.hp.tempmax" type="text" class="tempmaxhp" placeholder="+MAX"
-                                           value="{{data.attributes.hp.tempmax}}" data-dtype="{{data.attributes.hp.type}}"/>
+                                    <input style="font-size: 13px;" name="data.attributes.hp.tempmax" type="text"
+                                        class="tempmaxhp" placeholder="+MAX" value="{{data.attributes.hp.tempmax}}"
+                                        data-dtype="{{data.attributes.hp.type}}" />
                                 </footer>
                             </div>
                         </li>
 
                         <li class="ability health">
                             <h4 class="box-title">
-                                <a class="config-button" data-action="hit-dice" title="{{localize 'DND5E.HitDiceConfig'}}">
+                                <a class="config-button" data-action="hit-dice"
+                                    title="{{localize 'DND5E.HitDiceConfig'}}">
                                     {{ localize "DND5E.HitDice" }}
                                 </a>
                             </h4>
                             <div class="ability-box">
                                 <label class="hit-dice">{{data.attributes.hd}} / {{data.details.level}}</label>
                                 <footer class="ability-footer exhaustion">
-                                    {{ localize "DND5E.Exhaustion" }} <input type="text" name="data.attributes.exhaustion" data-dtype="Number" placeholder="0"
-                                   value="{{data.attributes.exhaustion}}" style="width: 20px;" />
+                                    {{ localize "DND5E.Exhaustion" }} <input type="text"
+                                        name="data.attributes.exhaustion" data-dtype="Number" placeholder="0"
+                                        value="{{data.attributes.exhaustion}}" style="width: 20px;" />
                                 </footer>
                             </div>
                         </li>
@@ -148,46 +159,51 @@
                             <h4 class="box-title">Vulnerabilities, Resistances, Immunities</h4>
                             <div class="ability-box">
                                 <div class="form-group {{data.traits.dv.cssClass}}">
-                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.dv"><i class="fas fa-bolt" title="{{localize "DND5E.DamVuln"}}"></i></a>
+                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.dv"><i
+                                            class="fas fa-bolt" title="{{localize "DND5E.DamVuln"}}"></i></a>
                                     <label for="data.traits.dv">{{localize "DND5E.DamVuln"}}</label>
                                     <ul class="traits-list">
-                                    {{#each data.traits.dv.selected as |v k|}}
+                                        {{#each data.traits.dv.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
-                                    {{/each}}
+                                        {{/each}}
                                     </ul>
                                 </div>
                                 <div class="form-group {{data.traits.dr.cssClass}}">
-                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.dr"><i class="fas fa-shield-alt" title="{{localize "DND5E.DamRes"}}"></i></a>
+                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.dr"><i
+                                            class="fas fa-shield-alt" title="{{localize "DND5E.DamRes"}}"></i></a>
                                     <label for="data.traits.dr">{{localize "DND5E.DamRes"}}</label>
                                     <ul class="traits-list">
-                                    {{#each data.traits.dr.selected as |v k|}}
+                                        {{#each data.traits.dr.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
-                                    {{/each}}
+                                        {{/each}}
                                     </ul>
                                 </div>
                                 <div class="form-group {{data.traits.di.cssClass}}">
-                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.di"><i class="fas fa-syringe" title="{{localize "DND5E.DamImm"}}"></i></a>
+                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.di"><i
+                                            class="fas fa-syringe" title="{{localize "DND5E.DamImm"}}"></i></a>
                                     <label for="data.traits.di">{{localize "DND5E.DamImm"}}</label>
                                     <ul class="traits-list">
-                                    {{#each data.traits.di.selected as |v k|}}
+                                        {{#each data.traits.di.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
-                                    {{/each}}
+                                        {{/each}}
                                     </ul>
                                 </div>
                                 <div class="form-group {{data.traits.ci.cssClass}}">
-                                    <a class="trait-selector" data-options="conditionTypes" data-target="data.traits.ci"><i class="fas fa-prescription" title="{{localize "DND5E.ConImm"}}"></i></a>
+                                    <a class="trait-selector" data-options="conditionTypes"
+                                        data-target="data.traits.ci"><i class="fas fa-prescription"
+                                            title="{{localize "DND5E.ConImm"}}"></i></a>
                                     <label for="data.traits.ci">{{localize "DND5E.ConImm"}}</label>
                                     <ul class="traits-list">
-                                    {{#each data.traits.ci.selected as |v k|}}
+                                        {{#each data.traits.ci.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
-                                    {{/each}}
+                                        {{/each}}
                                     </ul>
                                 </div>
                             </div>
                         </li>
-        
+
                     </ul>
-                    
+
                 </div>
             </div>
 
@@ -198,148 +214,166 @@
                         <h4 class="box-title">Saving Throws</h4>
                         {{!-- Ability Scores --}}
                         <ul class="skills-list">
-                        {{#each data.abilities as |ability id|}}
+                            {{#each data.abilities as |ability id|}}
                             <li class="skill flexrow ability" data-ability="{{id}}">
-                                <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}" data-dtype="Number"/>
-                                <a class="proficiency-toggle ability-proficiency" title="Proficiency">{{{ability.icon}}}</a>
-                                <h4 class="ability-name ability-mod box-title rollable"><span class="ability-save" title="Saving Throw">{{ability.label}}</span></h4>
-                                <span class="skill-mod ability-save" title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
+                                <input type="hidden" name="data.abilities.{{id}}.proficient"
+                                    value="{{ability.proficient}}" data-dtype="Number" />
+                                <a class="proficiency-toggle ability-proficiency"
+                                    title="Proficiency">{{{ability.icon}}}</a>
+                                <h4 class="ability-name ability-mod box-title rollable"><span class="ability-save"
+                                        title="Saving Throw">{{ability.label}}</span></h4>
+                                <span class="skill-mod ability-save"
+                                    title="Saving Throw">{{numberFormat ability.save decimals=0 sign=true}}</span>
                             </li>
-                        {{/each}}
+                            {{/each}}
                         </ul>
                     </div>
-        
+
                     <div class=" savingthrows">
-                        <h4 class="box-title death-save rollable" data-action="rollDeathSave">{{ localize "DND5E.DeathSave" }}</h4>
+                        <h4 class="box-title death-save rollable" data-action="rollDeathSave">
+                            {{ localize "DND5E.DeathSave" }}</h4>
                         <ul class="skills-list">
                             <li class="skill flexrow ability">
-                                <i class="fas fa-check proficiency-toggle ability-proficiency"></i> 
+                                <i class="fas fa-check proficiency-toggle ability-proficiency"></i>
                                 <h4 class="skill-name ability-name">Successes</h4>
                                 <span class="skill-mod ability-save">
-                                    <input type="text" class="skill-mod ability-save" name="data.attributes.death.success" data-dtype="Number" placeholder="0"
-                                           value="{{data.attributes.death.success}}"/>
+                                    <input type="text" class="skill-mod ability-save"
+                                        name="data.attributes.death.success" data-dtype="Number" placeholder="0"
+                                        value="{{data.attributes.death.success}}" />
                                 </span>
                             </li>
                             <li class="skill flexrow ability">
-                                <i class="fas fa-times proficiency-toggle ability-proficiency"></i> 
+                                <i class="fas fa-times proficiency-toggle ability-proficiency"></i>
                                 <h4 class="skill-name ability-name">Failures</h4>
                                 <span class="skill-mod ability-save">
-                                    <input type="text" name="data.attributes.death.failure" data-dtype="Number" placeholder="0"
-                                           value="{{data.attributes.death.failure}}"/>
+                                    <input type="text" name="data.attributes.death.failure" data-dtype="Number"
+                                        placeholder="0" value="{{data.attributes.death.failure}}" />
                                 </span>
                             </li>
                         </ul>
                     </div>
-        
+
                 </div>
-        
+
                 <div class="flex-column col3">
                     <ul class="ability-scores flexrow">
-        
+
                         {{#each resources as |res|}}
-                            <li class="ability health resource">
-                                <h4 class="box-title"><input name="data.resources.{{res.name}}.label" type="text" value="{{res.label}}"
-                                    placeholder="{{res.placeholder}}" /></h4>
-                                <div class="ability-box">
-                                    <div class="ability-value multiple">
-                                        <input name="data.resources.{{res.name}}.value" type="text" value="{{res.value}}"
-                                           data-dtype="Number" placeholder="0"/>
-                                        <span class="sep"> / </span>
-                                        <input name="data.resources.{{res.name}}.max" type="text" value="{{res.max}}"
-                                                data-dtype="Number" placeholder="0"/>
-                                    </div>
-                                    <footer class="ability-footer">
-                                        <label class="checkbox">SR </label>
-                                        <input type="checkbox" name="data.resources.{{res.name}}.sr" id="data.resources.{{res.name}}.sr" class="css-checkbox" data-dtype="Boolean"
-                                        {{checked res.sr}} />
-                                        <label for="data.resources.{{res.name}}.sr" class="css-label"></label>
-                                        <label class="checkbox">LR </label>
-                                        <input type="checkbox" name="data.resources.{{res.name}}.lr" id="data.resources.{{res.name}}.lr" class="css-checkbox" data-dtype="Boolean"
-                                            {{checked res.lr}} />
-                                        <label for="data.resources.{{res.name}}.lr" class="css-label"></label>
-                                    </footer>
+                        <li class="ability health resource">
+                            <h4 class="box-title"><input name="data.resources.{{res.name}}.label" type="text"
+                                    value="{{res.label}}" placeholder="{{res.placeholder}}" /></h4>
+                            <div class="ability-box">
+                                <div class="ability-value multiple">
+                                    <input name="data.resources.{{res.name}}.value" type="text" value="{{res.value}}"
+                                        data-dtype="Number" placeholder="0" />
+                                    <span class="sep"> / </span>
+                                    <input name="data.resources.{{res.name}}.max" type="text" value="{{res.max}}"
+                                        data-dtype="Number" placeholder="0" />
                                 </div>
-                            </li>
+                                <footer class="ability-footer">
+                                    <label class="checkbox">SR </label>
+                                    <input type="checkbox" name="data.resources.{{res.name}}.sr"
+                                        id="data.resources.{{res.name}}.sr" class="css-checkbox" data-dtype="Boolean"
+                                        {{checked res.sr}} />
+                                    <label for="data.resources.{{res.name}}.sr" class="css-label"></label>
+                                    <label class="checkbox">LR </label>
+                                    <input type="checkbox" name="data.resources.{{res.name}}.lr"
+                                        id="data.resources.{{res.name}}.lr" class="css-checkbox" data-dtype="Boolean"
+                                        {{checked res.lr}} />
+                                    <label for="data.resources.{{res.name}}.lr" class="css-label"></label>
+                                </footer>
+                            </div>
+                        </li>
                         {{/each}}
-        
+
                     </ul>
-        
+
                     <div class=" sensestraits">
                         <h4 class="box-title">Senses & Special Traits</h4>
                         <div class="skills-list">
                             <div class="form-group">
-                                <a class="config-button" data-action="senses" title="Configure Senses"><i class="fas fa-eye" style="color: #c53131; float: left;"></i></a>
-                                <a class="config-button" data-action="flags" title="Configure Special Traits"><i class="far fa-check-circle" style="color: #c53131; float: left;"></i></a>
+                                <a class="config-button" data-action="senses" title="Configure Senses"><i
+                                        class="fas fa-eye" style="color: #c53131; float: left;"></i></a>
+                                <a class="config-button" data-action="flags" title="Configure Special Traits"><i
+                                        class="far fa-check-circle" style="color: #c53131; float: left;"></i></a>
                                 <ul class="traits-list">
                                     {{#each senses as |v k|}}
-                                        <li class="tag {{k}}">{{v}}</li>
+                                    <li class="tag {{k}}">{{v}}</li>
                                     {{/each}}
-                                    </ul>
+                                </ul>
                             </div>
-                            
+
                         </div>
                     </div>
-        
+
                 </div>
-        
+
                 <div class="flex-column col4">
                     <ul class="ability-scores flexrow">
-        
+
                         <li class="ability health defenses">
                             <h4 class="box-title">Proficiencies</h4>
                             <div class="proficiencies-box">
                                 <div class="form-group {{data.traits.languages.cssClass}}">
-                                    <a class="trait-selector" data-options="languages" data-target="data.traits.languages"><i class="fas fa-globe" title="{{localize "DND5E.Languages"}}"></i></a>
+                                    <a class="trait-selector" data-options="languages"
+                                        data-target="data.traits.languages"><i class="fas fa-globe"
+                                            title="{{localize "DND5E.Languages"}}"></i></a>
                                     <label for="data.traits.languages">{{localize "DND5E.Languages"}}</label>
                                     <ul class="traits-list">
-                                    {{#each data.traits.languages.selected as |v k|}}
+                                        {{#each data.traits.languages.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
-                                    {{/each}}
+                                        {{/each}}
                                     </ul>
                                 </div>
                                 <div class="form-group {{data.traits.weaponProf.cssClass}}">
-                                    <a class="trait-selector" data-options="weaponProficiencies" data-target="data.traits.weaponProf"><i class="fas fa-khanda" title="{{localize "DND5E.TraitWeaponProf"}}"></i></a>
+                                    <a class="trait-selector" data-options="weaponProficiencies"
+                                        data-target="data.traits.weaponProf"><i class="fas fa-khanda"
+                                            title="{{localize "DND5E.TraitWeaponProf"}}"></i></a>
                                     <label for="data.traits.weaponProf">{{localize "DND5E.TraitWeaponProf"}}</label>
                                     <ul class="traits-list">
-                                    {{#each data.traits.weaponProf.selected as |v k|}}
+                                        {{#each data.traits.weaponProf.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
-                                    {{/each}}
+                                        {{/each}}
                                     </ul>
                                 </div>
                                 <div class="form-group {{data.traits.armorProf.cssClass}}">
-                                    <a class="trait-selector" data-options="armorProficiencies" data-target="data.traits.armorProf"><i class="fas fa-shield-alt" title="{{localize "DND5E.TraitArmorProf"}}"></i></a>
+                                    <a class="trait-selector" data-options="armorProficiencies"
+                                        data-target="data.traits.armorProf"><i class="fas fa-shield-alt"
+                                            title="{{localize "DND5E.TraitArmorProf"}}"></i></a>
                                     <label for="data.traits.armorProf">{{localize "DND5E.TraitArmorProf"}}</label>
                                     <ul class="traits-list">
-                                    {{#each data.traits.armorProf.selected as |v k|}}
+                                        {{#each data.traits.armorProf.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
-                                    {{/each}}
+                                        {{/each}}
                                     </ul>
                                 </div>
                                 <div class="form-group {{data.traits.toolProf.cssClass}}">
-                                    <a class="trait-selector" data-options="toolProficiencies" data-target="data.traits.toolProf"><i class="fas fa-tools" title="{{localize "DND5E.TraitToolProf"}}"></i></a>
+                                    <a class="trait-selector" data-options="toolProficiencies"
+                                        data-target="data.traits.toolProf"><i class="fas fa-tools"
+                                            title="{{localize "DND5E.TraitToolProf"}}"></i></a>
                                     <label for="data.traits.toolProf">{{localize "DND5E.TraitToolProf"}}</label>
                                     <ul class="traits-list">
-                                    {{#each data.traits.toolProf.selected as |v k|}}
+                                        {{#each data.traits.toolProf.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
-                                    {{/each}}
+                                        {{/each}}
                                     </ul>
                                 </div>
                             </div>
                         </li>
-        
+
                     </ul>
-        
+
                 </div>
 
             </div>
 
         </div>
 
-        
-        
-        
 
-        
+
+
+
+
 
     </div>
 
@@ -351,30 +385,32 @@
                 <h4 class="box-title">Skills</h4>
                 {{!-- Skills --}}
                 <ul class="skills-list">
-                {{#each data.skills as |skill s|}}
+                    {{#each data.skills as |skill s|}}
                     <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
-                        <input type="hidden" name="data.skills.{{s}}.value" value="{{skill.value}}" data-dtype="Number"/>
+                        <input type="hidden" name="data.skills.{{s}}.value" value="{{skill.value}}"
+                            data-dtype="Number" />
                         <a class="proficiency-toggle skill-proficiency" title="{{skill.hover}}">{{{skill.icon}}}</a>
                         <h4 class="skill-name rollable">{{skill.label}}</h4>
-                        <a class="config-button" data-action="skill" title="{{localize 'DND5E.SkillConfigure'}}"><span class="skill-ability">{{skill.ability}}</span></a>
+                        <a class="config-button" data-action="skill" title="{{localize 'DND5E.SkillConfigure'}}"><span
+                                class="skill-ability">{{skill.ability}}</span></a>
                         <span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>
                         <span class="skill-passive">({{skill.passive}})</span>
                     </li>
-                {{/each}}
+                    {{/each}}
                 </ul>
             </div>
 
             <div class="flex-row flex-tokenimg">
-                <img class="token" src="{{actor.token.img}}" title="{{actor.name}}"/>
+                <img class="token" src="{{actor.token.img}}" title="{{actor.name}}" />
             </div>
 
         </div>
 
-        
+
 
         <div class="flex-column col5">
             <div class="ability-box">
-                
+
                 {{!-- Sheet Navigation --}}
                 <nav class="sheet-navigation tabs" data-group="primary">
                     <a class="item active" data-tab="actions">Actions</a>
@@ -384,479 +420,122 @@
                     <a class="item" data-tab="effects">{{ localize "DND5E.Effects" }}</a>
                     <a class="item" data-tab="biography">{{ localize "DND5E.Biography" }}</a>
                 </nav>
-              
+
                 {{!-- Sheet Body --}}
                 <section class="sheet-body">
-              
-                    
-              
+
+
+
                     {{!-- Actions Tab --}}
                     <div class="tab inventory flexcol" data-group="primary" data-tab="actions">
-                        
+
                         <div class="action-filters">
                             <ul class="filter-list flexrow" data-filter="inventory" data-filter="spellbook">
-                                <li id="ActionFilterAction" class="filter-item" data-filter="action">{{localize "DND5E.Action"}}</li>
-                                <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
-                                <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
+                                <li id="ActionFilterAction" class="filter-item" data-filter="action">
+                                    {{localize "DND5E.Action"}}</li>
+                                <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">
+                                    {{localize "DND5E.BonusAction"}}</li>
+                                <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">
+                                    {{localize "DND5E.Reaction"}}</li>
                             </ul>
                         </div>
-              
-                        
+
+
                         <ol class="items-list inventory-list">
                             <li class="inventory-header flexrow">
-                                <h3 class="item-name flexrow">Inventory</h3>
-                        
+                                <h3 class="item-name flexrow" title="Equipped and attuned (if required)">Inventory</h3>
+
                                 <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
                                 <div class="item-detail item-equipped">{{localize "DND5E.Equipped"}}</div>
-                        
+
                                 <div class="item-detail item-uses">{{localize "DND5E.Charges"}}</div>
                                 <div class="item-detail item-action">{{localize "DND5E.Usage"}}</div>
-                        
+
                                 <div class="item-controls"></div>
                             </li>
-                        
-                            {{#each inventory as |section sid|}}                          
-                            
-                        
+
+                            {{#each inventory as |section sid|}}
+
+
                             <ol class="item-list">
-                            {{#each section.items as |item iid|}}
+                                {{#each section.items as |item iid|}}
                                 {{#ifeq  item.data.activation.type "action"}}
-                                    <li class="item flexrow" data-item-id="{{item._id}}">
-                                        <div class="item-name flexrow rollable">
-                                            <div class="item-image" style="background-image: url({{item.img}})"></div>
-                                            <h4>
-                                                {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
-                                                {{item.name~}}
-                                                {{~#if item.data.attuned}} <i class="fas fa-sun attuned" title={{localize "DND5E.Attuned"}}></i>{{/if}}
-                                            </h4>
-                                        </div>
-                            
-                                        {{#if ../../isCharacter}}
-                                        <div class="item-detail item-weight">
-                                            {{#if item.totalWeight}}
-                                            <div class="item-detail">
-                                                {{ item.totalWeight }} lbs.
-                                            </div>
-                                            {{/if}}
-                                        </div>
-                            
-                                        <div class="item-detail item-equipped">
-                                        {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
-                                        {{/if}}
-                                        </div>
-                                        {{/if}}
-                            
-                                        <div class="item-detail item-uses">
-                                            {{#if item.hasUses }}
-                                                <input type="text" value="{{item.data.uses.value}}" placeholder="0"/>
-                                                / {{item.data.uses.max}}
-                                            {{/if}}
-                                        </div>
-                            
-                                        <div class="item-detail item-action">
-                                            {{#if item.data.activation.type }}
-                                            {{item.labels.activation}}
-                                            {{/if}}
-                                        </div>
-                            
-                                        {{#if ../../owner}}
-                                        <div class="item-controls">
-                                            {{#if item.data.equipped }}
-                                                <a class="item-control item-toggle active" title='Unequip'><i class="fas fa-shield-alt"></i></a>
-                                            {{else}}
-                                                <a class="item-control item-toggle" title='Equip'><i class="fas fa-shield-alt"></i></a>
-                                            {{/if}}
-                                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                                        </div>
-                                        {{/if}}
-                                    </li>
+                                    {{#if item.data.equipped }}
+                                        {{#ifnoteq item.data.attunement "1"}}
+                                            <li class="item flexrow" data-item-id="{{item._id}}">
+                                                <div class="item-name flexrow rollable">
+                                                    <div class="item-image" style="background-image: url({{item.img}})"></div>
+                                                    <h4>
+                                                        {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
+                                                        {{item.name~}}
+                                                        {{#ifeq item.data.attunement "1"}} <i class="fas fa-sun attunement-required"
+                                                            title="{{localize "DND5E.AttunementRequired"}}"></i>{{/ifeq}}
+                                                        {{#ifeq item.data.attunement "2"}} <i class="fas fa-sun attuned"
+                                                        title="{{localize "DND5E.AttunementAttuned"}}"></i>{{/ifeq}}
+                                                    </h4>
+                                                </div>
+
+                                                {{#if ../../isCharacter}}
+                                                <div class="item-detail item-weight">
+                                                    {{#if item.totalWeight}}
+                                                    <div class="item-detail">
+                                                        {{ item.totalWeight }} lbs.
+                                                    </div>
+                                                    {{/if}}
+                                                </div>
+
+                                                <div class="item-detail item-equipped">
+                                                    {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
+                                                    {{/if}}
+                                                </div>
+                                                {{/if}}
+
+                                                <div class="item-detail item-uses">
+                                                    {{#if item.hasUses }}
+                                                    <input type="text" value="{{item.data.uses.value}}" placeholder="0" />
+                                                    / {{item.data.uses.max}}
+                                                    {{/if}}
+                                                </div>
+
+                                                <div class="item-detail item-action">
+                                                    {{#if item.data.activation.type }}
+                                                    {{item.labels.activation}}
+                                                    {{/if}}
+                                                </div>
+
+                                                {{#if ../../owner}}
+                                                <div class="item-controls">
+                                                    {{#if item.data.equipped }}
+                                                    <a class="item-control item-toggle active" title='Unequip'><i
+                                                            class="fas fa-shield-alt"></i></a>
+                                                    {{else}}
+                                                    <a class="item-control item-toggle" title='Equip'><i
+                                                            class="fas fa-shield-alt"></i></a>
+                                                    {{/if}}
+                                                    <a class="item-control item-edit" title="Edit Item"><i
+                                                            class="fas fa-edit"></i></a>
+                                                    <a class="item-control item-delete" title="Delete Item"><i
+                                                            class="fas fa-trash"></i></a>
+                                                </div>
+                                                {{/if}}
+                                            </li>
+                                        {{/ifnoteq}}
+                                    {{/if}}
                                 {{/ifeq}}
                                 {{#ifeq  item.data.activation.type "bonus"}}
-                                    <li class="item flexrow" data-item-id="{{item._id}}">
-                                        <div class="item-name flexrow rollable">
-                                            <div class="item-image" style="background-image: url({{item.img}})"></div>
-                                            <h4>
-                                                {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
-                                                {{item.name~}}
-                                                {{~#if item.data.attuned}} <i class="fas fa-sun attuned" title={{localize "DND5E.Attuned"}}></i>{{/if}}
-                                            </h4>
-                                        </div>
-                            
-                                        {{#if ../../isCharacter}}
-                                        <div class="item-detail item-weight">
-                                            {{#if item.totalWeight}}
-                                            <div class="item-detail">
-                                                {{ item.totalWeight }} lbs.
-                                            </div>
-                                            {{/if}}
-                                        </div>
-                            
-                                        <div class="item-detail item-equipped">
-                                        {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
-                                        {{/if}}
-                                        </div>
-                                        {{/if}}
-                            
-                                        <div class="item-detail item-uses">
-                                            {{#if item.hasUses }}
-                                                <input type="text" value="{{item.data.uses.value}}" placeholder="0"/>
-                                                / {{item.data.uses.max}}
-                                            {{/if}}
-                                        </div>
-                            
-                                        <div class="item-detail item-action">
-                                            {{#if item.data.activation.type }}
-                                            {{item.labels.activation}}
-                                            {{/if}}
-                                        </div>
-                            
-                                        {{#if ../../owner}}
-                                        <div class="item-controls">
-                                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                                        </div>
-                                        {{/if}}
-                                    </li>
-                                {{/ifeq}}
-                                {{#ifeq  item.data.activation.type "reaction"}}
-                                    <li class="item flexrow" data-item-id="{{item._id}}">
-                                        <div class="item-name flexrow rollable">
-                                            <div class="item-image" style="background-image: url({{item.img}})"></div>
-                                            <h4>
-                                                {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
-                                                {{item.name~}}
-                                                {{~#if item.data.attuned}} <i class="fas fa-sun attuned" title={{localize "DND5E.Attuned"}}></i>{{/if}}
-                                            </h4>
-                                        </div>
-                            
-                                        {{#if ../../isCharacter}}
-                                        <div class="item-detail item-weight">
-                                            {{#if item.totalWeight}}
-                                            <div class="item-detail">
-                                                {{ item.totalWeight }} lbs.
-                                            </div>
-                                            {{/if}}
-                                        </div>
-                            
-                                        <div class="item-detail item-equipped">
-                                        {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
-                                        {{/if}}
-                                        </div>
-                                        {{/if}}
-                            
-                                        <div class="item-detail item-uses">
-                                            {{#if item.hasUses }}
-                                                <input type="text" value="{{item.data.uses.value}}" placeholder="0"/>
-                                                / {{item.data.uses.max}}
-                                            {{/if}}
-                                        </div>
-                            
-                                        <div class="item-detail item-action">
-                                            {{#if item.data.activation.type }}
-                                            {{item.labels.activation}}
-                                            {{/if}}
-                                        </div>
-                            
-                                        {{#if ../../owner}}
-                                        <div class="item-controls">
-                                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                                        </div>
-                                        {{/if}}
-                                    </li>
-                                {{/ifeq}}
-                            {{/each}}
-                            </ol>
-              
-                        {{/each}}
-              
-                        <!-- Features -->
-                        {{#each features as |section sid|}}
-                            {{#ifeq section.label "DND5E.FeatureActive"}}
-                                <li class="inventory-header flexrow">
-                                    <h3 class="item-name flexrow">{{localize section.label}} Features</h3>
-                            
-                                    {{#if section.hasActions}}
-                                    <div class="item-detail item-uses">{{localize "DND5E.Uses"}}</div>
-                                    <div class="item-detail item-action">{{localize "DND5E.Usage"}}</div>
-                                    {{/if}}
-                            
-                                    {{#if ../owner}}
-                                    <div class="item-controls">
-                                    </div>
-                                    {{/if}}
-                                </li>
-                            
-                                <ol class="items-list">
-                                {{#each section.items as |item iid|}}
-                                    <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
-                                        <div class="item-name flexrow rollable">
-                                            <div class="item-image" style="background-image: url({{item.img}})"></div>
-                                            <h4>{{item.name}}</h4>
-                                        </div>
-                            
-                                        {{#if section.hasActions}}
-                                        <div class="item-detail item-uses">
-                                            {{#if item.isOnCooldown}}
-                                            <a class="item-recharge rollable">{{item.labels.recharge}}</a>
-                                            {{else if item.data.recharge.value}}
-                                            {{localize "DND5E.Charged"}}
-                            
-                                            {{else if item.hasUses}}
-                                            <input type="text" value="{{item.data.uses.value}}" placeholder="0"/>/ {{item.data.uses.max}}
-                                            {{/if}}
-                                        </div>
-                            
-                                        <div class="item-detail item-action">
-                                            {{#if item.data.activation.type }}
-                                            {{item.labels.activation}}
-                                            {{/if}}
-                                        </div>
-                            
-                                        {{else if section.isClass}}
-                                        <div class="item-detail player-class">
-                                            {{item.data.subclass}}
-                                        </div>
-                                        <div class="item-detail">
-                                            Level {{item.data.levels}}
-                                        </div>
-                                        {{/if}}
-                            
-                                        {{#if ../../owner}}
-                                        <div class="item-controls">
-                                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                                        </div>
-                                        {{/if}}
-                                    </li>
-                                {{/each}}
-                                </ol>
-                            {{/ifeq}}
-                        {{/each}}
-                        
-              
-                        <!-- Cantrips -->
-                        {{#each spellbook as |section|}}
-                            {{#ifeq section.label "Cantrip"}}
-                                <li class="item flexrow inventory-header spellbook-header">
-                                    <div class="item-name flexrow">
-                                        <h3>{{localize section.label}}</h3>
-                                    </div>
-                            
-                                    <div class="spell-slots">
-                                        <span class="spell-slots">{{{section.uses}}}</span>
-                                        <span class="sep"> / </span>
-                                        <span class="spell-max">{{{section.slots}}}</span>
-                                    </div>
-                            
-                                    <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
-                                    <div class="spell-target">{{localize "DND5E.SpellTarget"}}</div>
-                                    <div class="spell-action">{{localize "DND5E.Usage"}}</div>
-                            
-                                    <div class="item-controls"></div>
-                                </li>
-                            
-                                <ol class="items-list">
-                                {{#each section.spells as |item i|}}
-                                    <li class="item flexrow" data-item-id="{{item._id}}">
-                                        <div class="item-name flexrow rollable">
-                                            <div class="item-image" style="background-image: url({{item.img}})"></div>
-                                            <h4>
-                                                {{item.name}}
-                                                {{#if item.data.components.concentration}}
-                                                    <img src="/modules/dndbeyond-character-sheet/images/concentration.png" style="border: 0px; vertical-align: text-top; max-width: initial;">
-                                                {{/if}}
-                                                {{#if item.data.components.ritual}}
-                                                    <img src="/modules/dndbeyond-character-sheet/images/ritual.png" style="border: 0px; vertical-align: text-top; max-width: initial;">
-                                                {{/if}}
-                                            </h4> 
-                                            {{#if item.data.uses.value }}
-                                            <div class="item-detail spell-uses">Uses {{item.data.uses.value}} / {{item.data.uses.max}}</div>
-                                            {{/if}}
-                                        </div>
-                            
-                                        <div class="spell-comps">{{labels.components}}</div>
-                                        <div class="spell-school">{{labels.school}}</div>
-                                        <div class="spell-target" title="Range: {{labels.range}}">
-                                            {{#if labels.target}}
-                                            {{labels.target}}
-                                            {{else}}None
-                                            {{/if}}
-                                        </div>
-                                        <div class="spell-action">{{labels.activation}}</div>
-                            
-                            
-                                        {{#if ../../owner}}
-                                        <div class="item-controls">
-                                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                                        </div>
-                                        {{/if}}
-                                    </li>
-                                {{/each}}
-                                </ol>
-                            {{else}}
-                                {{#if owner}}
-                                {{#if filters.spellbook.size}}
-                                <li class="item flexrow"><p class="notes">{{localize "DND5E.NoSpells"}}</p></li>
-                                {{else}}
-                                <li class="item flexrow inventory-header spellbook-header spellbook-empty">
-                                    <div class="item-controls">
-                                        <a class="item-control item-create" title="Create Spell" data-type="spell"
-                                        data-level="{{lvl}}"><i class="fas fa-plus"></i> {{localize "DND5E.SpellAdd"}}</a>
-                                    </div>
-                                {{/if}}
-                                {{/if}}
-                                </li>
-                            {{/ifeq}}
-                        {{/each}}
-                        
-              
-                        <!-- Prepared Spells -->
-                        {{#each spellbook as |section|}}
-                            {{#ifnoteq section.label "Cantrip"}}
-                                <li class="item flexrow inventory-header spellbook-header">
-                                    <div class="item-name flexrow">
-                                        <h3>{{localize section.label}}</h3>
-                                    </div>
-                            
-                                    <div class="spell-slots">
-                                        <span class="spell-slots">{{{section.uses}}}</span>
-                                        <span class="sep"> / </span>
-                                        <span class="spell-max">{{{section.slots}}}</span>
-                                    </div>
-                            
-                                    <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
-                                    <div class="spell-target">{{localize "DND5E.SpellTarget"}}</div>
-                                    <div class="spell-action">{{localize "DND5E.Usage"}}</div>
-                            
-                                    <div class="item-controls"></div>
-                                </li>
-                            
-                                <ol class="items-list">
-                                {{#each section.spells as |item i|}}
-                                    {{#if item.data.preparation.prepared}}
-                                        <li class="item flexrow" data-item-id="{{item._id}}">
-                                            <div class="item-name flexrow rollable">
-                                                <div class="item-image" style="background-image: url({{item.img}})"></div>
-                                                <h4>
-                                                    {{item.name}}
-                                                    {{#if item.data.components.concentration}}
-                                                        <img src="/modules/dndbeyond-character-sheet/images/concentration.png" style="border: 0px; vertical-align: text-top; max-width: initial;">
-                                                    {{/if}}
-                                                    {{#if item.data.components.ritual}}
-                                                        <img src="/modules/dndbeyond-character-sheet/images/ritual.png" style="border: 0px; vertical-align: text-top; max-width: initial;">
-                                                    {{/if}}
-                                                </h4> 
-                                                {{#if item.data.uses.value }}
-                                                <div class="item-detail spell-uses">Uses {{item.data.uses.value}} / {{item.data.uses.max}}</div>
-                                                {{/if}}
-                                            </div>
-                                
-                                            <div class="spell-comps">{{labels.components}}</div>
-                                            <div class="spell-school">{{labels.school}}</div>
-                                            <div class="spell-target" title="Range: {{labels.range}}">
-                                                {{#if labels.target}}
-                                                {{labels.target}}
-                                                {{else}}None
-                                                {{/if}}
-                                            </div>
-                                            <div class="spell-action">{{labels.activation}}</div>
-                                
-                                
-                                            {{#if ../../owner}}
-                                            <div class="item-controls">
-                                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                                            </div>
-                                            {{/if}}
-                                        </li>
-                                    {{/if}}
-                                {{/each}}
-                                </ol>
-                            {{else}}
-                                {{#if owner}}
-                                {{#if filters.spellbook.size}}
-                                <li class="item flexrow"><p class="notes">{{localize "DND5E.NoSpells"}}</p></li>
-                                {{else}}
-                                <li class="item flexrow inventory-header spellbook-header spellbook-empty">
-                                    <div class="item-controls">
-                                        <a class="item-control item-create" title="Create Spell" data-type="spell"
-                                        data-level="{{lvl}}"><i class="fas fa-plus"></i> {{localize "DND5E.SpellAdd"}}</a>
-                                    </div>
-                                {{/if}}
-                                {{/if}}
-                                </li>
-                            {{/ifnoteq}}
-                        {{/each}}
-              
-              
-                        </ol>
-                        
-                    </div>
-              
-                    {{!-- Inventory Tab --}}
-                    <div class="tab inventory flexcol" data-group="primary" data-tab="inventory">
-                        
-                        <div class="inventory-filters">
-                        
-                            
-                            <ul class="filter-list flexrow" data-filter="inventory">
-                                <li id="ActionFilterAction" class="filter-item" data-filter="action">{{localize "DND5E.Action"}}</li>
-                                <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
-                                <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
-                            </ul>
-                            
-              
-                            {{#if isCharacter}}
-                            <ol class="currency flexrow">
-                                
-                                {{#each data.currency as |v k|}}
-                                    <label class="denomination {{k}}">{{ lookup ../labels.currencies k }}</label>
-                                    <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number"/>
-                                {{/each}}
-                                <h3 class="currency-convert-button">
-                                    <a class="currency-convert rollable" data-action="convertCurrency" title="{{localize 'DND5E.CurrencyConvert'}}">Convert</a>
-                                </h3>
-                            </ol>
-                            {{/if}}
-                        </div>
-                        
-                        <ol class="items-list inventory-list">
-                        {{#each inventory as |section sid|}}
-                            <li class="inventory-header flexrow">
-                                <h3 class="item-name flexrow">{{localize section.label}}</h3>
-                                
-                                {{#if ../isCharacter}}
-                                <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
-                                <div class="item-detail item-equipped">{{localize "DND5E.Equipped"}}</div>
-                                {{/if}}
-                        
-                                <div class="item-detail item-uses">{{localize "DND5E.Charges"}}</div>
-                                <div class="item-detail item-action">{{localize "DND5E.Usage"}}</div>
-                        
-                                {{#if ../owner}}
-                                <div class="item-controls">
-                                    <a class="item-control item-create" title="Create Item" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
-                                        <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
-                                    </a>
-                                </div>
-                                {{/if}}
-                            </li>
-                        
-                            <ol class="item-list">
-                            {{#each section.items as |item iid|}}
                                 <li class="item flexrow" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
                                         <h4>
                                             {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
                                             {{item.name~}}
-                                            {{~#if item.data.attunement}} <i class="fas fa-sun attuned" title={{localize "DND5E.Attuned"}}></i>{{/if}}
+                                            {{#ifeq item.data.attunement "1"}} <i class="fas fa-sun"
+                                                title="{{localize "DND5E.AttunementRequired"}}"></i>{{/ifeq}}
+                                            {{#ifeq item.data.attunement "2"}} <i class="fas fa-sun attuned"
+                                            title="{{localize "DND5E.AttunementAttuned"}}"></i>{{/ifeq}}
                                         </h4>
                                     </div>
-                        
+
                                     {{#if ../../isCharacter}}
                                     <div class="item-detail item-weight">
                                         {{#if item.totalWeight}}
@@ -865,44 +544,456 @@
                                         </div>
                                         {{/if}}
                                     </div>
-                        
+
                                     <div class="item-detail item-equipped">
-                                    {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
-                                    {{/if}}
-                                    </div>
-                                    {{/if}}
-                        
-                                    <div class="item-detail item-uses">
-                                        {{#if item.hasUses }}
-                                            <input type="text" value="{{item.data.uses.value}}" placeholder="0"/>
-                                            / {{item.data.uses.max}}
+                                        {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
                                         {{/if}}
                                     </div>
-                        
+                                    {{/if}}
+
+                                    <div class="item-detail item-uses">
+                                        {{#if item.hasUses }}
+                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />
+                                        / {{item.data.uses.max}}
+                                        {{/if}}
+                                    </div>
+
                                     <div class="item-detail item-action">
                                         {{#if item.data.activation.type }}
                                         {{item.labels.activation}}
                                         {{/if}}
                                     </div>
-                        
+
                                     {{#if ../../owner}}
                                     <div class="item-controls">
-                                        {{#if item.data.equipped }}
-                                        <a class="item-control item-toggle active" title='Unequip'><i class="fas fa-shield-alt"></i></a>
-                                        {{else}}
-                                        <a class="item-control item-toggle" title='Equip'><i class="fas fa-shield-alt"></i></a>
-                                        {{/if}}
-                                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                                        <a class="item-control item-edit" title="Edit Item"><i
+                                                class="fas fa-edit"></i></a>
+                                        <a class="item-control item-delete" title="Delete Item"><i
+                                                class="fas fa-trash"></i></a>
                                     </div>
                                     {{/if}}
                                 </li>
-                            {{/each}}
+                                {{/ifeq}}
+                                {{#ifeq  item.data.activation.type "reaction"}}
+                                <li class="item flexrow" data-item-id="{{item._id}}">
+                                    <div class="item-name flexrow rollable">
+                                        <div class="item-image" style="background-image: url({{item.img}})"></div>
+                                        <h4>
+                                            {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
+                                            {{item.name~}}
+                                            {{#ifeq item.data.attunement "1"}} <i class="fas fa-sun attunement-required"
+                                                title="{{localize "DND5E.AttunementRequired"}}"></i>{{/ifeq}}
+                                            {{#ifeq item.data.attunement "2"}} <i class="fas fa-sun attuned"
+                                            title="{{localize "DND5E.AttunementAttuned"}}"></i>{{/ifeq}}
+                                        </h4>
+                                    </div>
+
+                                    {{#if ../../isCharacter}}
+                                    <div class="item-detail item-weight">
+                                        {{#if item.totalWeight}}
+                                        <div class="item-detail">
+                                            {{ item.totalWeight }} lbs.
+                                        </div>
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="item-detail item-equipped">
+                                        {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
+                                        {{/if}}
+                                    </div>
+                                    {{/if}}
+
+                                    <div class="item-detail item-uses">
+                                        {{#if item.hasUses }}
+                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />
+                                        / {{item.data.uses.max}}
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="item-detail item-action">
+                                        {{#if item.data.activation.type }}
+                                        {{item.labels.activation}}
+                                        {{/if}}
+                                    </div>
+
+                                    {{#if ../../owner}}
+                                    <div class="item-controls">
+                                        <a class="item-control item-edit" title="Edit Item"><i
+                                                class="fas fa-edit"></i></a>
+                                        <a class="item-control item-delete" title="Delete Item"><i
+                                                class="fas fa-trash"></i></a>
+                                    </div>
+                                    {{/if}}
+                                </li>
+                                {{/ifeq}}
+                                {{/each}}
                             </ol>
-                        {{/each}}
+
+                            {{/each}}
+
+                            <!-- Features -->
+                            {{#each features as |section sid|}}
+                            {{#ifeq section.label "DND5E.FeatureActive"}}
+                            <li class="inventory-header flexrow">
+                                <h3 class="item-name flexrow">{{localize section.label}} Features</h3>
+
+                                {{#if section.hasActions}}
+                                <div class="item-detail item-uses">{{localize "DND5E.Uses"}}</div>
+                                <div class="item-detail item-action">{{localize "DND5E.Usage"}}</div>
+                                {{/if}}
+
+                                {{#if ../owner}}
+                                <div class="item-controls">
+                                </div>
+                                {{/if}}
+                            </li>
+
+                            <ol class="items-list">
+                                {{#each section.items as |item iid|}}
+                                <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
+                                    <div class="item-name flexrow rollable">
+                                        <div class="item-image" style="background-image: url({{item.img}})"></div>
+                                        <h4>{{item.name}}</h4>
+                                    </div>
+
+                                    {{#if section.hasActions}}
+                                    <div class="item-detail item-uses">
+                                        {{#if item.isOnCooldown}}
+                                        <a class="item-recharge rollable">{{item.labels.recharge}}</a>
+                                        {{else if item.data.recharge.value}}
+                                        {{localize "DND5E.Charged"}}
+
+                                        {{else if item.hasUses}}
+                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />/
+                                        {{item.data.uses.max}}
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="item-detail item-action">
+                                        {{#if item.data.activation.type }}
+                                        {{item.labels.activation}}
+                                        {{/if}}
+                                    </div>
+
+                                    {{else if section.isClass}}
+                                    <div class="item-detail player-class">
+                                        {{item.data.subclass}}
+                                    </div>
+                                    <div class="item-detail">
+                                        Level {{item.data.levels}}
+                                    </div>
+                                    {{/if}}
+
+                                    {{#if ../../owner}}
+                                    <div class="item-controls">
+                                        <a class="item-control item-edit" title="Edit Item"><i
+                                                class="fas fa-edit"></i></a>
+                                        <a class="item-control item-delete" title="Delete Item"><i
+                                                class="fas fa-trash"></i></a>
+                                    </div>
+                                    {{/if}}
+                                </li>
+                                {{/each}}
+                            </ol>
+                            {{/ifeq}}
+                            {{/each}}
+
+
+                            <!-- Cantrips -->
+                            {{#each spellbook as |section|}}
+                            {{#ifeq section.label "Cantrip"}}
+                            <li class="item flexrow inventory-header spellbook-header">
+                                <div class="item-name flexrow">
+                                    <h3>{{localize section.label}}</h3>
+                                </div>
+
+                                <div class="spell-slots">
+                                    <span class="spell-slots">{{{section.uses}}}</span>
+                                    <span class="sep"> / </span>
+                                    <span class="spell-max">{{{section.slots}}}</span>
+                                </div>
+
+                                <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
+                                <div class="spell-target">{{localize "DND5E.SpellTarget"}}</div>
+                                <div class="spell-action">{{localize "DND5E.Usage"}}</div>
+
+                                <div class="item-controls"></div>
+                            </li>
+
+                            <ol class="items-list">
+                                {{#each section.spells as |item i|}}
+                                <li class="item flexrow" data-item-id="{{item._id}}">
+                                    <div class="item-name flexrow rollable">
+                                        <div class="item-image" style="background-image: url({{item.img}})"></div>
+                                        <h4>
+                                            {{item.name}}
+                                            {{#if item.data.components.concentration}}
+                                            <img src="/modules/dndbeyond-character-sheet/images/concentration.png"
+                                                style="border: 0px; vertical-align: text-top; max-width: initial;">
+                                            {{/if}}
+                                            {{#if item.data.components.ritual}}
+                                            <img src="/modules/dndbeyond-character-sheet/images/ritual.png"
+                                                style="border: 0px; vertical-align: text-top; max-width: initial;">
+                                            {{/if}}
+                                        </h4>
+                                        {{#if item.data.uses.value }}
+                                        <div class="item-detail spell-uses">Uses {{item.data.uses.value}} /
+                                            {{item.data.uses.max}}</div>
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="spell-comps">{{labels.components}}</div>
+                                    <div class="spell-school">{{labels.school}}</div>
+                                    <div class="spell-target" title="Range: {{labels.range}}">
+                                        {{#if labels.target}}
+                                        {{labels.target}}
+                                        {{else}}None
+                                        {{/if}}
+                                    </div>
+                                    <div class="spell-action">{{labels.activation}}</div>
+
+
+                                    {{#if ../../owner}}
+                                    <div class="item-controls">
+                                        <a class="item-control item-edit" title="Edit Item"><i
+                                                class="fas fa-edit"></i></a>
+                                        <a class="item-control item-delete" title="Delete Item"><i
+                                                class="fas fa-trash"></i></a>
+                                    </div>
+                                    {{/if}}
+                                </li>
+                                {{/each}}
+                            </ol>
+                            {{else}}
+                            {{#if owner}}
+                            {{#if filters.spellbook.size}}
+                            <li class="item flexrow">
+                                <p class="notes">{{localize "DND5E.NoSpells"}}</p>
+                            </li>
+                            {{else}}
+                            <li class="item flexrow inventory-header spellbook-header spellbook-empty">
+                                <div class="item-controls">
+                                    <a class="item-control item-create" title="Create Spell" data-type="spell"
+                                        data-level="{{lvl}}"><i class="fas fa-plus"></i>
+                                        {{localize "DND5E.SpellAdd"}}</a>
+                                </div>
+                                {{/if}}
+                                {{/if}}
+                            </li>
+                            {{/ifeq}}
+                            {{/each}}
+
+
+                            <!-- Prepared Spells -->
+                            {{#each spellbook as |section|}}
+                            {{#ifnoteq section.label "Cantrip"}}
+                            <li class="item flexrow inventory-header spellbook-header">
+                                <div class="item-name flexrow">
+                                    <h3>{{localize section.label}}</h3>
+                                </div>
+
+                                <div class="spell-slots">
+                                    <span class="spell-slots">{{{section.uses}}}</span>
+                                    <span class="sep"> / </span>
+                                    <span class="spell-max">{{{section.slots}}}</span>
+                                </div>
+
+                                <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
+                                <div class="spell-target">{{localize "DND5E.SpellTarget"}}</div>
+                                <div class="spell-action">{{localize "DND5E.Usage"}}</div>
+
+                                <div class="item-controls"></div>
+                            </li>
+
+                            <ol class="items-list">
+                                {{#each section.spells as |item i|}}
+                                {{#if item.data.preparation.prepared}}
+                                <li class="item flexrow" data-item-id="{{item._id}}">
+                                    <div class="item-name flexrow rollable">
+                                        <div class="item-image" style="background-image: url({{item.img}})"></div>
+                                        <h4>
+                                            {{item.name}}
+                                            {{#if item.data.components.concentration}}
+                                            <img src="/modules/dndbeyond-character-sheet/images/concentration.png"
+                                                style="border: 0px; vertical-align: text-top; max-width: initial;">
+                                            {{/if}}
+                                            {{#if item.data.components.ritual}}
+                                            <img src="/modules/dndbeyond-character-sheet/images/ritual.png"
+                                                style="border: 0px; vertical-align: text-top; max-width: initial;">
+                                            {{/if}}
+                                        </h4>
+                                        {{#if item.data.uses.value }}
+                                        <div class="item-detail spell-uses">Uses {{item.data.uses.value}} /
+                                            {{item.data.uses.max}}</div>
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="spell-comps">{{labels.components}}</div>
+                                    <div class="spell-school">{{labels.school}}</div>
+                                    <div class="spell-target" title="Range: {{labels.range}}">
+                                        {{#if labels.target}}
+                                        {{labels.target}}
+                                        {{else}}None
+                                        {{/if}}
+                                    </div>
+                                    <div class="spell-action">{{labels.activation}}</div>
+
+
+                                    {{#if ../../owner}}
+                                    <div class="item-controls">
+                                        <a class="item-control item-edit" title="Edit Item"><i
+                                                class="fas fa-edit"></i></a>
+                                        <a class="item-control item-delete" title="Delete Item"><i
+                                                class="fas fa-trash"></i></a>
+                                    </div>
+                                    {{/if}}
+                                </li>
+                                {{/if}}
+                                {{/each}}
+                            </ol>
+                            {{else}}
+                            {{#if owner}}
+                            {{#if filters.spellbook.size}}
+                            <li class="item flexrow">
+                                <p class="notes">{{localize "DND5E.NoSpells"}}</p>
+                            </li>
+                            {{else}}
+                            <li class="item flexrow inventory-header spellbook-header spellbook-empty">
+                                <div class="item-controls">
+                                    <a class="item-control item-create" title="Create Spell" data-type="spell"
+                                        data-level="{{lvl}}"><i class="fas fa-plus"></i>
+                                        {{localize "DND5E.SpellAdd"}}</a>
+                                </div>
+                                {{/if}}
+                                {{/if}}
+                            </li>
+                            {{/ifnoteq}}
+                            {{/each}}
+
+
                         </ol>
-                        
-                        
+
+                    </div>
+
+                    {{!-- Inventory Tab --}}
+                    <div class="tab inventory flexcol" data-group="primary" data-tab="inventory">
+
+                        <div class="inventory-filters">
+
+
+                            <ul class="filter-list flexrow" data-filter="inventory">
+                                <li id="ActionFilterAction" class="filter-item" data-filter="action">
+                                    {{localize "DND5E.Action"}}</li>
+                                <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">
+                                    {{localize "DND5E.BonusAction"}}</li>
+                                <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">
+                                    {{localize "DND5E.Reaction"}}</li>
+                            </ul>
+
+
+                            {{#if isCharacter}}
+                            <ol class="currency flexrow">
+
+                                {{#each data.currency as |v k|}}
+                                <label class="denomination {{k}}">{{ lookup ../labels.currencies k }}</label>
+                                <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
+                                {{/each}}
+                                <h3 class="currency-convert-button">
+                                    <a class="currency-convert rollable" data-action="convertCurrency"
+                                        title="{{localize 'DND5E.CurrencyConvert'}}">Convert</a>
+                                </h3>
+                            </ol>
+                            {{/if}}
+                        </div>
+
+                        <ol class="items-list inventory-list">
+                            {{#each inventory as |section sid|}}
+                            <li class="inventory-header flexrow">
+                                <h3 class="item-name flexrow">{{localize section.label}}</h3>
+
+                                {{#if ../isCharacter}}
+                                <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
+                                <div class="item-detail item-equipped">{{localize "DND5E.Equipped"}}</div>
+                                {{/if}}
+
+                                <div class="item-detail item-uses">{{localize "DND5E.Charges"}}</div>
+                                <div class="item-detail item-action">{{localize "DND5E.Usage"}}</div>
+
+                                {{#if ../owner}}
+                                <div class="item-controls">
+                                    <a class="item-control item-create" title="Create Item"
+                                        {{#each section.dataset as |v k|}}data-{{k}}="{{v}}" {{/each}}>
+                                        <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
+                                    </a>
+                                </div>
+                                {{/if}}
+                            </li>
+
+                            <ol class="item-list">
+                                {{#each section.items as |item iid|}}
+                                <li class="item flexrow" data-item-id="{{item._id}}">
+                                    <div class="item-name flexrow rollable">
+                                        <div class="item-image" style="background-image: url({{item.img}})"></div>
+                                        <h4>
+                                            {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
+                                            {{item.name~}}
+                                            {{#ifeq item.data.attunement "1"}} <i class="fas fa-sun attunement-required"
+                                                title="{{localize "DND5E.AttunementRequired"}}"></i>{{/ifeq}}
+                                            {{#ifeq item.data.attunement "2"}} <i class="fas fa-sun attuned"
+                                            title="{{localize "DND5E.AttunementAttuned"}}"></i>{{/ifeq}}
+                                        </h4>
+                                    </div>
+
+                                    {{#if ../../isCharacter}}
+                                    <div class="item-detail item-weight">
+                                        {{#if item.totalWeight}}
+                                        <div class="item-detail">
+                                            {{ item.totalWeight }} lbs.
+                                        </div>
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="item-detail item-equipped">
+                                        {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
+                                        {{/if}}
+                                    </div>
+                                    {{/if}}
+
+                                    <div class="item-detail item-uses">
+                                        {{#if item.hasUses }}
+                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />
+                                        / {{item.data.uses.max}}
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="item-detail item-action">
+                                        {{#if item.data.activation.type }}
+                                        {{item.labels.activation}}
+                                        {{/if}}
+                                    </div>
+
+                                    {{#if ../../owner}}
+                                    <div class="item-controls">
+                                        {{#if item.data.equipped }}
+                                        <a class="item-control item-toggle active" title='Unequip'><i
+                                                class="fas fa-shield-alt"></i></a>
+                                        {{else}}
+                                        <a class="item-control item-toggle" title='Equip'><i
+                                                class="fas fa-shield-alt"></i></a>
+                                        {{/if}}
+                                        <a class="item-control item-edit" title="Edit Item"><i
+                                                class="fas fa-edit"></i></a>
+                                        <a class="item-control item-delete" title="Delete Item"><i
+                                                class="fas fa-trash"></i></a>
+                                    </div>
+                                    {{/if}}
+                                </li>
+                                {{/each}}
+                            </ol>
+                            {{/each}}
+                        </ol>
+
+
                         {{#if isCharacter }}
                         {{#with data.attributes.encumbrance}}
                         <div class="encumbrance {{#if encumbered}}encumbered{{/if}}">
@@ -913,65 +1004,70 @@
                         </div>
                         {{/with}}
                         {{/if}}
-                        
+
                     </div>
-              
+
                     {{!-- Features Tab --}}
                     <div class="tab features flexcol" data-group="primary" data-tab="features">
 
                         <div class="action-filters">
                             <ul class="filter-list flexrow" data-filter="inventory">
-                                <li id="ActionFilterAction" class="filter-item" data-filter="action">{{localize "DND5E.Action"}}</li>
-                                <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
-                                <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
+                                <li id="ActionFilterAction" class="filter-item" data-filter="action">
+                                    {{localize "DND5E.Action"}}</li>
+                                <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">
+                                    {{localize "DND5E.BonusAction"}}</li>
+                                <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">
+                                    {{localize "DND5E.Reaction"}}</li>
                             </ul>
                         </div>
 
                         <ol class="items-list inventory-list">
-                        {{#each features as |section sid|}}
+                            {{#each features as |section sid|}}
                             <li class="inventory-header flexrow">
                                 <h3 class="item-name flexrow">{{localize section.label}}</h3>
-                        
+
                                 {{#if section.hasActions}}
                                 <div class="item-detail item-uses">{{localize "DND5E.Uses"}}</div>
                                 <div class="item-detail item-action">{{localize "DND5E.Usage"}}</div>
                                 {{/if}}
-                        
+
                                 {{#if ../owner}}
                                 <div class="item-controls">
-                                    <a class="item-control item-create" title="Create Item" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+                                    <a class="item-control item-create" title="Create Item"
+                                        {{#each section.dataset as |v k|}}data-{{k}}="{{v}}" {{/each}}>
                                         <i class="fas fa-plus"></i> Add
                                     </a>
                                 </div>
                                 {{/if}}
                             </li>
-                        
+
                             <ol class="item-list">
-                            {{#each section.items as |item iid|}}
+                                {{#each section.items as |item iid|}}
                                 <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
                                         <h4>{{item.name}}</h4>
                                     </div>
-                        
+
                                     {{#if section.hasActions}}
                                     <div class="item-detail item-uses">
                                         {{#if item.isOnCooldown}}
                                         <a class="item-recharge rollable">{{item.labels.recharge}}</a>
                                         {{else if item.data.recharge.value}}
                                         {{localize "DND5E.Charged"}}
-                        
+
                                         {{else if item.hasUses}}
-                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0"/>/ {{item.data.uses.max}}
+                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />/
+                                        {{item.data.uses.max}}
                                         {{/if}}
                                     </div>
-                        
+
                                     <div class="item-detail item-action">
                                         {{#if item.data.activation.type }}
                                         {{item.labels.activation}}
                                         {{/if}}
                                     </div>
-                        
+
                                     {{else if section.isClass}}
                                     <div class="item-detail player-class">
                                         {{item.data.subclass}}
@@ -980,47 +1076,65 @@
                                         Level {{item.data.levels}}
                                     </div>
                                     {{/if}}
-                        
+
                                     {{#if ../../owner}}
                                     <div class="item-controls">
-                                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                                        <a class="item-control item-edit" title="Edit Item"><i
+                                                class="fas fa-edit"></i></a>
+                                        <a class="item-control item-delete" title="Delete Item"><i
+                                                class="fas fa-trash"></i></a>
                                     </div>
                                     {{/if}}
                                 </li>
-                            {{/each}}
+                                {{/each}}
                             </ol>
-                        {{/each}}
+                            {{/each}}
                         </ol>
-                        
+
                     </div>
-              
+
                     {{!-- Spellbook Tab --}}
                     <div class="tab spellbook flexcol" data-group="primary" data-tab="spellbook">
                         <div class="inventory-filters spellbook-filters">
-                            
-                                <ul class="filter-list flexrow" data-filter="inventory">
-                                    <li id="ActionFilterAction" class="filter-item" data-filter="action">{{localize "DND5E.Action"}}</li>
-                                    <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">{{localize "DND5E.BonusAction"}}</li>
-                                    <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">{{localize "DND5E.Reaction"}}</li>
-                                </ul>
-                            
-                            <ul class="filter-list flexrow filter-spellbook" data-filter="spellbook">
-                                <li class="filter-item" data-filter="concentration"><img src="/modules/dndbeyond-character-sheet/images/concentration.png" style="border: 0px; vertical-align: text-top; max-width: initial;"> Concentration</li>
-                                <li class="filter-item" data-filter="ritual"><img src="/modules/dndbeyond-character-sheet/images/ritual.png" style="border: 0px; vertical-align: text-top; max-width: initial;"> {{localize "DND5E.Ritual"}}</li>
-                                <li class="filter-item" data-filter="prepared">{{localize "DND5E.Prepared"}}{{#if preparedSpells}} ({{preparedSpells}}){{/if}}</li>
+
+                            <ul class="filter-list flexrow" data-filter="inventory">
+                                <li id="ActionFilterAction" class="filter-item" data-filter="action">
+                                    {{localize "DND5E.Action"}}</li>
+                                <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">
+                                    {{localize "DND5E.BonusAction"}}</li>
+                                <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">
+                                    {{localize "DND5E.Reaction"}}</li>
                             </ul>
-              
+
+                            <ul class="filter-list flexrow filter-spellbook" data-filter="spellbook">
+                                <li class="filter-item" data-filter="concentration"><img
+                                        src="/modules/dndbeyond-character-sheet/images/concentration.png"
+                                        style="border: 0px; vertical-align: text-top; max-width: initial;">
+                                    Concentration</li>
+                                <li class="filter-item" data-filter="ritual"><img
+                                        src="/modules/dndbeyond-character-sheet/images/ritual.png"
+                                        style="border: 0px; vertical-align: text-top; max-width: initial;">
+                                    {{localize "DND5E.Ritual"}}</li>
+                                <li class="filter-item" data-filter="prepared">
+                                    {{localize "DND5E.Prepared"}}{{#if preparedSpells}} ({{preparedSpells}}){{/if}}</li>
+                            </ul>
+
                             <div class="form-group spellcasting-ability">
                                 {{#if isNPC}}
                                 <div class="spellcasting-level flexrow">
-                                    <label><h3>Spellcasting Level</h3></label>
+                                    <label>
+                                        <h3>Spellcasting Level</h3>
+                                    </label>
                                     <input class="spellcasting-level" type="text" name="data.details.spellLevel"
-                                           value="{{data.details.spellLevel}}" data-dtype="Number" placeholder="0"/>
+                                        value="{{data.details.spellLevel}}" data-dtype="Number" placeholder="0" />
                                 </div>
                                 {{/if}}
-                                <label><h3>Spellcasting DC <b>{{data.attributes.spelldc}}</b></h3></label>
-                                <label><h3>Spellcasting Ability</h3></label>
+                                <label>
+                                    <h3>Spellcasting DC <b>{{data.attributes.spelldc}}</b></h3>
+                                </label>
+                                <label>
+                                    <h3>Spellcasting Ability</h3>
+                                </label>
                                 <select name="data.attributes.spellcasting" data-type="String">
                                     {{#select data.attributes.spellcasting}}
                                     <option value="">None</option>
@@ -1031,65 +1145,70 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <ol class="items-list inventory-list">
-                        {{#each spellbook as |section|}}
+                            {{#each spellbook as |section|}}
                             <li class="item flexrow inventory-header spellbook-header">
                                 <div class="item-name flexrow">
                                     <h3>{{localize section.label}}</h3>
                                 </div>
-                        
+
                                 <div class="spell-slots">
                                     {{#if section.usesSlots}}
-                                    <input type="text" name="data.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
-                                           data-dtype="Number"/>
+                                    <input type="text" name="data.spells.{{section.prop}}.value"
+                                        value="{{section.uses}}" placeholder="0" data-dtype="Number" />
                                     <span class="sep"> / </span>
-                                    <span class="spell-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
+                                    <span class="spell-max" data-level="{{section.prop}}"
+                                        data-slots="{{section.slots}}">
                                         {{{section.slots}}}
                                         {{#if ../editable}}
                                         <a class="slot-max-override" title="{{localize 'DND5E.SpellProgOverride'}}">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         {{/if}}
-                                    {{ else }}
-                                    <span class="spell-slots">{{{section.uses}}}</span>
-                                    <span class="sep"> / </span>
-                                    <span class="spell-max">{{{section.slots}}}</span>
-                                    {{/if}}
+                                        {{ else }}
+                                        <span class="spell-slots">{{{section.uses}}}</span>
+                                        <span class="sep"> / </span>
+                                        <span class="spell-max">{{{section.slots}}}</span>
+                                        {{/if}}
                                 </div>
-                        
+
                                 <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
                                 <div class="spell-target">{{localize "DND5E.SpellTarget"}}</div>
                                 <div class="spell-action">{{localize "DND5E.SpellUsage"}}</div>
-                        
+
                                 <div class="item-controls">
                                     {{#if section.canCreate}}
-                                    <a class="item-control item-create" title="Create Spell" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+                                    <a class="item-control item-create" title="Create Spell"
+                                        {{#each section.dataset as |v k|}}data-{{k}}="{{v}}" {{/each}}>
                                         <i class="fas fa-plus"></i> {{localize "DND5E.Add"}}
                                     </a>
                                     {{/if}}
                                 </div>
                             </li>
-                        
+
                             <ol class="item-list">
-                            {{#each section.spells as |item i|}}
+                                {{#each section.spells as |item i|}}
                                 <li class="item flexrow" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
                                         <h4>
                                             {{item.name}}
                                             {{#if item.data.components.concentration}}
-                                                <img src="/modules/dndbeyond-character-sheet/images/concentration.png" style="border: 0px; vertical-align: text-top; max-width: initial;">
+                                            <img src="/modules/dndbeyond-character-sheet/images/concentration.png"
+                                                style="border: 0px; vertical-align: text-top; max-width: initial;">
                                             {{/if}}
                                             {{#if item.data.components.ritual}}
-                                                <img src="/modules/dndbeyond-character-sheet/images/ritual.png" style="border: 0px; vertical-align: text-top; max-width: initial;">
+                                            <img src="/modules/dndbeyond-character-sheet/images/ritual.png"
+                                                style="border: 0px; vertical-align: text-top; max-width: initial;">
                                             {{/if}}
-                                        </h4> 
+                                        </h4>
                                         {{#if item.data.uses.value }}
-                                        <div class="item-detail spell-uses">Uses {{item.data.uses.value}} / {{item.data.uses.max}}</div>
+                                        <div class="item-detail spell-uses">Uses {{item.data.uses.value}} /
+                                            {{item.data.uses.max}}</div>
                                         {{/if}}
                                     </div>
-                        
+
                                     <div class="spell-comps">{{labels.components}}</div>
                                     <div class="spell-school">{{labels.school}}</div>
                                     <div class="spell-target" title="Range: {{labels.range}}">
@@ -1099,49 +1218,55 @@
                                         {{/if}}
                                     </div>
                                     <div class="spell-action">{{labels.activation}}</div>
-                        
-                        
+
+
                                     {{#if ../../owner}}
                                     <div class="item-controls">
                                         {{#if section.canPrepare}}
-                                        <a class="item-control item-toggle toggle-prepared {{#if item.data.preparation.prepared}}prepared{{/if}}" title="Toggle Prepared"><i class="fas fa-sun"></i></a>
+                                        <a class="item-control item-toggle toggle-prepared {{#if item.data.preparation.prepared}}prepared{{/if}}"
+                                            title="Toggle Prepared"><i class="fas fa-sun"></i></a>
                                         {{/if}}
-                                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                                        <a class="item-control item-edit" title="Edit Item"><i
+                                                class="fas fa-edit"></i></a>
+                                        <a class="item-control item-delete" title="Delete Item"><i
+                                                class="fas fa-trash"></i></a>
                                     </div>
                                     {{/if}}
                                 </li>
-                            {{/each}}
+                                {{/each}}
                             </ol>
-                        {{else}}
+                            {{else}}
                             {{#if owner}}
                             {{#if filters.spellbook.size}}
-                            <li class="item flexrow"><p class="notes">{{localize "DND5E.NoSpells"}}</p></li>
+                            <li class="item flexrow">
+                                <p class="notes">{{localize "DND5E.NoSpells"}}</p>
+                            </li>
                             {{else}}
                             <li class="item flexrow inventory-header spellbook-header spellbook-empty">
                                 <div class="item-controls">
                                     <a class="item-control item-create" title="Create Spell" data-type="spell"
-                                       data-level="{{lvl}}"><i class="fas fa-plus"></i> {{localize "DND5E.SpellAdd"}}</a>
+                                        data-level="{{lvl}}"><i class="fas fa-plus"></i>
+                                        {{localize "DND5E.SpellAdd"}}</a>
                                 </div>
-                            {{/if}}
-                            {{/if}}
+                                {{/if}}
+                                {{/if}}
                             </li>
-                        {{/each}}
+                            {{/each}}
                         </ol>
                     </div>
-              
+
                     {{!-- Effects Tab --}}
                     <div class="tab effects flexcol" data-group="primary" data-tab="effects">
                         {{> "systems/dnd5e/templates/actors/parts/active-effects.html"}}
                     </div>
-              
+
                     {{!-- Biography Tab --}}
                     <div class="tab biography flexcol" data-group="primary" data-tab="biography">
                         {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
                     </div>
                 </section>
-                
-              </div>
+
+            </div>
 
         </div>
 
