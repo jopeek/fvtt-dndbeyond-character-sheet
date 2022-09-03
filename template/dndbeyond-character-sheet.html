@@ -17,24 +17,24 @@
                     </div>
                     {{#unless disableExperience}}
                     <div class="xpbar">
-                        <span class="bar" style="width: {{data.details.xp.pct}}%"></span>
+                        <span class="bar" style="width: {{system.details.xp.pct}}%"></span>
                     </div>
                     <div class="experience flexrow">
-                        <input name="data.details.xp.value" type="text" value="{{data.details.xp.value}}"
+                        <input name="system.details.xp.value" type="text" value="{{system.details.xp.value}}"
                             data-dtype="Number" placeholder="0" />
                         <span class="sep">/</span>
-                        <span class="max">{{data.details.xp.max}} XP</span>
+                        <span class="max">{{system.details.xp.max}} XP</span>
                     </div>
                     {{/unless}}
                     <div class="summary flexrow">
-                        <span>Level {{data.details.level}}</span>
-                        <input type="text" name="data.details.race" value="{{data.details.race}}" placeholder="Race" />
-                        <input type="text" name="data.details.background" value="{{data.details.background}}"
+                        <span>Level {{system.details.level}}</span>
+                        <input type="text" name="system.details.race" value="{{system.details.race}}" placeholder="Race" />
+                        <input type="text" name="system.details.background" value="{{system.details.background}}"
                             placeholder="Background" />
-                        <input type="text" name="data.details.alignment" value="{{data.details.alignment}}"
+                        <input type="text" name="system.details.alignment" value="{{system.details.alignment}}"
                             placeholder="Alignment" />
-                        <select class="actor-size" name="data.traits.size">
-                            {{#select data.traits.size}}
+                        <select class="actor-size" name="system.traits.size">
+                            {{#select system.traits.size}}
                             {{#each config.actorSizes as |label size|}}
                             <option value="{{size}}">{{label}}</option>
                             {{/each}}
@@ -48,16 +48,16 @@
                         <li class="attribute proficiency">
                             <h4 class="attribute-name box-title">{{ localize "DND5E.Proficiency" }}</h4>
                             <div class="attribute-value">
-                                {{numberFormat data.attributes.prof decimals=0 sign=true}}
+                                {{numberFormat system.attributes.prof decimals=0 sign=true}}
                             </div>
                         </li>
                         <li class="attribute inspiration">
                             <h4 class="attribute-name box-title">{{ localize "DND5E.Inspiration" }}</h4>
                             <div class="attribute-value">
-                                <input type="checkbox" name="data.attributes.inspiration"
-                                    id="data.attributes.inspiration" class="css-checkbox-insp" data-dtype="Boolean"
-                                    {{checked data.attributes.inspiration}} />
-                                <label for="data.attributes.inspiration" class="css-label-insp"></label>
+                                <input type="checkbox" name="system.attributes.inspiration"
+                                    id="system.attributes.inspiration" class="css-checkbox-insp" data-dtype="Boolean"
+                                    {{checked system.attributes.inspiration}} />
+                                <label for="system.attributes.inspiration" class="css-label-insp"></label>
                             </div>
                         </li>
                         <li class="attribute speed">
@@ -72,7 +72,7 @@
                         <li class="attribute initiative">
                             <h4 class="attribute-name box-title rollable" data-action="rollInitiative">Initiative</h4>
                             <div class="attribute-value">
-                                {{numberFormat data.attributes.init.total decimals=0 sign=true}}
+                                {{numberFormat system.attributes.init.total decimals=0 sign=true}}
                             </div>
                         </li>
                         <li class="attribute armorclass">
@@ -82,7 +82,7 @@
                                 </a>
                             </h4>
                             <div class="attribute-value attributable" data-property="attributes.ac">
-                                <span>{{data.attributes.ac.value}}</span>
+                                <span>{{system.attributes.ac.value}}</span>
                             </div>
                         </li>
                         <li class="attribute rest">
@@ -99,7 +99,7 @@
 
                     {{!-- Ability Scores --}}
                     <ul class="ability-scores flexrow">
-                        {{#each data.abilities as |ability id|}}
+                        {{#each system.abilities as |ability id|}}
                         <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
                             <h4><a class="config-button" data-action="ability"
                                     title="{{localize 'DND5E.AbilityConfigure'}}">{{ability.label}}</a></h4>
@@ -109,7 +109,7 @@
                                         data-action="ability">{{numberFormat ability.mod decimals=0 sign=true}}</h4>
                                 </div>
                                 <footer class="ability-footer">
-                                    <input class="ability-score" name="data.abilities.{{id}}.value" type="text"
+                                    <input class="ability-score" name="system.abilities.{{id}}.value" type="text"
                                         value="{{ability.value}}" data-dtype="Number" placeholder="10" />
                                 </footer>
                             </div>
@@ -120,20 +120,20 @@
                             <h4 class="box-title">{{ localize "DND5E.HitPoints" }}</h4>
                             <div class="ability-box">
                                 <div class="ability-value multiple">
-                                    <input name="data.attributes.hp.value" type="text"
-                                        value="{{data.attributes.hp.value}}" data-dtype="Number" placeholder="10" />
+                                    <input name="system.attributes.hp.value" type="text"
+                                        value="{{system.attributes.hp.value}}" data-dtype="Number" placeholder="10" />
                                     <span class="sep"> / </span>
-                                    <input style="font-weight: bold;" name="data.attributes.hp.max" type="text"
-                                        value="{{data.attributes.hp.max}}" data-dtype="Number" placeholder="10" />
+                                    <input style="font-weight: bold;" name="system.attributes.hp.max" type="text"
+                                        value="{{system.attributes.hp.max}}" data-dtype="Number" placeholder="10" />
                                 </div>
                                 <footer class="ability-footer">
-                                    <input style="font-size: 13px;" name="data.attributes.hp.temp" type="text"
-                                        class="temphp" placeholder="+TMP" value="{{data.attributes.hp.temp}}"
-                                        data-dtype="{{data.attributes.hp.type}}" />
+                                    <input style="font-size: 13px;" name="system.attributes.hp.temp" type="text"
+                                        class="temphp" placeholder="+TMP" value="{{system.attributes.hp.temp}}"
+                                        data-dtype="{{system.attributes.hp.type}}" />
                                     <span class="sep"> / </span>
-                                    <input style="font-size: 13px;" name="data.attributes.hp.tempmax" type="text"
-                                        class="tempmaxhp" placeholder="+MAX" value="{{data.attributes.hp.tempmax}}"
-                                        data-dtype="{{data.attributes.hp.type}}" />
+                                    <input style="font-size: 13px;" name="system.attributes.hp.tempmax" type="text"
+                                        class="tempmaxhp" placeholder="+MAX" value="{{system.attributes.hp.tempmax}}"
+                                        data-dtype="{{system.attributes.hp.type}}" />
                                 </footer>
                             </div>
                         </li>
@@ -146,11 +146,11 @@
                                 </a>
                             </h4>
                             <div class="ability-box">
-                                <label class="hit-dice">{{data.attributes.hd}} / {{data.details.level}}</label>
+                                <label class="hit-dice">{{system.attributes.hd}} / {{system.details.level}}</label>
                                 <footer class="ability-footer exhaustion">
                                     {{ localize "DND5E.Exhaustion" }} <input type="text"
-                                        name="data.attributes.exhaustion" data-dtype="Number" placeholder="0"
-                                        value="{{data.attributes.exhaustion}}" style="width: 20px;" />
+                                        name="system.attributes.exhaustion" data-dtype="Number" placeholder="0"
+                                        value="{{system.attributes.exhaustion}}" style="width: 20px;" />
                                 </footer>
                             </div>
                         </li>
@@ -158,43 +158,43 @@
                         <li class="ability health defenses">
                             <h4 class="box-title">Vulnerabilities, Resistances, Immunities</h4>
                             <div class="ability-box">
-                                <div class="form-group {{data.traits.dv.cssClass}}">
-                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.dv"><i
+                                <div class="form-group {{system.traits.dv.cssClass}}">
+                                    <a class="trait-selector" data-options="damageTypes" data-target="system.traits.dv"><i
                                             class="fas fa-bolt" title="{{localize "DND5E.DamVuln"}}"></i></a>
-                                    <label for="data.traits.dv">{{localize "DND5E.DamVuln"}}</label>
+                                    <label for="system.traits.dv">{{localize "DND5E.DamVuln"}}</label>
                                     <ul class="traits-list">
-                                        {{#each data.traits.dv.selected as |v k|}}
+                                        {{#each system.traits.dv.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
                                 </div>
-                                <div class="form-group {{data.traits.dr.cssClass}}">
-                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.dr"><i
+                                <div class="form-group {{system.traits.dr.cssClass}}">
+                                    <a class="trait-selector" data-options="damageTypes" data-target="system.traits.dr"><i
                                             class="fas fa-shield-alt" title="{{localize "DND5E.DamRes"}}"></i></a>
-                                    <label for="data.traits.dr">{{localize "DND5E.DamRes"}}</label>
+                                    <label for="system.traits.dr">{{localize "DND5E.DamRes"}}</label>
                                     <ul class="traits-list">
-                                        {{#each data.traits.dr.selected as |v k|}}
+                                        {{#each system.traits.dr.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
                                 </div>
-                                <div class="form-group {{data.traits.di.cssClass}}">
-                                    <a class="trait-selector" data-options="damageTypes" data-target="data.traits.di"><i
+                                <div class="form-group {{system.traits.di.cssClass}}">
+                                    <a class="trait-selector" data-options="damageTypes" data-target="system.traits.di"><i
                                             class="fas fa-syringe" title="{{localize "DND5E.DamImm"}}"></i></a>
-                                    <label for="data.traits.di">{{localize "DND5E.DamImm"}}</label>
+                                    <label for="system.traits.di">{{localize "DND5E.DamImm"}}</label>
                                     <ul class="traits-list">
-                                        {{#each data.traits.di.selected as |v k|}}
+                                        {{#each system.traits.di.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
                                 </div>
-                                <div class="form-group {{data.traits.ci.cssClass}}">
+                                <div class="form-group {{system.traits.ci.cssClass}}">
                                     <a class="trait-selector" data-options="conditionTypes"
-                                        data-target="data.traits.ci"><i class="fas fa-prescription"
+                                        data-target="system.traits.ci"><i class="fas fa-prescription"
                                             title="{{localize "DND5E.ConImm"}}"></i></a>
-                                    <label for="data.traits.ci">{{localize "DND5E.ConImm"}}</label>
+                                    <label for="system.traits.ci">{{localize "DND5E.ConImm"}}</label>
                                     <ul class="traits-list">
-                                        {{#each data.traits.ci.selected as |v k|}}
+                                        {{#each system.traits.ci.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
@@ -214,9 +214,9 @@
                         <h4 class="box-title">Saving Throws</h4>
                         {{!-- Ability Scores --}}
                         <ul class="skills-list">
-                            {{#each data.abilities as |ability id|}}
+                            {{#each system.abilities as |ability id|}}
                             <li class="skill flexrow ability" data-ability="{{id}}">
-                                <input type="hidden" name="data.abilities.{{id}}.proficient"
+                                <input type="hidden" name="system.abilities.{{id}}.proficient"
                                     value="{{ability.proficient}}" data-dtype="Number" />
                                 <a class="proficiency-toggle ability-proficiency"
                                     title="Proficiency">{{{ability.icon}}}</a>
@@ -238,16 +238,16 @@
                                 <h4 class="skill-name ability-name">Successes</h4>
                                 <span class="skill-mod ability-save">
                                     <input type="text" class="skill-mod ability-save"
-                                        name="data.attributes.death.success" data-dtype="Number" placeholder="0"
-                                        value="{{data.attributes.death.success}}" />
+                                        name="system.attributes.death.success" data-dtype="Number" placeholder="0"
+                                        value="{{system.attributes.death.success}}" />
                                 </span>
                             </li>
                             <li class="skill flexrow ability">
                                 <i class="fas fa-times proficiency-toggle ability-proficiency"></i>
                                 <h4 class="skill-name ability-name">Failures</h4>
                                 <span class="skill-mod ability-save">
-                                    <input type="text" name="data.attributes.death.failure" data-dtype="Number"
-                                        placeholder="0" value="{{data.attributes.death.failure}}" />
+                                    <input type="text" name="system.attributes.death.failure" data-dtype="Number"
+                                        placeholder="0" value="{{system.attributes.death.failure}}" />
                                 </span>
                             </li>
                         </ul>
@@ -260,27 +260,27 @@
 
                         {{#each resources as |res|}}
                         <li class="ability health resource">
-                            <h4 class="box-title"><input name="data.resources.{{res.name}}.label" type="text"
+                            <h4 class="box-title"><input name="system.resources.{{res.name}}.label" type="text"
                                     value="{{res.label}}" placeholder="{{res.placeholder}}" /></h4>
                             <div class="ability-box">
                                 <div class="ability-value multiple">
-                                    <input name="data.resources.{{res.name}}.value" type="text" value="{{res.value}}"
+                                    <input name="system.resources.{{res.name}}.value" type="text" value="{{res.value}}"
                                         data-dtype="Number" placeholder="0" />
                                     <span class="sep"> / </span>
-                                    <input name="data.resources.{{res.name}}.max" type="text" value="{{res.max}}"
+                                    <input name="system.resources.{{res.name}}.max" type="text" value="{{res.max}}"
                                         data-dtype="Number" placeholder="0" />
                                 </div>
                                 <footer class="ability-footer">
                                     <label class="checkbox">SR </label>
-                                    <input type="checkbox" name="data.resources.{{res.name}}.sr"
-                                        id="data.resources.{{res.name}}.sr" class="css-checkbox" data-dtype="Boolean"
+                                    <input type="checkbox" name="system.resources.{{res.name}}.sr"
+                                        id="system.resources.{{res.name}}.sr" class="css-checkbox" data-dtype="Boolean"
                                         {{checked res.sr}} />
-                                    <label for="data.resources.{{res.name}}.sr" class="css-label"></label>
+                                    <label for="system.resources.{{res.name}}.sr" class="css-label"></label>
                                     <label class="checkbox">LR </label>
-                                    <input type="checkbox" name="data.resources.{{res.name}}.lr"
-                                        id="data.resources.{{res.name}}.lr" class="css-checkbox" data-dtype="Boolean"
+                                    <input type="checkbox" name="system.resources.{{res.name}}.lr"
+                                        id="system.resources.{{res.name}}.lr" class="css-checkbox" data-dtype="Boolean"
                                         {{checked res.lr}} />
-                                    <label for="data.resources.{{res.name}}.lr" class="css-label"></label>
+                                    <label for="system.resources.{{res.name}}.lr" class="css-label"></label>
                                 </footer>
                             </div>
                         </li>
@@ -314,46 +314,46 @@
                         <li class="ability health defenses">
                             <h4 class="box-title">Proficiencies</h4>
                             <div class="proficiencies-box">
-                                <div class="form-group {{data.traits.languages.cssClass}}">
+                                <div class="form-group {{system.traits.languages.cssClass}}">
                                     <a class="trait-selector" data-options="languages"
-                                        data-target="data.traits.languages"><i class="fas fa-globe"
+                                        data-target="system.traits.languages"><i class="fas fa-globe"
                                             title="{{localize "DND5E.Languages"}}"></i></a>
-                                    <label for="data.traits.languages">{{localize "DND5E.Languages"}}</label>
+                                    <label for="system.traits.languages">{{localize "DND5E.Languages"}}</label>
                                     <ul class="traits-list">
-                                        {{#each data.traits.languages.selected as |v k|}}
+                                        {{#each system.traits.languages.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
                                 </div>
-                                <div class="form-group {{data.traits.weaponProf.cssClass}}">
+                                <div class="form-group {{system.traits.weaponProf.cssClass}}">
                                     <a class="trait-selector" data-options="weaponProficiencies"
-                                        data-target="data.traits.weaponProf"><i class="fas fa-khanda"
+                                        data-target="system.traits.weaponProf"><i class="fas fa-khanda"
                                             title="{{localize "DND5E.TraitWeaponProf"}}"></i></a>
-                                    <label for="data.traits.weaponProf">{{localize "DND5E.TraitWeaponProf"}}</label>
+                                    <label for="system.traits.weaponProf">{{localize "DND5E.TraitWeaponProf"}}</label>
                                     <ul class="traits-list">
-                                        {{#each data.traits.weaponProf.selected as |v k|}}
+                                        {{#each system.traits.weaponProf.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
                                 </div>
-                                <div class="form-group {{data.traits.armorProf.cssClass}}">
+                                <div class="form-group {{system.traits.armorProf.cssClass}}">
                                     <a class="trait-selector" data-options="armorProficiencies"
-                                        data-target="data.traits.armorProf"><i class="fas fa-shield-alt"
+                                        data-target="system.traits.armorProf"><i class="fas fa-shield-alt"
                                             title="{{localize "DND5E.TraitArmorProf"}}"></i></a>
-                                    <label for="data.traits.armorProf">{{localize "DND5E.TraitArmorProf"}}</label>
+                                    <label for="system.traits.armorProf">{{localize "DND5E.TraitArmorProf"}}</label>
                                     <ul class="traits-list">
-                                        {{#each data.traits.armorProf.selected as |v k|}}
+                                        {{#each system.traits.armorProf.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
                                 </div>
-                                <div class="form-group {{data.traits.toolProf.cssClass}}">
+                                <div class="form-group {{system.traits.toolProf.cssClass}}">
                                     <a class="trait-selector" data-options="toolProficiencies"
-                                        data-target="data.traits.toolProf"><i class="fas fa-tools"
+                                        data-target="system.traits.toolProf"><i class="fas fa-tools"
                                             title="{{localize "DND5E.TraitToolProf"}}"></i></a>
-                                    <label for="data.traits.toolProf">{{localize "DND5E.TraitToolProf"}}</label>
+                                    <label for="system.traits.toolProf">{{localize "DND5E.TraitToolProf"}}</label>
                                     <ul class="traits-list">
-                                        {{#each data.traits.toolProf.selected as |v k|}}
+                                        {{#each system.traits.toolProf.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
@@ -385,9 +385,9 @@
                 <h4 class="box-title">Skills</h4>
                 {{!-- Skills --}}
                 <ul class="skills-list">
-                    {{#each data.skills as |skill s|}}
+                    {{#each system.skills as |skill s|}}
                     <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
-                        <input type="hidden" name="data.skills.{{s}}.value" value="{{skill.value}}"
+                        <input type="hidden" name="system.skills.{{s}}.value" value="{{skill.value}}"
                             data-dtype="Number" />
                         <a class="proficiency-toggle skill-proficiency" title="{{skill.hover}}">{{{skill.icon}}}</a>
                         <h4 class="skill-name rollable">{{skill.label}}</h4>
@@ -459,18 +459,18 @@
 
                             <ol class="item-list">
                                 {{#each section.items as |item iid|}}
-                                {{#ifeq  item.data.activation.type "action"}}
-                                {{#if item.data.equipped }}
-                                {{#ifnoteq item.data.attunement "1"}}
+                                {{#ifeq  item.system.activation.type "action"}}
+                                {{#if item.system.equipped }}
+                                {{#ifnoteq item.system.attunement "1"}}
                                 <li class="item flexrow" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
                                         <h4>
-                                            {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
+                                            {{~#if item.isStack}}({{item.system.quantity}}) {{/if}}
                                             {{item.name~}}
-                                            {{#ifeq item.data.attunement "1"}} <i class="fas fa-sun attunement-required"
+                                            {{#ifeq item.system.attunement "1"}} <i class="fas fa-sun attunement-required"
                                                 title="{{localize "DND5E.AttunementRequired"}}"></i>{{/ifeq}}
-                                            {{#ifeq item.data.attunement "2"}} <i class="fas fa-sun attuned"
+                                            {{#ifeq item.system.attunement "2"}} <i class="fas fa-sun attuned"
                                                 title="{{localize "DND5E.AttunementAttuned"}}"></i>{{/ifeq}}
                                         </h4>
                                     </div>
@@ -485,27 +485,27 @@
                                     </div>
 
                                     <div class="item-detail item-equipped">
-                                        {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
+                                        {{#if item.system.equipped }} {{localize "DND5E.Equipped"}}
                                         {{/if}}
                                     </div>
                                     {{/if}}
 
                                     <div class="item-detail item-uses">
                                         {{#if item.hasUses }}
-                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />
-                                        / {{item.data.uses.max}}
+                                        <input type="text" value="{{item.system.uses.value}}" placeholder="0" />
+                                        / {{item.system.uses.max}}
                                         {{/if}}
                                     </div>
 
                                     <div class="item-detail item-action">
-                                        {{#if item.data.activation.type }}
+                                        {{#if item.system.activation.type }}
                                         {{item.labels.activation}}
                                         {{/if}}
                                     </div>
 
                                     {{#if ../../owner}}
                                     <div class="item-controls">
-                                        {{#if item.data.equipped }}
+                                        {{#if item.system.equipped }}
                                         <a class="item-control item-toggle active" title='Unequip'><i
                                                 class="fas fa-shield-alt"></i></a>
                                         {{else}}
@@ -522,16 +522,16 @@
                                 {{/ifnoteq}}
                                 {{/if}}
                                 {{/ifeq}}
-                                {{#ifeq  item.data.activation.type "bonus"}}
+                                {{#ifeq  item.system.activation.type "bonus"}}
                                 <li class="item flexrow" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
                                         <h4>
-                                            {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
+                                            {{~#if item.isStack}}({{item.system.quantity}}) {{/if}}
                                             {{item.name~}}
-                                            {{#ifeq item.data.attunement "1"}} <i class="fas fa-sun"
+                                            {{#ifeq item.system.attunement "1"}} <i class="fas fa-sun"
                                                 title="{{localize "DND5E.AttunementRequired"}}"></i>{{/ifeq}}
-                                            {{#ifeq item.data.attunement "2"}} <i class="fas fa-sun attuned"
+                                            {{#ifeq item.system.attunement "2"}} <i class="fas fa-sun attuned"
                                                 title="{{localize "DND5E.AttunementAttuned"}}"></i>{{/ifeq}}
                                         </h4>
                                     </div>
@@ -546,20 +546,20 @@
                                     </div>
 
                                     <div class="item-detail item-equipped">
-                                        {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
+                                        {{#if item.system.equipped }} {{localize "DND5E.Equipped"}}
                                         {{/if}}
                                     </div>
                                     {{/if}}
 
                                     <div class="item-detail item-uses">
                                         {{#if item.hasUses }}
-                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />
-                                        / {{item.data.uses.max}}
+                                        <input type="text" value="{{item.system.uses.value}}" placeholder="0" />
+                                        / {{item.system.uses.max}}
                                         {{/if}}
                                     </div>
 
                                     <div class="item-detail item-action">
-                                        {{#if item.data.activation.type }}
+                                        {{#if item.system.activation.type }}
                                         {{item.labels.activation}}
                                         {{/if}}
                                     </div>
@@ -574,16 +574,16 @@
                                     {{/if}}
                                 </li>
                                 {{/ifeq}}
-                                {{#ifeq  item.data.activation.type "reaction"}}
+                                {{#ifeq  item.system.activation.type "reaction"}}
                                 <li class="item flexrow" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
                                         <h4>
-                                            {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
+                                            {{~#if item.isStack}}({{item.system.quantity}}) {{/if}}
                                             {{item.name~}}
-                                            {{#ifeq item.data.attunement "1"}} <i class="fas fa-sun attunement-required"
+                                            {{#ifeq item.system.attunement "1"}} <i class="fas fa-sun attunement-required"
                                                 title="{{localize "DND5E.AttunementRequired"}}"></i>{{/ifeq}}
-                                            {{#ifeq item.data.attunement "2"}} <i class="fas fa-sun attuned"
+                                            {{#ifeq item.system.attunement "2"}} <i class="fas fa-sun attuned"
                                                 title="{{localize "DND5E.AttunementAttuned"}}"></i>{{/ifeq}}
                                         </h4>
                                     </div>
@@ -598,20 +598,20 @@
                                     </div>
 
                                     <div class="item-detail item-equipped">
-                                        {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
+                                        {{#if item.system.equipped }} {{localize "DND5E.Equipped"}}
                                         {{/if}}
                                     </div>
                                     {{/if}}
 
                                     <div class="item-detail item-uses">
                                         {{#if item.hasUses }}
-                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />
-                                        / {{item.data.uses.max}}
+                                        <input type="text" value="{{item.system.uses.value}}" placeholder="0" />
+                                        / {{item.system.uses.max}}
                                         {{/if}}
                                     </div>
 
                                     <div class="item-detail item-action">
-                                        {{#if item.data.activation.type }}
+                                        {{#if item.system.activation.type }}
                                         {{item.labels.activation}}
                                         {{/if}}
                                     </div>
@@ -660,27 +660,27 @@
                                     <div class="item-detail item-uses">
                                         {{#if item.isOnCooldown}}
                                         <a class="item-recharge rollable">{{item.labels.recharge}}</a>
-                                        {{else if item.data.recharge.value}}
+                                        {{else if item.system.recharge.value}}
                                         {{localize "DND5E.Charged"}}
 
                                         {{else if item.hasUses}}
-                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />/
-                                        {{item.data.uses.max}}
+                                        <input type="text" value="{{item.system.uses.value}}" placeholder="0" />/
+                                        {{item.system.uses.max}}
                                         {{/if}}
                                     </div>
 
                                     <div class="item-detail item-action">
-                                        {{#if item.data.activation.type }}
+                                        {{#if item.system.activation.type }}
                                         {{item.labels.activation}}
                                         {{/if}}
                                     </div>
 
                                     {{else if section.isClass}}
                                     <div class="item-detail player-class">
-                                        {{item.data.subclass}}
+                                        {{item.system.subclass}}
                                     </div>
                                     <div class="item-detail">
-                                        Level {{item.data.levels}}
+                                        Level {{item.system.levels}}
                                     </div>
                                     {{/if}}
 
@@ -728,9 +728,9 @@
                                         <h4>
                                             {{item.name}}
                                         </h4>
-                                        {{#if item.data.uses.value }}
-                                        <div class="item-detail spell-uses">Uses {{item.data.uses.value}} /
-                                            {{item.data.uses.max}}</div>
+                                        {{#if item.system.uses.value }}
+                                        <div class="item-detail spell-uses">Uses {{item.system.uses.value}} /
+                                            {{item.system.uses.max}}</div>
                                         {{/if}}
                                     </div>
 
@@ -803,16 +803,16 @@
 
                             <ol class="items-list">
                                 {{#each section.spells as |item i|}}
-                                {{#if item.data.preparation.prepared}}
+                                {{#if item.system.preparation.prepared}}
                                 <li class="item flexrow" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
                                         <h4>
                                             {{item.name}}
                                         </h4>
-                                        {{#if item.data.uses.value }}
-                                        <div class="item-detail spell-uses">Uses {{item.data.uses.value}} /
-                                            {{item.data.uses.max}}</div>
+                                        {{#if item.system.uses.value }}
+                                        <div class="item-detail spell-uses">Uses {{item.system.uses.value}} /
+                                            {{item.system.uses.max}}</div>
                                         {{/if}}
                                     </div>
 
@@ -886,9 +886,9 @@
                             {{#if isCharacter}}
                             <ol class="currency flexrow">
 
-                                {{#each data.currency as |v k|}}
+                                {{#each system.currency as |v k|}}
                                 <label class="denomination {{k}}">{{ lookup ../labels.currencies k }}</label>
-                                <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
+                                <input type="text" name="system.currency.{{k}}" value="{{v}}" data-dtype="Number" />
                                 {{/each}}
                                 <h3 class="currency-convert-button">
                                     <a class="currency-convert rollable" data-action="convertCurrency"
@@ -927,11 +927,11 @@
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
                                         <h4>
-                                            {{~#if item.isStack}}({{item.data.quantity}}) {{/if}}
+                                            {{~#if item.isStack}}({{item.system.quantity}}) {{/if}}
                                             {{item.name~}}
-                                            {{#ifeq item.data.attunement "1"}} <i class="fas fa-sun attunement-required"
+                                            {{#ifeq item.system.attunement "1"}} <i class="fas fa-sun attunement-required"
                                                 title="{{localize "DND5E.AttunementRequired"}}"></i>{{/ifeq}}
-                                            {{#ifeq item.data.attunement "2"}} <i class="fas fa-sun attuned"
+                                            {{#ifeq item.system.attunement "2"}} <i class="fas fa-sun attuned"
                                                 title="{{localize "DND5E.AttunementAttuned"}}"></i>{{/ifeq}}
                                         </h4>
                                     </div>
@@ -946,27 +946,27 @@
                                     </div>
 
                                     <div class="item-detail item-equipped">
-                                        {{#if item.data.equipped }} {{localize "DND5E.Equipped"}}
+                                        {{#if item.system.equipped }} {{localize "DND5E.Equipped"}}
                                         {{/if}}
                                     </div>
                                     {{/if}}
 
                                     <div class="item-detail item-uses">
                                         {{#if item.hasUses }}
-                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />
-                                        / {{item.data.uses.max}}
+                                        <input type="text" value="{{item.system.uses.value}}" placeholder="0" />
+                                        / {{item.system.uses.max}}
                                         {{/if}}
                                     </div>
 
                                     <div class="item-detail item-action">
-                                        {{#if item.data.activation.type }}
+                                        {{#if item.system.activation.type }}
                                         {{item.labels.activation}}
                                         {{/if}}
                                     </div>
 
                                     {{#if ../../owner}}
                                     <div class="item-controls">
-                                        {{#if item.data.equipped }}
+                                        {{#if item.system.equipped }}
                                         <a class="item-control item-toggle active" title='Unequip'><i
                                                 class="fas fa-shield-alt"></i></a>
                                         {{else}}
@@ -987,7 +987,7 @@
 
 
                         {{#if isCharacter }}
-                        {{#with data.attributes.encumbrance}}
+                        {{#with system.attributes.encumbrance}}
                         <div class="encumbrance {{#if encumbered}}encumbered{{/if}}">
                             <span class="encumbrance-bar" style="width:{{pct}}%"></span>
                             <span class="encumbrance-label">{{value}} / {{max}}</span>
@@ -1045,27 +1045,27 @@
                                     <div class="item-detail item-uses">
                                         {{#if item.isOnCooldown}}
                                         <a class="item-recharge rollable">{{item.labels.recharge}}</a>
-                                        {{else if item.data.recharge.value}}
+                                        {{else if item.system.recharge.value}}
                                         {{localize "DND5E.Charged"}}
 
                                         {{else if item.hasUses}}
-                                        <input type="text" value="{{item.data.uses.value}}" placeholder="0" />/
-                                        {{item.data.uses.max}}
+                                        <input type="text" value="{{item.system.uses.value}}" placeholder="0" />/
+                                        {{item.system.uses.max}}
                                         {{/if}}
                                     </div>
 
                                     <div class="item-detail item-action">
-                                        {{#if item.data.activation.type }}
+                                        {{#if item.system.activation.type }}
                                         {{item.labels.activation}}
                                         {{/if}}
                                     </div>
 
                                     {{else if section.isClass}}
                                     <div class="item-detail player-class">
-                                        {{item.data.subclass}}
+                                        {{item.system.subclass}}
                                     </div>
                                     <div class="item-detail">
-                                        Level {{item.data.levels}}
+                                        Level {{item.system.levels}}
                                     </div>
                                     {{/if}}
 
@@ -1117,20 +1117,20 @@
                                     <label>
                                         <h3>Spellcasting Level</h3>
                                     </label>
-                                    <input class="spellcasting-level" type="text" name="data.details.spellLevel"
-                                        value="{{data.details.spellLevel}}" data-dtype="Number" placeholder="0" />
+                                    <input class="spellcasting-level" type="text" name="system.details.spellLevel"
+                                        value="{{system.details.spellLevel}}" data-dtype="Number" placeholder="0" />
                                 </div>
                                 {{/if}}
                                 <label>
-                                    <h3>Spellcasting DC <b>{{data.attributes.spelldc}}</b></h3>
+                                    <h3>Spellcasting DC <b>{{system.attributes.spelldc}}</b></h3>
                                 </label>
                                 <label>
                                     <h3>Spellcasting Ability</h3>
                                 </label>
-                                <select name="data.attributes.spellcasting" data-type="String">
-                                    {{#select data.attributes.spellcasting}}
+                                <select name="system.attributes.spellcasting" data-type="String">
+                                    {{#select system.attributes.spellcasting}}
                                     <option value="">None</option>
-                                    {{#each data.abilities as |abl a|}}
+                                    {{#each system.abilities as |abl a|}}
                                     <option value="{{a}}">{{abl.label}}</option>
                                     {{/each}}
                                     {{/select}}
@@ -1147,7 +1147,7 @@
 
                                 <div class="spell-slots">
                                     {{#if section.usesSlots}}
-                                    <input type="text" name="data.spells.{{section.prop}}.value"
+                                    <input type="text" name="system.spells.{{section.prop}}.value"
                                         value="{{section.uses}}" placeholder="0" data-dtype="Number" />
                                     <span class="sep"> / </span>
                                     <span class="spell-max" data-level="{{section.prop}}"
@@ -1187,9 +1187,9 @@
                                         <h4>
                                             {{item.name}}
                                         </h4>
-                                        {{#if item.data.uses.value }}
-                                        <div class="item-detail spell-uses">Uses {{item.data.uses.value}} /
-                                            {{item.data.uses.max}}</div>
+                                        {{#if item.system.uses.value }}
+                                        <div class="item-detail spell-uses">Uses {{item.system.uses.value}} /
+                                            {{item.system.uses.max}}</div>
                                         {{/if}}
                                     </div>
 
@@ -1211,7 +1211,7 @@
                                     {{#if ../../owner}}
                                     <div class="item-controls">
                                         {{#if section.canPrepare}}
-                                        <a class="item-control item-toggle toggle-prepared {{#if item.data.preparation.prepared}}prepared{{/if}}"
+                                        <a class="item-control item-toggle toggle-prepared {{#if item.system.preparation.prepared}}prepared{{/if}}"
                                             title="Toggle Prepared"><i class="fas fa-sun"></i></a>
                                         {{/if}}
                                         <a class="item-control item-edit" title="Edit Item"><i
@@ -1250,7 +1250,7 @@
 
                     {{!-- Biography Tab --}}
                     <div class="tab biography flexcol" data-group="primary" data-tab="biography">
-                        {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+                        {{editor content=system.details.biography.value target="system.details.biography.value" button=true owner=owner editable=editable}}
                     </div>
                 </section>
 

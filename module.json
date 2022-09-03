@@ -6,9 +6,9 @@
   "authors": [],
   "url": "https://github.com/jopeek/fvtt-dndbeyond-character-sheet",
   "flags": {},
-  "version": "1.8.4",
-  "minimumCoreVersion": "0.8.9",
-  "compatibleCoreVersion": "9",
+  "version": "2.0.0",
+  "minimumCoreVersion": "10",
+  "compatibleCoreVersion": "10",
   "scripts": [],
   "esmodules": [
     "/dndbeyond-character-sheet.js"

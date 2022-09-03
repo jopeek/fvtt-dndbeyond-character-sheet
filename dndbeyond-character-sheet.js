@@ -1,6 +1,4 @@
-import ActorSheet5eCharacter from "../../systems/dnd5e/module/actor/sheets/character.js";
-
-class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
+class DNDBeyondCharacterSheet5e extends dnd5e.applications.actor.ActorSheet5eCharacter {
   constructor(...args) {
     super(...args);
 
@@ -18,7 +16,7 @@ class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
 
 
   get template() {
-    if (!game.user.isGM && this.actor.limited) return "systems/dnd5e/templates/actors/limited-sheet.html";
+    if (!game.user.isGM && this.actor.limited) return "systems/dnd5e/templates/actors/limited-sheet.hbs";
     return "modules/dndbeyond-character-sheet/template/dndbeyond-character-sheet.html";
   }
 
@@ -51,7 +49,7 @@ class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
    * Organize and classify Owned Items for Character sheets
    * @private
    */
-  _prepareItems(data) {
+  _prepareItems(context) {
 
     // Categorize items as inventory, spellbook, features, and classes
     const inventory = {
@@ -100,17 +98,17 @@ class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
     };
 
     // Partition items by category
-    let [items, spells, feats, classes] = data.items.reduce((arr, item) => {
+    let [items, spells, feats, classes] = context.items.reduce((arr, item) => {
 
       // Item details
       item.img = item.img || CONST.DEFAULT_TOKEN;
-      item.isStack = Number.isNumeric(item.data.quantity) && (item.data.quantity !== 1);
+      item.isStack = Number.isNumeric(item.system.quantity) && (item.system.quantity !== 1);
 
       // Item usage
-      item.hasUses = item.data.uses && (item.data.uses.max > 0);
-      item.isOnCooldown = item.data.recharge && !!item.data.recharge.value && (item.data.recharge.charged === false);
-      item.isDepleted = item.isOnCooldown && (item.data.uses.per && (item.data.uses.value > 0));
-      item.hasTarget = !!item.data.target && !(["none", ""].includes(item.data.target.type));
+      item.hasUses = item.system.uses && (item.system.uses.max > 0);
+      item.isOnCooldown = item.system.recharge && !!item.system.recharge.value && (item.system.recharge.charged === false);
+      item.isDepleted = item.isOnCooldown && (item.system.uses.per && (item.system.uses.value > 0));
+      item.hasTarget = !!item.system.target && !(["none", ""].includes(item.system.target.type));
 
       // Item toggle state
       this._prepareItemToggleState(item);
@@ -149,16 +147,16 @@ class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
 
     // Organize items
     for (let i of items) {
-      i.data.quantity = i.data.quantity || 0;
-      i.data.weight = i.data.weight || 0;
-      i.totalWeight = Math.round(i.data.quantity * i.data.weight * 10) / 10;
+      i.system.quantity = i.system.quantity || 0;
+      i.system.weight = i.system.weight || 0;
+      i.totalWeight = Math.round(i.system.quantity * i.system.weight * 10) / 10;
       inventory[i.type].items.push(i);
     }
 
     // Organize Spellbook and count the number of prepared spells (excluding always, at will, etc...)
-    const spellbook = this._prepareSpellbook(data, spells);
+    const spellbook = this._prepareSpellbook(context, spells);
     const nPrepared = spells.filter(s => {
-      return (s.data.level > 0) && (s.data.preparation.mode === "prepared") && s.data.preparation.prepared;
+      return (s.system.level > 0) && (s.system.preparation.mode === "prepared") && s.system.preparation.prepared;
     }).length;
 
     // Organize Features
@@ -191,32 +189,33 @@ class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
       }
     };
     for (let f of feats) {
-      if (f.data.activation.type) features.active.items.push(f);
+      if (f.system.activation.type) features.active.items.push(f);
       else features.passive.items.push(f);
     }
     classes.sort((a, b) => b.levels - a.levels);
     features.classes.items = classes;
 
     // Assign and return
-    data.inventory = Object.values(inventory);
-    data.spellbook = spellbook;
-    data.preparedSpells = nPrepared;
-    data.features = Object.values(features);
+    context.inventory = Object.values(inventory);
+    context.spellbook = spellbook;
+    context.preparedSpells = nPrepared;
+    context.features = Object.values(features);
   }
 
   /* -------------------------------------------- */
 
-  getData() {
-    const sheetData = super.getData();
+  async getData() {
+    const sheetData = await super.getData();
 
     // Temporary HP
-    let hp = sheetData.data.attributes.hp;
+    console.log("dndb", sheetData);
+    let hp = sheetData.system.attributes.hp;
     if (hp.temp === 0) delete hp.temp;
     if (hp.tempmax === 0) delete hp.tempmax;
 
     // Resources
     sheetData["resources"] = ["primary", "secondary", "tertiary"].reduce((arr, r) => {
-      const res = sheetData.data.resources[r] || {};
+      const res = sheetData.system.resources[r] || {};
       res.name = r;
       res.placeholder = game.i18n.localize("DND5E.Resource" + r.titleCase());
       if (res && res.value === 0) delete res.value;
@@ -229,14 +228,6 @@ class DNDBeyondCharacterSheet5e extends ActorSheet5eCharacter {
 
     console.log("DNDBeyond-Character-Sheet | sheetData", sheetData);
 
-    // let actor = game.actors.get(sheetData.actor._id);
-
-    // const conditions = canvas.tokens.get(actor.getActiveTokens()[0].data._id).data.effects;
-    // let testdata = conditions;
-
-    // console.log("DNDBeyond-Character-Sheet | testdata", testdata);
-
-    // Return data for rendering
     return sheetData;
   }
 
