@@ -15,7 +15,12 @@
   "styles": ["/css/dndbeyond-character-sheet.css"],
   "relationships": {
     "requires": [],
-    "systems": ["dnd5e"]
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system"
+      }
+    ]
   },
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/jopeek/fvtt-dndbeyond-character-sheet/master/module.json",
