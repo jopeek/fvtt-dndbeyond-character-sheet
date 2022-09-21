@@ -5,12 +5,12 @@
   "authors": [{ "name": "Jan Ole Peek (ChalkOne)" }],
   "compatibility": {
     "minimum": "10.285",
-    "verified": "10.285",
+    "verified": "10.286",
     "maximum": 10
   },
   "url": "https://github.com/jopeek/fvtt-dndbeyond-character-sheet",
   "flags": {},
-  "version": "1.9.0",
+  "version": "1.9.1",
   "esmodules": ["/dndbeyond-character-sheet.js"],
   "styles": ["/css/dndbeyond-character-sheet.css"],
   "relationships": {
