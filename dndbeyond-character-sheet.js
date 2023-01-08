@@ -26,7 +26,8 @@ class DNDBeyondCharacterSheet5e extends dnd5e.applications.actor.ActorSheet5eCha
     mergeObject(options, {
       classes: ["dnd5e", "sheet", "actor", "character", "dndbcs"],
       width: 1220,
-      height: 940
+      height: 940,
+      blockActionsTab: true
     });
     return options;
   }

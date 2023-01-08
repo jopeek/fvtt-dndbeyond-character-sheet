@@ -10,7 +10,7 @@
   },
   "url": "https://github.com/jopeek/fvtt-dndbeyond-character-sheet",
   "flags": {},
-  "version": "1.9.1",
+  "version": "1.9.2",
   "esmodules": ["/dndbeyond-character-sheet.js"],
   "styles": ["/css/dndbeyond-character-sheet.css"],
   "relationships": {
