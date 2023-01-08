@@ -1,5 +1,6 @@
 {
   "name": "dndbeyond-character-sheet",
+  "id": "dndbeyond-character-sheet",
   "title": "DNDBeyond Character Sheet for 5E",
   "description": "This module adds an additional character sheet inspired by DNDBeyond and the Obsidian character sheet.",
   "authors": [{ "name": "Jan Ole Peek (ChalkOne)" }],
