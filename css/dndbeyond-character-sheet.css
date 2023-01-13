@@ -813,6 +813,7 @@
 
 .dndbcs.sheet.actor .filter-list .filter-item {
   flex: 0;
+  color: #191813;
   border-bottom: 0px;
   background-color: #c9c7b8;
   border: 1px solid #c9c7b8;
@@ -1062,6 +1063,7 @@
 }
 .dndbcs.sheet.actor .sheet-header .attributes .attribute .config-button {
   display: block;
+  padding: 0;
   position: static;
 }
 .dndbcs.sheet.actor .config-button {

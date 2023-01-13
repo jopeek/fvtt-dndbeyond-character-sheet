@@ -159,7 +159,8 @@
                             <h4 class="box-title">Vulnerabilities, Resistances, Immunities</h4>
                             <div class="ability-box">
                                 <div class="form-group {{system.traits.dv.cssClass}}">
-                                    <a class="trait-selector" data-options="damageTypes" data-target="system.traits.dv"><i
+                                    <a class="trait-selector" data-trait="dv"
+                                    title="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.DamVuln')}}""><i
                                             class="fas fa-bolt" title="{{localize "DND5E.DamVuln"}}"></i></a>
                                     <label for="system.traits.dv">{{localize "DND5E.DamVuln"}}</label>
                                     <ul class="traits-list">
@@ -169,7 +170,8 @@
                                     </ul>
                                 </div>
                                 <div class="form-group {{system.traits.dr.cssClass}}">
-                                    <a class="trait-selector" data-options="damageTypes" data-target="system.traits.dr"><i
+                                    <a class="trait-selector" data-trait="dr"
+                                    title="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.DamRes')}}"><i
                                             class="fas fa-shield-alt" title="{{localize "DND5E.DamRes"}}"></i></a>
                                     <label for="system.traits.dr">{{localize "DND5E.DamRes"}}</label>
                                     <ul class="traits-list">
@@ -179,7 +181,8 @@
                                     </ul>
                                 </div>
                                 <div class="form-group {{system.traits.di.cssClass}}">
-                                    <a class="trait-selector" data-options="damageTypes" data-target="system.traits.di"><i
+                                    <a class="trait-selector" data-trait="di"
+                                    title="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.DamImm')}}"><i
                                             class="fas fa-syringe" title="{{localize "DND5E.DamImm"}}"></i></a>
                                     <label for="system.traits.di">{{localize "DND5E.DamImm"}}</label>
                                     <ul class="traits-list">
@@ -189,8 +192,8 @@
                                     </ul>
                                 </div>
                                 <div class="form-group {{system.traits.ci.cssClass}}">
-                                    <a class="trait-selector" data-options="conditionTypes"
-                                        data-target="system.traits.ci"><i class="fas fa-prescription"
+                                    <a class="trait-selector" data-trait="ci"
+                                    title="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.ConImm')}}"><i class="fas fa-prescription"
                                             title="{{localize "DND5E.ConImm"}}"></i></a>
                                     <label for="system.traits.ci">{{localize "DND5E.ConImm"}}</label>
                                     <ul class="traits-list">
@@ -214,8 +217,8 @@
                         <h4 class="box-title">Saving Throws</h4>
                         {{!-- Ability Scores --}}
                         <ul class="skills-list">
-                            {{#each system.abilities as |ability id|}}
-                            <li class="skill flexrow ability" data-ability="{{id}}">
+                            {{#each abilities as |ability id|}}
+                            <li class="skill flexrow ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
                                 <input type="hidden" name="system.abilities.{{id}}.proficient"
                                     value="{{ability.proficient}}" data-dtype="Number" />
                                 <a class="proficiency-toggle ability-proficiency"
@@ -315,8 +318,8 @@
                             <h4 class="box-title">Proficiencies</h4>
                             <div class="proficiencies-box">
                                 <div class="form-group {{system.traits.languages.cssClass}}">
-                                    <a class="trait-selector" data-options="languages"
-                                        data-target="system.traits.languages"><i class="fas fa-globe"
+                                    <a class="trait-selector" data-trait="languages"
+                                    title="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.Languages')}}"><i class="fas fa-globe"
                                             title="{{localize "DND5E.Languages"}}"></i></a>
                                     <label for="system.traits.languages">{{localize "DND5E.Languages"}}</label>
                                     <ul class="traits-list">
@@ -326,8 +329,8 @@
                                     </ul>
                                 </div>
                                 <div class="form-group {{system.traits.weaponProf.cssClass}}">
-                                    <a class="trait-selector" data-options="weaponProficiencies"
-                                        data-target="system.traits.weaponProf"><i class="fas fa-khanda"
+                                    <a class="trait-selector" data-trait="weapon"
+                                    title="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.TraitWeaponProf')}}"><i class="fas fa-khanda"
                                             title="{{localize "DND5E.TraitWeaponProf"}}"></i></a>
                                     <label for="system.traits.weaponProf">{{localize "DND5E.TraitWeaponProf"}}</label>
                                     <ul class="traits-list">
@@ -337,8 +340,8 @@
                                     </ul>
                                 </div>
                                 <div class="form-group {{system.traits.armorProf.cssClass}}">
-                                    <a class="trait-selector" data-options="armorProficiencies"
-                                        data-target="system.traits.armorProf"><i class="fas fa-shield-alt"
+                                    <a class="trait-selector" data-trait="armor"
+                                    title="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.TraitArmorProf')}}"><i class="fas fa-shield-alt"
                                             title="{{localize "DND5E.TraitArmorProf"}}"></i></a>
                                     <label for="system.traits.armorProf">{{localize "DND5E.TraitArmorProf"}}</label>
                                     <ul class="traits-list">
@@ -348,8 +351,8 @@
                                     </ul>
                                 </div>
                                 <div class="form-group {{system.traits.toolProf.cssClass}}">
-                                    <a class="trait-selector" data-options="toolProficiencies"
-                                        data-target="system.traits.toolProf"><i class="fas fa-tools"
+                                    <a class="trait-selector" data-trait="tool"
+                                    title="{{localize 'DND5E.TraitConfig' trait=(localize 'DND5E.TraitToolProf')}}"><i class="fas fa-tools"
                                             title="{{localize "DND5E.TraitToolProf"}}"></i></a>
                                     <label for="system.traits.toolProf">{{localize "DND5E.TraitToolProf"}}</label>
                                     <ul class="traits-list">
@@ -385,7 +388,8 @@
                 <h4 class="box-title">Skills</h4>
                 {{!-- Skills --}}
                 <ul class="skills-list">
-                    {{#each system.skills as |skill s|}}
+                    {{#each config.skills as |obj s|}}
+                    {{#with (lookup ../skills s) as |skill|}}
                     <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
                         <input type="hidden" name="system.skills.{{s}}.value" value="{{skill.value}}"
                             data-dtype="Number" />
@@ -396,12 +400,9 @@
                         <span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>
                         <span class="skill-passive">({{skill.passive}})</span>
                     </li>
+                    {{/with}}
                     {{/each}}
                 </ul>
-            </div>
-
-            <div class="flex-row flex-tokenimg">
-                <img class="token" src="{{actor.token.img}}" title="{{actor.name}}" />
             </div>
 
         </div>
@@ -429,13 +430,13 @@
                     {{!-- Actions Tab --}}
                     <div class="tab inventory flexcol" data-group="primary" data-tab="actions">
 
-                        <div class="action-filters">
-                            <ul class="filter-list flexrow" data-filter="inventory" data-filter="spellbook">
-                                <li id="ActionFilterAction" class="filter-item" data-filter="action">
+                        <div class="action-filters action-filters-inventory">
+                            <ul class="filter-list flexrow" data-filter="inventory">
+                                <li id="ActionFilterAction" class="filter-item filter-item-action" data-filter="action">
                                     {{localize "DND5E.Action"}}</li>
-                                <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">
+                                <li id="ActionFilterBonus" class="filter-item filter-item-bonus" data-filter="bonus">
                                     {{localize "DND5E.BonusAction"}}</li>
-                                <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">
+                                <li id="ActionFilterReaction" class="filter-item filter-item-reaction" data-filter="reaction">
                                     {{localize "DND5E.Reaction"}}</li>
                             </ul>
                         </div>
@@ -634,6 +635,16 @@
                             <!-- Features -->
                             {{#each features as |section sid|}}
                             {{#ifeq section.label "DND5E.FeatureActive"}}
+                            <div class="action-filters">
+                                <ul class="filter-list flexrow" data-filter="features">
+                                    <li id="ActionFilterAction" class="filter-item" data-filter="action">
+                                        {{localize "DND5E.Action"}}</li>
+                                    <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">
+                                        {{localize "DND5E.BonusAction"}}</li>
+                                    <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">
+                                        {{localize "DND5E.Reaction"}}</li>
+                                </ul>
+                            </div>
                             <li class="inventory-header flexrow">
                                 <h3 class="item-name flexrow">{{localize section.label}} Features</h3>
 
@@ -698,8 +709,17 @@
                             {{/ifeq}}
                             {{/each}}
 
-
                             <!-- Cantrips -->
+                            <div class="action-filters action-filters-spellbook">
+                                <ul class="filter-list flexrow" data-filter="spellbook">
+                                    <li id="ActionFilterAction" class="filter-item filter-item-action" data-filter="action">
+                                        {{localize "DND5E.Action"}}</li>
+                                    <li id="ActionFilterBonus" class="filter-item filter-item-bonus" data-filter="bonus">
+                                        {{localize "DND5E.BonusAction"}}</li>
+                                    <li id="ActionFilterReaction" class="filter-item filter-item-reaction" data-filter="reaction">
+                                        {{localize "DND5E.Reaction"}}</li>
+                                </ul>
+                            </div>
                             {{#each spellbook as |section|}}
                             {{#ifeq section.label "Cantrip"}}
                             <li class="item flexrow inventory-header spellbook-header">
@@ -789,9 +809,23 @@
                                 </div>
 
                                 <div class="spell-slots">
-                                    <span class="spell-slots">{{{section.uses}}}</span>
+                                    {{#if section.usesSlots}}
+                                    <input type="text" name="system.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
+                                           data-dtype="Number">
+                                    <span class="sep"> / </span>
+                                    <span class="spell-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
+                                        {{{section.slots}}}
+                                        {{#if ../editable}}
+                                        <a class="slot-max-override" title="{{localize 'DND5E.SpellProgOverride'}}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        {{/if}}
+                                    </span>
+                                    {{ else }}
+                                    <span>{{{section.uses}}}</span>
                                     <span class="sep"> / </span>
                                     <span class="spell-max">{{{section.slots}}}</span>
+                                    {{/if}}
                                 </div>
 
                                 <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
@@ -1003,7 +1037,7 @@
                     <div class="tab features flexcol" data-group="primary" data-tab="features">
 
                         <div class="action-filters">
-                            <ul class="filter-list flexrow" data-filter="inventory">
+                            <ul class="filter-list flexrow" data-filter="features">
                                 <li id="ActionFilterAction" class="filter-item" data-filter="action">
                                     {{localize "DND5E.Action"}}</li>
                                 <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">
@@ -1089,7 +1123,7 @@
                     <div class="tab spellbook flexcol" data-group="primary" data-tab="spellbook">
                         <div class="inventory-filters spellbook-filters">
 
-                            <ul class="filter-list flexrow" data-filter="inventory">
+                            <ul class="filter-list flexrow"  data-filter="spellbook">
                                 <li id="ActionFilterAction" class="filter-item" data-filter="action">
                                     {{localize "DND5E.Action"}}</li>
                                 <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">
@@ -1112,15 +1146,6 @@
                             </ul>
 
                             <div class="form-group spellcasting-ability">
-                                {{#if isNPC}}
-                                <div class="spellcasting-level flexrow">
-                                    <label>
-                                        <h3>Spellcasting Level</h3>
-                                    </label>
-                                    <input class="spellcasting-level" type="text" name="system.details.spellLevel"
-                                        value="{{system.details.spellLevel}}" data-dtype="Number" placeholder="0" />
-                                </div>
-                                {{/if}}
                                 <label>
                                     <h3>Spellcasting DC <b>{{system.attributes.spelldc}}</b></h3>
                                 </label>
@@ -1129,8 +1154,8 @@
                                 </label>
                                 <select name="system.attributes.spellcasting" data-type="String">
                                     {{#select system.attributes.spellcasting}}
-                                    <option value="">None</option>
-                                    {{#each system.abilities as |abl a|}}
+                                    <option value="">{{localize "DND5E.None"}}</option>
+                                    {{#each abilities as |abl a|}}
                                     <option value="{{a}}">{{abl.label}}</option>
                                     {{/each}}
                                     {{/select}}
