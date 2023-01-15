@@ -811,6 +811,10 @@
   font-size: 12px;
 }
 
+.dndbcs.sheet.actor.character .biography {
+  max-width: 100%;
+}
+
 .dndbcs.sheet.actor .filter-list .filter-item {
   flex: 0;
   color: #191813;

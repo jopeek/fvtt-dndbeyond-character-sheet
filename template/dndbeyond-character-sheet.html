@@ -99,7 +99,7 @@
 
                     {{!-- Ability Scores --}}
                     <ul class="ability-scores flexrow">
-                        {{#each system.abilities as |ability id|}}
+                        {{#each abilities as |ability id|}}
                         <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
                             <h4><a class="config-button" data-action="ability"
                                     title="{{localize 'DND5E.AbilityConfigure'}}">{{ability.label}}</a></h4>
