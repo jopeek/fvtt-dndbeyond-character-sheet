@@ -809,23 +809,9 @@
                                 </div>
 
                                 <div class="spell-slots">
-                                    {{#if section.usesSlots}}
-                                    <input type="text" name="system.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
-                                           data-dtype="Number">
-                                    <span class="sep"> / </span>
-                                    <span class="spell-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
-                                        {{{section.slots}}}
-                                        {{#if ../editable}}
-                                        <a class="slot-max-override" title="{{localize 'DND5E.SpellProgOverride'}}">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        {{/if}}
-                                    </span>
-                                    {{ else }}
                                     <span>{{{section.uses}}}</span>
                                     <span class="sep"> / </span>
                                     <span class="spell-max">{{{section.slots}}}</span>
-                                    {{/if}}
                                 </div>
 
                                 <div class="spell-school">{{localize "DND5E.SpellSchool"}}</div>
