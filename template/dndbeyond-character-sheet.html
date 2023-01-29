@@ -460,6 +460,7 @@
 
                             <ol class="item-list">
                                 {{#each section.items as |item iid|}}
+                                {{#dnd5e-itemContext item as |ctx|}}
                                 {{#ifeq  item.system.activation.type "action"}}
                                 {{#if item.system.equipped }}
                                 {{#ifnoteq item.system.attunement "1"}}
@@ -478,9 +479,9 @@
 
                                     {{#if ../../isCharacter}}
                                     <div class="item-detail item-weight">
-                                        {{#if item.totalWeight}}
+                                        {{#if ctx.totalWeight}}
                                         <div class="item-detail">
-                                            {{ item.totalWeight }} lbs.
+                                            {{ ctx.totalWeight }} lbs.
                                         </div>
                                         {{/if}}
                                     </div>
@@ -492,9 +493,8 @@
                                     {{/if}}
 
                                     <div class="item-detail item-uses">
-                                        {{#if item.hasUses }}
-                                        <input type="text" value="{{item.system.uses.value}}" placeholder="0" />
-                                        / {{item.system.uses.max}}
+                                        {{#if ctx.hasUses }}
+                                        {{item.system.uses.value}} / {{item.system.uses.max}}
                                         {{/if}}
                                     </div>
 
@@ -539,9 +539,9 @@
 
                                     {{#if ../../isCharacter}}
                                     <div class="item-detail item-weight">
-                                        {{#if item.totalWeight}}
+                                        {{#if ctx.totalWeight}}
                                         <div class="item-detail">
-                                            {{ item.totalWeight }} lbs.
+                                            {{ ctx.totalWeight }} lbs.
                                         </div>
                                         {{/if}}
                                     </div>
@@ -553,9 +553,8 @@
                                     {{/if}}
 
                                     <div class="item-detail item-uses">
-                                        {{#if item.hasUses }}
-                                        <input type="text" value="{{item.system.uses.value}}" placeholder="0" />
-                                        / {{item.system.uses.max}}
+                                        {{#if ctx.hasUses }}
+                                        {{item.system.uses.value}} / {{item.system.uses.max}}
                                         {{/if}}
                                     </div>
 
@@ -591,9 +590,9 @@
 
                                     {{#if ../../isCharacter}}
                                     <div class="item-detail item-weight">
-                                        {{#if item.totalWeight}}
+                                        {{#if ctx.totalWeight}}
                                         <div class="item-detail">
-                                            {{ item.totalWeight }} lbs.
+                                            {{ ctx.totalWeight }} lbs.
                                         </div>
                                         {{/if}}
                                     </div>
@@ -605,9 +604,8 @@
                                     {{/if}}
 
                                     <div class="item-detail item-uses">
-                                        {{#if item.hasUses }}
-                                        <input type="text" value="{{item.system.uses.value}}" placeholder="0" />
-                                        / {{item.system.uses.max}}
+                                        {{#if ctx.hasUses }}
+                                        {{item.system.uses.value}} / {{item.system.uses.max}}
                                         {{/if}}
                                     </div>
 
@@ -627,6 +625,7 @@
                                     {{/if}}
                                 </li>
                                 {{/ifeq}}
+                                {{/dnd5e-itemContext}}
                                 {{/each}}
                             </ol>
 
@@ -661,7 +660,8 @@
 
                             <ol class="items-list">
                                 {{#each section.items as |item iid|}}
-                                <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
+                                {{#dnd5e-itemContext item as |ctx|}}
+                                <li class="item flexrow {{#if ctx.isDepleted}}depleted{{/if}} {{#if ctx.isExpanded}}expanded{{/if}}" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
                                         <h4>{{item.name}}</h4>
@@ -669,14 +669,13 @@
 
                                     {{#if section.hasActions}}
                                     <div class="item-detail item-uses">
-                                        {{#if item.isOnCooldown}}
+                                        {{#if ctx.isOnCooldown}}
                                         <a class="item-recharge rollable">{{item.labels.recharge}}</a>
                                         {{else if item.system.recharge.value}}
                                         {{localize "DND5E.Charged"}}
 
-                                        {{else if item.hasUses}}
-                                        <input type="text" value="{{item.system.uses.value}}" placeholder="0" />/
-                                        {{item.system.uses.max}}
+                                        {{else if ctx.hasUses}}
+                                        {{item.system.uses.value}} / {{item.system.uses.max}}
                                         {{/if}}
                                     </div>
 
@@ -704,6 +703,7 @@
                                     </div>
                                     {{/if}}
                                 </li>
+                                {{/dnd5e-itemContext}}
                                 {{/each}}
                             </ol>
                             {{/ifeq}}
@@ -943,12 +943,13 @@
 
                             <ol class="item-list">
                                 {{#each section.items as |item iid|}}
+                                {{#dnd5e-itemContext item as |ctx|}}
                                 <li class="item flexrow" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
                                         <h4>
-                                            {{~#if item.isStack}}({{item.system.quantity}}) {{/if}}
                                             {{item.name~}}
+                                            {{~#if ctx.isStack}}({{item.system.quantity}}) {{/if}}
                                             {{#ifeq item.system.attunement "1"}} <i class="fas fa-sun attunement-required"
                                                 title="{{localize "DND5E.AttunementRequired"}}"></i>{{/ifeq}}
                                             {{#ifeq item.system.attunement "2"}} <i class="fas fa-sun attuned"
@@ -958,9 +959,9 @@
 
                                     {{#if ../../isCharacter}}
                                     <div class="item-detail item-weight">
-                                        {{#if item.totalWeight}}
+                                        {{#if ctx.totalWeight}}
                                         <div class="item-detail">
-                                            {{ item.totalWeight }} lbs.
+                                            {{ ctx.totalWeight }} lbs.
                                         </div>
                                         {{/if}}
                                     </div>
@@ -972,7 +973,7 @@
                                     {{/if}}
 
                                     <div class="item-detail item-uses">
-                                        {{#if item.hasUses }}
+                                        {{#if ctx.hasUses }}
                                         <input type="text" value="{{item.system.uses.value}}" placeholder="0" />
                                         / {{item.system.uses.max}}
                                         {{/if}}
@@ -1000,6 +1001,7 @@
                                     </div>
                                     {{/if}}
                                 </li>
+                                {{/dnd5e-itemContext}}
                                 {{/each}}
                             </ol>
                             {{/each}}
@@ -1055,6 +1057,7 @@
 
                             <ol class="item-list">
                                 {{#each section.items as |item iid|}}
+                                {{#dnd5e-itemContext item as |ctx|}}
                                 <li class="item flexrow {{#if isDepleted}}depleted{{/if}}" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
@@ -1063,12 +1066,12 @@
 
                                     {{#if section.hasActions}}
                                     <div class="item-detail item-uses">
-                                        {{#if item.isOnCooldown}}
+                                        {{#if ctx.isOnCooldown}}
                                         <a class="item-recharge rollable">{{item.labels.recharge}}</a>
                                         {{else if item.system.recharge.value}}
                                         {{localize "DND5E.Charged"}}
 
-                                        {{else if item.hasUses}}
+                                        {{else if ctx.hasUses}}
                                         <input type="text" value="{{item.system.uses.value}}" placeholder="0" />/
                                         {{item.system.uses.max}}
                                         {{/if}}
@@ -1098,6 +1101,7 @@
                                     </div>
                                     {{/if}}
                                 </li>
+                                {{/dnd5e-itemContext}}
                                 {{/each}}
                             </ol>
                             {{/each}}
