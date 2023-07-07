@@ -264,6 +264,7 @@
   width: 255px;
   padding-top: 0px;
   overflow: auto;
+  scrollbar-width: thin;
 }
 
 .dndbcs.sheet.actor.character .sheet-header .attributes .attribute .counter-value {
@@ -400,6 +401,10 @@
   line-height: 20px;
 }
 
+.dndbcs.sheet .sensestraits .form-fields {
+  display: none;
+}
+
 .dndbcs.sheet.actor.character .flex-row {
   flex-direction: row;
   display: flex;
@@ -437,7 +442,7 @@
 }
 
 .dndbcs .flex-row.secondheaderrow {
-  margin-top: 0px;
+  margin-top: 0px !important;
 }
 
 .dndbcs.sheet.actor .sheet-header h1.charname input {
@@ -984,10 +989,18 @@
   color: #7a7971;
 }
 
-.dndbcs.sheet.actor.character .inventory .item-controls .item-toggle.active, .dndbcs.sheet.actor.character .spellbook .item-controls .item-toggle.active {
+.dndbcs.sheet.actor.character .inventory .item-controls .item-toggle.active, 
+.dndbcs.sheet.actor.character .spellbook .item-controls .item-toggle.active {
   color: #4b4a44;
 }
 
+.dndbcs.sheet.actor.character .spellbook .item-controls .item-toggle.active .fa-sun {
+  color: #c53131;
+}
+
+.dndbcs.sheet.actor.character .spellbook .item-controls .item-toggle.fixed .fa-sun {
+  color: #8a2222;
+}
 
 /* Smaller resolutions */
 .dndbcs.sheet.actor.character .sheet-header .attributes,

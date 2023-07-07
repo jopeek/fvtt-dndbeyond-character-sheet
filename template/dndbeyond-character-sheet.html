@@ -164,7 +164,7 @@
                                             class="fas fa-bolt" title="{{localize "DND5E.DamVuln"}}"></i></a>
                                     <label for="system.traits.dv">{{localize "DND5E.DamVuln"}}</label>
                                     <ul class="traits-list">
-                                        {{#each system.traits.dv.selected as |v k|}}
+                                        {{#each traits.traits.dv.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
@@ -175,7 +175,7 @@
                                             class="fas fa-shield-alt" title="{{localize "DND5E.DamRes"}}"></i></a>
                                     <label for="system.traits.dr">{{localize "DND5E.DamRes"}}</label>
                                     <ul class="traits-list">
-                                        {{#each system.traits.dr.selected as |v k|}}
+                                        {{#each traits.traits.dr.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
@@ -186,7 +186,7 @@
                                             class="fas fa-syringe" title="{{localize "DND5E.DamImm"}}"></i></a>
                                     <label for="system.traits.di">{{localize "DND5E.DamImm"}}</label>
                                     <ul class="traits-list">
-                                        {{#each system.traits.di.selected as |v k|}}
+                                        {{#each traits.traits.di.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
@@ -197,7 +197,7 @@
                                             title="{{localize "DND5E.ConImm"}}"></i></a>
                                     <label for="system.traits.ci">{{localize "DND5E.ConImm"}}</label>
                                     <ul class="traits-list">
-                                        {{#each system.traits.ci.selected as |v k|}}
+                                        {{#each traits.traits.ci.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
@@ -323,7 +323,7 @@
                                             title="{{localize "DND5E.Languages"}}"></i></a>
                                     <label for="system.traits.languages">{{localize "DND5E.Languages"}}</label>
                                     <ul class="traits-list">
-                                        {{#each system.traits.languages.selected as |v k|}}
+                                        {{#each traits.traits.languages.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
@@ -334,7 +334,7 @@
                                             title="{{localize "DND5E.TraitWeaponProf"}}"></i></a>
                                     <label for="system.traits.weaponProf">{{localize "DND5E.TraitWeaponProf"}}</label>
                                     <ul class="traits-list">
-                                        {{#each system.traits.weaponProf.selected as |v k|}}
+                                        {{#each traits.traits.weaponProf.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
@@ -345,7 +345,7 @@
                                             title="{{localize "DND5E.TraitArmorProf"}}"></i></a>
                                     <label for="system.traits.armorProf">{{localize "DND5E.TraitArmorProf"}}</label>
                                     <ul class="traits-list">
-                                        {{#each system.traits.armorProf.selected as |v k|}}
+                                        {{#each traits.traits.armorProf.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
@@ -356,7 +356,7 @@
                                             title="{{localize "DND5E.TraitToolProf"}}"></i></a>
                                     <label for="system.traits.toolProf">{{localize "DND5E.TraitToolProf"}}</label>
                                     <ul class="traits-list">
-                                        {{#each system.traits.toolProf.selected as |v k|}}
+                                        {{#each traits.traits.toolProf.selected as |v k|}}
                                         <li class="tag {{k}}">{{v}}</li>
                                         {{/each}}
                                     </ul>
@@ -390,7 +390,8 @@
                 <ul class="skills-list">
                     {{#each config.skills as |obj s|}}
                     {{#with (lookup ../skills s) as |skill|}}
-                    <li class="skill flexrow {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
+                    <li class="skill proficiency-row flexrow {{#if skill.value}}proficient{{/if}}" data-property="skills"
+                    data-key="{{s}}">
                         <input type="hidden" name="system.skills.{{s}}.value" value="{{skill.value}}"
                             data-dtype="Number" />
                         <a class="proficiency-toggle skill-proficiency" title="{{skill.hover}}">{{{skill.icon}}}</a>
@@ -430,19 +431,19 @@
                     {{!-- Actions Tab --}}
                     <div class="tab inventory flexcol" data-group="primary" data-tab="actions">
 
-                        <div class="action-filters action-filters-inventory">
-                            <ul class="filter-list flexrow" data-filter="inventory">
-                                <li id="ActionFilterAction" class="filter-item filter-item-action" data-filter="action">
-                                    {{localize "DND5E.Action"}}</li>
-                                <li id="ActionFilterBonus" class="filter-item filter-item-bonus" data-filter="bonus">
-                                    {{localize "DND5E.BonusAction"}}</li>
-                                <li id="ActionFilterReaction" class="filter-item filter-item-reaction" data-filter="reaction">
-                                    {{localize "DND5E.Reaction"}}</li>
-                            </ul>
-                        </div>
 
 
                         <ol class="items-list inventory-list">
+                            <div class="action-filters action-filters-inventory">
+                                <ul class="filter-list flexrow" data-filter="inventory">
+                                    <li id="ActionFilterAction" class="filter-item filter-item-action" data-filter="action">
+                                        {{localize "DND5E.Action"}}</li>
+                                    <li id="ActionFilterBonus" class="filter-item filter-item-bonus" data-filter="bonus">
+                                        {{localize "DND5E.BonusAction"}}</li>
+                                    <li id="ActionFilterReaction" class="filter-item filter-item-reaction" data-filter="reaction">
+                                        {{localize "DND5E.Reaction"}}</li>
+                                </ul>
+                            </div>
                             <li class="inventory-header flexrow">
                                 <h3 class="item-name flexrow" title="Equipped and attuned (if required)">Inventory</h3>
 
@@ -780,6 +781,7 @@
                                 </li>
                                 {{/each}}
                             </ol>
+                            
                             {{else}}
                             {{#if owner}}
                             {{#if filters.spellbook.size}}
@@ -823,7 +825,7 @@
 
                             <ol class="items-list">
                                 {{#each section.spells as |item i|}}
-                                {{#if item.system.preparation.prepared}}
+                                {{#ifprepared item.system.preparation.mode item.system.preparation.prepared}}
                                 <li class="item flexrow" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
@@ -860,7 +862,7 @@
                                     </div>
                                     {{/if}}
                                 </li>
-                                {{/if}}
+                                {{/ifprepared}}
                                 {{/each}}
                             </ol>
                             {{else}}
@@ -1196,6 +1198,7 @@
 
                             <ol class="item-list">
                                 {{#each section.spells as |item i|}}
+                                {{#dnd5e-itemContext item as |ctx|}}
                                 <li class="item flexrow" data-item-id="{{item._id}}">
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
@@ -1226,8 +1229,9 @@
                                     {{#if ../../owner}}
                                     <div class="item-controls">
                                         {{#if section.canPrepare}}
-                                        <a class="item-control item-toggle toggle-prepared {{#if item.system.preparation.prepared}}prepared{{/if}}"
-                                            title="Toggle Prepared"><i class="fas fa-sun"></i></a>
+                                        <a class="item-control item-toggle {{ctx.toggleClass}}" data-tooltip="{{ctx.toggleTitle}}">
+                                            <i class="fas fa-sun"></i>
+                                        </a>
                                         {{/if}}
                                         <a class="item-control item-edit" title="Edit Item"><i
                                                 class="fas fa-edit"></i></a>
@@ -1236,6 +1240,7 @@
                                     </div>
                                     {{/if}}
                                 </li>
+                                {{/dnd5e-itemContext}}
                                 {{/each}}
                             </ol>
                             {{else}}

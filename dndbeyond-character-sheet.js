@@ -89,6 +89,13 @@ Hooks.once('init', async function () {
     return options.inverse(this);
   });
 
+  Handlebars.registerHelper('ifprepared', function (preparedmode, isprepared, options) {
+    if (preparedmode == "atwill" || preparedmode == "innate" || preparedmode == "always" || isprepared) {
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  });
+
   Handlebars.registerHelper('ifnoteq', function (a, b, options) {
     if (a != b) {
       return options.fn(this);
