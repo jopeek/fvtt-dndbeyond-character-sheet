@@ -680,12 +680,16 @@
   font-size: 14px;
 }
 
-.dndbcs.sheet.actor .inventory-list .inventory-header h3, .dndbcs.sheet .items-list .items-header h3, .dndbcs.sheet.actor .effects-list .items-header h3 {
+.dndbcs.sheet.actor .inventory-list .inventory-header h3, 
+.dndbcs.sheet .items-list .items-header h3, 
+.dndbcs.sheet.actor .effects-list .items-header h3,
+.dndbcs.sheet.actor.character .characteristics label {
   font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
   font-weight: bold;
   font-size: 14px;
   margin: 0px;
   color: #c53131;
+  text-transform: uppercase;
 }
 
 .dndbcs.sheet .sheet-navigation .tabs .item.active {

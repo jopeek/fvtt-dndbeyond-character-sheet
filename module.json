@@ -9,12 +9,12 @@
     }
   ],
   "compatibility": {
-    "minimum": "10",
-    "verified": "10.303",
-    "maximum": "10"
+    "minimum": "11",
+    "verified": "11.305",
+    "maximum": "11"
   },
   "url": "https://github.com/jopeek/fvtt-dndbeyond-character-sheet",
-  "version": "1.10.0",
+  "version": "11.222.1",
   "esmodules": [
     "/dndbeyond-character-sheet.js"
   ],
@@ -26,7 +26,11 @@
       {
         "id": "dnd5e",
         "type": "system",
-        "compatibility": {}
+        "compatibility": {
+          "minimum": "2.2.2",
+          "verified": "2.2.2",
+          "maximum": "2.2.2"
+      }
       }
     ]
   },

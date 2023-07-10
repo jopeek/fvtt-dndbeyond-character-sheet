@@ -81,7 +81,7 @@
                                     AC
                                 </a>
                             </h4>
-                            <div class="attribute-value attributable" data-property="attributes.ac">
+                            <div class="attribute-value" data-attribution="attributes.ac">
                                 <span>{{system.attributes.ac.value}}</span>
                             </div>
                         </li>
@@ -1269,8 +1269,23 @@
                     </div>
 
                     {{!-- Biography Tab --}}
-                    <div class="tab biography flexcol" data-group="primary" data-tab="biography">
-                        {{editor content=system.details.biography.value target="system.details.biography.value" button=true owner=owner editable=editable}}
+                    <div class="tab flexrow" data-group="primary" data-tab="biography">
+                        <div class="characteristics flexcol">
+                            <label>{{ localize "DND5E.Appearance" }}</label>
+                            <textarea name="system.details.appearance">{{system.details.appearance}}</textarea>
+                            <label>{{ localize "DND5E.PersonalityTraits" }}</label>
+                            <textarea name="system.details.trait">{{system.details.trait}}</textarea>
+                            <label>{{ localize "DND5E.Ideals" }}</label>
+                            <textarea name="system.details.ideal">{{system.details.ideal}}</textarea>
+                            <label>{{ localize "DND5E.Bonds" }}</label>
+                            <textarea name="system.details.bond">{{system.details.bond}}</textarea>
+                            <label>{{ localize "DND5E.Flaws" }}</label>
+                            <textarea name="system.details.flaw">{{system.details.flaw}}</textarea>
+                        </div>
+                        <div class="biography">
+                            {{editor biographyHTML target="system.details.biography.value" button=true editable=editable
+                                    engine="prosemirror" collaborate=false}}
+                        </div>
                     </div>
                 </section>
 
