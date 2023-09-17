@@ -435,15 +435,21 @@
 
 
 
-                        <ol class="items-list inventory-list">
+                        <ol class="items-list actions-list">
                             <div class="action-filters action-filters-inventory">
                                 <ul class="filter-list flexrow" data-filter="inventory">
                                     <li id="ActionFilterAction" class="filter-item filter-item-action" data-filter="action">
-                                        {{localize "DND5E.Action"}}</li>
+                                        {{localize "DND5E.Action"}}
+                                    </li>
                                     <li id="ActionFilterBonus" class="filter-item filter-item-bonus" data-filter="bonus">
-                                        {{localize "DND5E.BonusAction"}}</li>
+                                        {{localize "DND5E.BonusAction"}}
+                                    </li>
                                     <li id="ActionFilterReaction" class="filter-item filter-item-reaction" data-filter="reaction">
-                                        {{localize "DND5E.Reaction"}}</li>
+                                        {{localize "DND5E.Reaction"}}
+                                    </li>
+                                    <!-- <li class="filter-search">
+                                        <input class="filter-item" type="text" id="actions-search" placeholder="Search" />
+                                    </li> -->
                                 </ul>
                             </div>
                             <li class="inventory-header flexrow">
@@ -471,8 +477,8 @@
                                     <div class="item-name flexrow rollable">
                                         <div class="item-image" style="background-image: url({{item.img}})"></div>
                                         <h4>
-                                            {{~#if item.isStack}}({{item.system.quantity}}) {{/if}}
                                             {{item.name~}}
+                                            {{~#if ctx.isStack}}({{item.system.quantity}}) {{/if}}
                                             {{#ifeq item.system.attunement "1"}} <i class="fas fa-sun attunement-required"
                                                 title="{{localize "DND5E.AttunementRequired"}}"></i>{{/ifeq}}
                                             {{#ifeq item.system.attunement "2"}} <i class="fas fa-sun attuned"
@@ -899,11 +905,17 @@
 
                             <ul class="filter-list flexrow" data-filter="inventory">
                                 <li id="ActionFilterAction" class="filter-item" data-filter="action">
-                                    {{localize "DND5E.Action"}}</li>
+                                    {{localize "DND5E.Action"}}
+                                </li>
                                 <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">
-                                    {{localize "DND5E.BonusAction"}}</li>
+                                    {{localize "DND5E.BonusAction"}}
+                                </li>
                                 <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">
-                                    {{localize "DND5E.Reaction"}}</li>
+                                    {{localize "DND5E.Reaction"}}
+                                </li>
+                                <li class="filter-search">
+                                    <input class="filter-item" type="text" id="inventory-search" placeholder="Search" />
+                                </li>
                             </ul>
 
 
@@ -911,7 +923,7 @@
                             <ol class="currency flexrow">
 
                                 {{#each system.currency as |v k|}}
-                                <label class="denomination {{k}}">{{ lookup ../labels.currencies k }}</label>
+                                <label class="denomination {{k}}" title="inventory"> </label>
                                 <input type="text" name="system.currency.{{k}}" value="{{v}}" data-dtype="Number" />
                                 {{/each}}
                                 <h3 class="currency-convert-button">
@@ -1031,15 +1043,21 @@
                         <div class="action-filters">
                             <ul class="filter-list flexrow" data-filter="features">
                                 <li id="ActionFilterAction" class="filter-item" data-filter="action">
-                                    {{localize "DND5E.Action"}}</li>
+                                    {{localize "DND5E.Action"}}
+                                </li>
                                 <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">
-                                    {{localize "DND5E.BonusAction"}}</li>
+                                    {{localize "DND5E.BonusAction"}}
+                                </li>
                                 <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">
-                                    {{localize "DND5E.Reaction"}}</li>
+                                    {{localize "DND5E.Reaction"}}
+                                </li>
+                                <li class="filter-search">
+                                    <input class="filter-item" type="text" id="features-search" placeholder="Search" />
+                                </li>
                             </ul>
                         </div>
 
-                        <ol class="items-list inventory-list">
+                        <ol class="items-list features-list">
                             {{#each features as |section sid|}}
                             <li class="inventory-header flexrow">
                                 <h3 class="item-name flexrow">{{localize section.label}}</h3>
@@ -1119,32 +1137,43 @@
 
                             <ul class="filter-list flexrow"  data-filter="spellbook">
                                 <li id="ActionFilterAction" class="filter-item" data-filter="action">
-                                    {{localize "DND5E.Action"}}</li>
+                                    {{localize "DND5E.Action"}}
+                                </li>
                                 <li id="ActionFilterBonus" class="filter-item" data-filter="bonus">
-                                    {{localize "DND5E.BonusAction"}}</li>
+                                    {{localize "DND5E.BonusAction"}}
+                                </li>
                                 <li id="ActionFilterReaction" class="filter-item" data-filter="reaction">
-                                    {{localize "DND5E.Reaction"}}</li>
+                                    {{localize "DND5E.Reaction"}}
+                                </li>
                             </ul>
 
                             <ul class="filter-list flexrow filter-spellbook" data-filter="spellbook">
                                 <li class="filter-item" data-filter="concentration"><img
                                         src="modules/dndbeyond-character-sheet/images/concentration.png"
                                         style="border: 0px; vertical-align: text-top; max-width: initial;">
-                                    Concentration</li>
+                                    Concentration
+                                </li>
                                 <li class="filter-item" data-filter="ritual"><img
                                         src="modules/dndbeyond-character-sheet/images/ritual.png"
                                         style="border: 0px; vertical-align: text-top; max-width: initial;">
-                                    {{localize "DND5E.Ritual"}}</li>
+                                    {{localize "DND5E.Ritual"}}
+                                </li>
                                 <li class="filter-item" data-filter="prepared">
-                                    {{localize "DND5E.Prepared"}}{{#if preparedSpells}} ({{preparedSpells}}){{/if}}</li>
+                                    {{localize "DND5E.Prepared"}}{{#if preparedSpells}} ({{preparedSpells}}){{/if}}
+                                </li>
+                                <li class="filter-search">
+                                    <input class="filter-item" type="text" id="spellbook-search" placeholder="Search" />
+                                </li>
                             </ul>
+
+                            
 
                             <div class="form-group spellcasting-ability">
                                 <label>
-                                    <h3>Spellcasting DC <b>{{system.attributes.spelldc}}</b></h3>
+                                    <h4>Spellcasting DC <b>{{system.attributes.spelldc}}</b></h4>
                                 </label>
                                 <label>
-                                    <h3>Spellcasting Ability</h3>
+                                    <h4>Ability</h4>
                                 </label>
                                 <select name="system.attributes.spellcasting" data-type="String">
                                     {{#select system.attributes.spellcasting}}
@@ -1157,7 +1186,7 @@
                             </div>
                         </div>
 
-                        <ol class="items-list inventory-list">
+                        <ol class="items-list spellbook-list">
                             {{#each spellbook as |section|}}
                             <li class="item flexrow inventory-header spellbook-header">
                                 <div class="item-name flexrow">

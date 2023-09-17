@@ -45,14 +45,22 @@ class DNDBeyondCharacterSheet5e extends dnd5e.applications.actor.ActorSheet5eCha
   }
 
 
-
+  
   
 
   /* -------------------------------------------- */
 
+  activateListeners(html) {
+    let searchInput = html.find(".filter-search input");
+    searchInput.on("input", function() {
+      filterInventoryList(this, html);
+    });
+  }
+
+
   async getData() {
     const sheetData = await super.getData();
-
+    
     // Temporary HP
     console.log("dndb", sheetData);
     let hp = sheetData.system.attributes.hp;
@@ -78,6 +86,47 @@ class DNDBeyondCharacterSheet5e extends dnd5e.applications.actor.ActorSheet5eCha
   }
 
 
+}
+
+async function filterInventoryList(input, html) {
+  
+  let id = $(input).attr("id");
+  let value = $(input).val().toLowerCase();
+  let searchTarget;
+
+  switch (id) {
+    case "inventory-search":
+      searchTarget = html.find(
+        ".inventory-list:not(.actions-list):not(.spellbook-list):not(.features-list) .item-name.rollable"
+      );
+      break;
+      case "actions-search":
+        searchTarget = html.find(
+          ".actions-list:not(.spellbook-list):not(.features-list) .item-name.rollable"
+        );
+        break;
+    case "spellbook-search":
+      searchTarget = html.find(
+        ".spellbook-list .item-name.rollable"
+      );
+      break;
+    case "features-search":
+      searchTarget = html.find(".features-list .item-name.rollable");
+      break;
+  }
+
+  searchTarget.each(function() {
+    let itemName = $(this).text().toLowerCase().trim();
+    console.log(itemName, itemName.indexOf(value.toLowerCase()));
+
+    if (itemName.indexOf(value.toLowerCase()) >= 0) {
+      $(this).closest(".item").removeClass("filtered").show();
+    } else {
+      $(this).closest(".item").addClass("filtered").hide();
+    }
+
+  });
+  
 }
 
 Hooks.once('init', async function () {
@@ -120,5 +169,21 @@ Hooks.on('ready', () => {
   } catch (error) {
     console.log("DNDBeyond-Character-Sheet | Better Rolls 5e module not installed - no big deal, carry on!");
   }
+
+  // searchInput.on("blur", async function() {
+  //   console.log("here?");
+  //   let id = $(this).attr("id"), value = $(this).val();
+  //   switch (id) {
+  //     case "item-search":
+  //       await actor2.setFlag(CONSTANTS.MODULE_ID, "item-search", value);
+  //       break;
+  //     case "spell-search":
+  //       await actor2.setFlag(CONSTANTS.MODULE_ID, "spell-search", value);
+  //       break;
+  //     case "feat-search":
+  //       await actor2.setFlag(CONSTANTS.MODULE_ID, "feat-search", value);
+  //       break;
+  //   }
+  // });
 
 });
