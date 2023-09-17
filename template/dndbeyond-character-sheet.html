@@ -356,10 +356,12 @@
                                             title="{{localize "DND5E.TraitToolProf"}}"></i></a>
                                     <label for="system.traits.toolProf">{{localize "DND5E.TraitToolProf"}}</label>
                                     <ul class="traits-list">
-                                        {{#each traits.traits.toolProf.selected as |v k|}}
-                                        <li class="tag {{k}}">{{v}}</li>
+                                        {{#each tools}}
+                                            <li class="tag tool proficiency-row" data-property="tools" data-key="{{@key}}">
+                                                {{label}}
+                                            </li>
                                         {{/each}}
-                                    </ul>
+                                        </ul>
                                 </div>
                             </div>
                         </li>

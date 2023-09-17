@@ -10,11 +10,11 @@
   ],
   "compatibility": {
     "minimum": "11",
-    "verified": "11.305",
+    "verified": "11.308",
     "maximum": "11"
   },
   "url": "https://github.com/jopeek/fvtt-dndbeyond-character-sheet",
-  "version": "11.230.2",
+  "version": "11.230.3",
   "esmodules": [
     "/dndbeyond-character-sheet.js"
   ],
@@ -30,7 +30,7 @@
           "minimum": "2.2.2",
           "verified": "2.3.0",
           "maximum": "2.9.9"
-      }
+        }
       }
     ]
   },
