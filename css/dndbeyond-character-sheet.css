@@ -929,6 +929,18 @@
   padding: 6px 0 4px 0;
 }
 
+.dndbcs.sheet.actor .inventory-list .item-summary,
+.dndbcs.sheet.actor .actions-list .item-summary,
+.dndbcs.sheet.actor .features-list .item-summary,
+.dndbcs.sheet.actor .spellbook-list .item-summary {
+  flex: 0 0 100%;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0.25em 0.5em;
+  color: #191813;
+  border-top: 1px solid #c9c7b8;
+}
+
 .dndbcs.sheet .features-list .item-detail input[type="text"] {
   width: 10px;
 }

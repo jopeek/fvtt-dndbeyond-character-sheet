@@ -51,6 +51,7 @@ class DNDBeyondCharacterSheet5e extends dnd5e.applications.actor.ActorSheet5eCha
   /* -------------------------------------------- */
 
   activateListeners(html) {
+    super.activateListeners(html);
     let searchInput = html.find(".filter-search input");
     searchInput.on("input", function() {
       filterInventoryList(this, html);
@@ -170,20 +171,5 @@ Hooks.on('ready', () => {
     console.log("DNDBeyond-Character-Sheet | Better Rolls 5e module not installed - no big deal, carry on!");
   }
 
-  // searchInput.on("blur", async function() {
-  //   console.log("here?");
-  //   let id = $(this).attr("id"), value = $(this).val();
-  //   switch (id) {
-  //     case "item-search":
-  //       await actor2.setFlag(CONSTANTS.MODULE_ID, "item-search", value);
-  //       break;
-  //     case "spell-search":
-  //       await actor2.setFlag(CONSTANTS.MODULE_ID, "spell-search", value);
-  //       break;
-  //     case "feat-search":
-  //       await actor2.setFlag(CONSTANTS.MODULE_ID, "feat-search", value);
-  //       break;
-  //   }
-  // });
 
 });
