@@ -14,7 +14,7 @@
     "maximum": "11"
   },
   "url": "https://github.com/jopeek/fvtt-dndbeyond-character-sheet",
-  "version": "11.240.1",
+  "version": "11.240.2",
   "esmodules": [
     "/dndbeyond-character-sheet.js"
   ],

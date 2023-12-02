@@ -693,14 +693,6 @@
                                         {{item.labels.activation}}
                                         {{/if}}
                                     </div>
-
-                                    {{else if section.isClass}}
-                                    <div class="item-detail player-class">
-                                        {{item.system.subclass}}
-                                    </div>
-                                    <div class="item-detail">
-                                        Level {{item.system.levels}}
-                                    </div>
                                     {{/if}}
 
                                     {{#if ../../owner}}
@@ -1110,7 +1102,18 @@
                                         {{item.system.subclass}}
                                     </div>
                                     <div class="item-detail">
-                                        Level {{item.system.levels}}
+                                        <div class="item-detail item-action">
+                                            <select class="level-selector">
+                                                {{#select 0}}
+                                                {{#each ctx.availableLevels}}
+                                                    <option value="{{this.delta}}" {{disabled this.disabled}}>
+                                                        {{localize "DND5E.LevelNumber" level=this.level}}
+                                                        {{#if this.delta}}({{numberFormat this.delta sign=true}}){{/if}}
+                                                    </option>
+                                                {{/each}}
+                                                {{/select}}
+                                            </select>
+                                        </div>
                                     </div>
                                     {{/if}}
 
