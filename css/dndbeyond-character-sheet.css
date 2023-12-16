@@ -1169,3 +1169,8 @@
 .dndbcs.sheet.actor .skills-list .config-button {
   flex: 0 0 2em;
 }
+
+.dndbcs.sheet.actor .items-list .item-controls a.quick-insert-link {
+  display: inline-block;
+  margin-left: 0.25rem;
+}
