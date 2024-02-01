@@ -880,6 +880,7 @@
 .dndbcs.sheet.actor .inventory-filters {
   margin: 0 3px;
   display: flex;
+  flex-grow: 0;
 }
 
 .dndbcs.sheet.actor .inventory-filters .currency input[type="text"] {
@@ -890,6 +891,7 @@
 
 .dndbcs.sheet.actor.character .encumbrance {
   margin: 5px 5px 0 5px;
+  flex-grow: 0;
 }
 
 .dndbcs.sheet.actor.character .encumbrance .encumbrance-bar {
@@ -898,6 +900,7 @@
   top: 0px;
   left: 0px;
   height: 100%;
+  display: inline-block;
 }
 
 .dndbcs.sheet.actor.character .encumbrance {
